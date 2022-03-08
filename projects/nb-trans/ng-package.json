@@ -1,0 +1,13 @@
+{
+  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../dist/nb-trans",
+  "allowedNonPeerDependencies": [
+    "@bigbear713/nb-common",
+    "lodash-es",
+    "uuid",
+    "tslib"
+  ],
+  "lib": {
+    "entryFile": "src/public-api.ts"
+  }
+}

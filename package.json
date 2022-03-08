@@ -6,7 +6,19 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "start:lib": "ng build --watch nb-trans",
+    "build:lib": "ng build nb-trans && npm run copy:readmeEn && cd dist/nb-trans && npm pack",
+    "build:analyze": "npm run build -- --source-map && npm run view:analyze",
+    "view:analyze": "node_modules/.bin/source-map-explorer dist/nb-trans-demo/*",
+    "test:lib": "ng test nb-trans",
+    "deploy": "ng build --outputPath=docs --base-href=/nb-trans/ && cp docs/index.html docs/404.html",
+    "dev:ssr": "ng run nb-trans-demo:serve-ssr",
+    "serve:ssr": "node dist/nb-trans-demo/server/main.js",
+    "build:ssr": "ng build && ng run nb-trans-demo:server",
+    "prerender": "ng run nb-trans-demo:prerender",
+    "publish:lib": "cd ./dist/nb-trans && npm publish --access=public",
+    "copy:readmeEn": "cp projects/nb-trans/README.EN.md dist/nb-trans/README.EN.md"
   },
   "private": true,
   "dependencies": {
@@ -39,6 +51,7 @@
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
+    "ng-packagr": "^12.1.1",
     "source-map-explorer": "^2.5.2",
     "typescript": "~4.3.5"
   }
