@@ -1,4 +1,4 @@
-import { INbTransParams } from './trans-params.interface';
+import { INbTransParams } from './nb-trans-params.interface';
 
 export interface INbTransOptions {
   prefix?: string;

@@ -36,7 +36,7 @@ import {
   INbTransLoader,
   INbTransOptions
 } from '../models';
-import { NbTransToolsService } from './trans-tools.service';
+import { NbTransToolsService } from './nb-trans-tools.service';
 
 @Injectable({
   providedIn: 'root'

@@ -1,4 +1,4 @@
-import { NbTransToolsService } from '../trans-tools.service';
+import { NbTransToolsService } from '../nb-trans-tools.service';
 import { TestBed, inject } from '@angular/core/testing';
 import { INbTransParams } from '../../models';
 import { handleSentenceWithParamsTestData } from '../../testing';

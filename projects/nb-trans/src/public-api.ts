@@ -9,4 +9,4 @@ export * from './lib/components';
 
 export * from './lib/pipes/nb-trans.pipe';
 
-export * from './lib/services/trans.service';
+export * from './lib/services/nb-trans.service';

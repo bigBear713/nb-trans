@@ -2,7 +2,7 @@ import { inject, TestBed } from '@angular/core/testing';
 import { filter, switchMap, take } from 'rxjs/operators';
 import { NB_TRANS_DEFAULT_LANG, NB_TRANS_LOADER, NB_TRANS_MAX_RETRY_TOKEN, NbTransLangEnum } from '../../constants';
 import { translationSyncTestData, transLoader, NbTransTestingModule } from '../../testing';
-import { NbTransService } from '../trans.service';
+import { NbTransService } from '../nb-trans.service';
 
 describe('Service: NgTrans', () => {
 
