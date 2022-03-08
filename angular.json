@@ -132,7 +132,10 @@
           "options": {
             "main": "projects/nb-trans/src/test.ts",
             "tsConfig": "projects/nb-trans/tsconfig.spec.json",
-            "karmaConfig": "projects/nb-trans/karma.conf.js"
+            "karmaConfig": "projects/nb-trans/karma.conf.js",
+            "watch": true,
+            "progress": true,
+            "codeCoverage": true
           }
         }
       }
