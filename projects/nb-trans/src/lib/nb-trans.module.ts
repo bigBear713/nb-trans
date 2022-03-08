@@ -1,8 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { NbCommonModule } from '@bigbear713/nb-common';
+import { NbTransComponent, NbTransSubcontentComponent } from './components';
 import { NbSentenceItemTypePipe, NbTransContentPipe, NbTransPipe } from './pipes';
 
+const COMPONENTS = [
+  NbTransComponent,
+  NbTransSubcontentComponent,
+];
 
 const PIPES = [
   NbTransPipe,
@@ -10,6 +15,7 @@ const PIPES = [
 
 @NgModule({
   declarations: [
+    ...COMPONENTS,
     ...PIPES,
     NbTransContentPipe,
     NbSentenceItemTypePipe,
@@ -19,6 +25,7 @@ const PIPES = [
     NbCommonModule,
   ],
   exports: [
+    ...COMPONENTS,
     ...PIPES,
   ]
 })

@@ -5,7 +5,7 @@ import { switchMap, take } from 'rxjs/operators';
 import { NB_TRANS_LOADER, NB_TRANS_DEFAULT_LANG, NbTransLangEnum } from '../../constants';
 import { INbTransOptions } from '../../models';
 import { NbTransService } from '../../services';
-import { translationSyncTestData, transLoader, NgTransTestingModule } from '../../testing';
+import { translationSyncTestData, transLoader, NbTransTestingModule } from '../../testing';
 import { NbTransPipe } from '../nb-trans.pipe';
 
 describe('Pipe: NbTrans', () => {
@@ -14,7 +14,7 @@ describe('Pipe: NbTrans', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CommonModule, NgTransTestingModule],
+      imports: [CommonModule, NbTransTestingModule],
       declarations: [],
       providers: [
         { provide: ChangeDetectorRef, useValue: jasmine.createSpyObj(ChangeDetectorRef, ['markForCheck']) },

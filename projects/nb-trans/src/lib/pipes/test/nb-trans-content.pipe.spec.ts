@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { NbTransToolsService } from '../../services';
-import { handleSentenceWithParamsTestData, NgTransTestingModule } from '../../testing';
+import { handleSentenceWithParamsTestData, NbTransTestingModule } from '../../testing';
 import { NbTransContentPipe } from '../nb-trans-content.pipe';
 
 describe('Pipe: NbTransContente', () => {
@@ -8,7 +8,7 @@ describe('Pipe: NbTransContente', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [NgTransTestingModule],
+      imports: [NbTransTestingModule],
       declarations: []
     })
       .compileComponents();

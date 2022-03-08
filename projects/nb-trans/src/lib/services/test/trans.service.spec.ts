@@ -1,14 +1,14 @@
 import { inject, TestBed } from '@angular/core/testing';
 import { filter, switchMap, take } from 'rxjs/operators';
 import { NB_TRANS_DEFAULT_LANG, NB_TRANS_LOADER, NB_TRANS_MAX_RETRY_TOKEN, NbTransLangEnum } from '../../constants';
-import { translationSyncTestData, transLoader, NgTransTestingModule } from '../../testing';
+import { translationSyncTestData, transLoader, NbTransTestingModule } from '../../testing';
 import { NbTransService } from '../trans.service';
 
 describe('Service: NgTrans', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [NgTransTestingModule]
+      imports: [NbTransTestingModule]
     });
   });
 
@@ -26,7 +26,7 @@ describe('Service: NgTrans', () => {
 
         beforeEach(async () => {
           TestBed.configureTestingModule({
-            imports: [NgTransTestingModule],
+            imports: [NbTransTestingModule],
             providers: [
               { provide: NB_TRANS_DEFAULT_LANG, useValue: NbTransLangEnum.ZH_CN, },
               { provide: NB_TRANS_LOADER, useValue: loaderMethodItem.loader },
@@ -100,7 +100,7 @@ describe('Service: NgTrans', () => {
     let service: NbTransService;
     beforeEach(async () => {
       TestBed.configureTestingModule({
-        imports: [NgTransTestingModule],
+        imports: [NbTransTestingModule],
         providers: [
           { provide: NB_TRANS_DEFAULT_LANG, useValue: NbTransLangEnum.ZH_CN },
           { provide: NB_TRANS_LOADER, useValue: transLoader.staticLoader },
@@ -129,7 +129,7 @@ describe('Service: NgTrans', () => {
     let service: NbTransService;
     beforeEach(async () => {
       TestBed.configureTestingModule({
-        imports: [NgTransTestingModule],
+        imports: [NbTransTestingModule],
         providers: [
           { provide: NB_TRANS_DEFAULT_LANG, useValue: NbTransLangEnum.ZH_CN },
           { provide: NB_TRANS_LOADER, useValue: transLoader.dynamicLoader },
@@ -166,7 +166,7 @@ describe('Service: NgTrans', () => {
       [NbTransLangEnum.EN_US]: langLoader
     };
     TestBed.configureTestingModule({
-      imports: [NgTransTestingModule],
+      imports: [NbTransTestingModule],
       providers: [
         { provide: NB_TRANS_DEFAULT_LANG, useValue: NbTransLangEnum.EN_US },
         { provide: NB_TRANS_LOADER, useValue: transLoader },

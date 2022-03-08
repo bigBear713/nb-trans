@@ -9,4 +9,4 @@ import { NbTransService, NbTransToolsService } from "../services";
   ],
   exports: [NbTransModule]
 })
-export class NgTransTestingModule { }
+export class NbTransTestingModule { }
