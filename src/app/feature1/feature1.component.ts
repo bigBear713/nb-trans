@@ -38,11 +38,11 @@ export class Feature1Component implements OnInit {
 
   compStr1 = `
     <div>
-      <ng-trans key="complexContent" [components]="[com0,com1,com2]" [options]="{params,prefix:'content'}"> </ng-trans>
+      <nb-trans key="complexContent" [components]="[com0,com1,com2]" [options]="{params,prefix:'content'}"> </nb-trans>
     </div>
 
     <ng-template #com0 let-comContent="content" let-list="list">
-      <b [ng-trans-subcontent]="comContent" [trans-subcontent-list]="list"></b>
+      <b [nb-trans-subcontent]="comContent" [subcontentList]="list"></b>
     </ng-template>
 
     <ng-template #com1 let-comContent="content" let-list="list">

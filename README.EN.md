@@ -16,13 +16,14 @@ Angular i18n translation component.
 - [中文](https://github.com/bigBear713/nb-translation/blob/master/projects/nb-translation/README.md "中文文档")
 - [English](https://github.com/bigBear713/nb-translation/blob/master/projects/nb-translation/README.EN.md "English Document")
 
+
 ## Feature
-- 支持翻译文本懒加载，或者急性加载；
-- 支持切换语言时，不刷新页面自动更新翻译文本；
-- 支持设置翻译文本加载失败时的重试次数；
-- 支持翻译文本中带有参数；
-- 支持翻译文本中带有组件的复杂场景；
-- 支持组件的更新策略为`ChangeDetectionStrategy.OnPush`;
+- Support to direct/lazing loading translation file;
+- Support to update translation content in page directly and no need to reload page;
+- Support to reset the max retry time when failure to load the translation file;
+- Support there are some params in translation sentence;
+- Support there are some components in the translation sentence;
+- Support the changeDetection of components as `ChangeDetectionStrategy.OnPush`;
 
 ## Installation
 ```bash
@@ -31,40 +32,40 @@ $ npm i @bigbear713/nb-trans
 $ yarn add @bigbear713/nb-trans
 ```
 
-## 启动demo项目
-- 安装依赖：
+## Start the demo project
+- Install the dependencies:
 ```bash
 npm i
 ```
 
-- 编译nb-trans库
+- Build the nb-trans lib
 ```bash
 npm run build:lib
 ```
 
-- 启动demo项目
+- Start the demo
 ```bash
 npm start
 ```
 
-- 部署demo
+- build the demo
 ```bash
 npm run build
 ```
 
-- 启动带有SSR的demo项目
+- Start the demo with SSR
 ```bash
 npm run dev:ssr
 ```
 
-- 部署带有SSR的demo项目
+- Build the demo with SSR
 ```bash
 npm run build:ssr
 
 npm run serve:ssr
 ```
-## 贡献者
-> 欢迎提feature和PR，一起使该项目更好
+## Contribution
+> Feature and PR are welcome to make this project better together
 
 <a href="https://github.com/bigBear713" target="_blank"><img src="https://avatars.githubusercontent.com/u/12368900?v=4" alt="bigBear713" width="30px" height="30px"></a>
 

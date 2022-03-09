@@ -1,8 +1,8 @@
 <div align="center">
 
-### @bigbear713/ng-trans
+### @bigbear713/nb-trans
 
-Angular i18n translation component.
+Angular translation lib by bigBear713.
 
 [OnlineDemo](https://bigBear713.github.io/nb-trans/)
 
@@ -16,6 +16,9 @@ Angular i18n translation component.
 - [中文](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md "中文文档")
 - [English](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.EN.md "English Document")
 
+<br>
+
+
 ## Feature
 - 支持翻译文本懒加载，或者急性加载；
 - 支持切换语言时，不刷新页面自动更新翻译文本；
@@ -24,50 +27,61 @@ Angular i18n translation component.
 - 支持翻译文本中带有组件的复杂场景；
 - 支持组件的更新策略为`ChangeDetectionStrategy.OnPush`;
 
+<br>
+
+
 ### Version
-###### ng-trans的大版本和Angular的大版本保持对应关系
-- "@bigbear713/ng-trans":"^12.0.0" - "@angular/core": "^12.0.0"
+###### nb-trans的大版本和Angular的大版本保持对应关系
+- "@bigbear713/nb-trans":"^12.0.0" - "@angular/core": "^12.0.0"
+
+<br>
 
 ### Installation
 ```bash
-$ npm i @bigbear713/ng-trans
+$ npm i @bigbear713/nb-trans
 // or
-$ yarn add @bigbear713/ng-trans
+$ yarn add @bigbear713/nb-trans
 ```
+
+<br>
 
 ### Module
 
-#### NgTransModule
+#### NbTransModule
 ###### 多语言模块。引入该模块后，可使用`component`，`pipe`。`service`不需要引入该模块也可使用，默认为全局。
 
-#### NgTransTestingModule
+#### NbTransTestingModule
 ###### 多语言测试模块。用于Unit Test。
+
+<br>
 
 ### Service
 
-#### NgTransService
+#### NbTransService
+##### `v12.0.0`
 ###### 提供多语言翻译功能的`service`
+
 ##### Properties
-| Properties  | Type  | Description  |
-| ------------ | ------------ | ------------ |
-| lang  | `string`  | 当前语言值  |
-| loadDefaultOver  | `boolean`  | 默认语言的翻译文本是否加载完毕  |
+| Properties  | Type  | Description  | Version |
+| ------------ | ------------ | ------------ | ------------ |
+| lang  | `string`  | 当前语言值  | `v12.0.0` |
+| loadDefaultOver  | `boolean`  | 默认语言的翻译文本是否加载完毕  | `v12.0.0` |
 
 ##### Methods
-| Name  | Return  | Description  | Scenes  |
-| ------------ | ------------ | ------------ | ------------ |
-| changeLang(lang: string)  | `Observable<INgTransChangeLang>`  | 切换语言。lang参数需要和`NG_TRANS_LOADER`中的key值相对应。是一个观察者异步事件。当切换的语言的翻译文本被加载完成后才会返回结果。订阅后无需取消订阅，因为当语言切换后（不管是否成功），将自动complete。结果的具体内容见下方`INgTransChangeLang`的定义  | 需要切换语言时  |
-| changeLangSync(lang: string)  | `void`  | 切换语言。lang参数需要和`NG_TRANS_LOADER`中的key值相对应。是一个同步事件。但是并不保证语言切换成功，以及何时成功。  | 适合只想出发切换语言操作，并不关心切换后的结果的场景  |
-| getBrowserLang()  | `string ｜ undefined`  | 获取浏览器的首选语言 | 适合只关心浏览器界面语言的场景  |
-| getBrowserLangs()  | `readonly string[]｜ undefined`  | 返回一个用户已知语言的数组，并按照优先级排列 | 适合需要知道用户已知语言的场景  |
-| translationAsync(key: string, options?: INgTransOptions)  | `Observable<string>`  | 根据key和options异步获取翻译文本。options选填，具体配置见下方`INgTransOptions`定义。返回一个观察者对象。获取值后如果未取消订阅，当语言被切换时，将会订阅、获取切换后的语言下的翻译文本  | 适合将订阅事件变量在模板中使用，推荐结合ng官方的`async`管道使用。 |
-| translationSync(key: string, options?: INgTransOptions)  | `string`  | 根据key和options同步获取翻译文本。options选填，具体配置见下方`INgTransOptions`定义。因为是同步获取，所以返回的获取后的文本内容。当语言被切换时，需要重新调用该方法才能获取切换后的语言下的文本。 | 适合文本内容临时使用，每次显示文本都需要重新获取的场景。比如通过service动态创建modal时，设置modal的title。 |
-| subscribeLangChange()  | `Observable<string>`  | 语言切换的订阅事件。返回一个观察者对象。当订阅未取消时，语言被切换时，会自动被订阅到。订阅的内容为切换后的语言值 | 适合需要根据不同语言进行动态调整的地方 |
-| subscribeLoadDefaultOver()  | `Observable<boolean>`  | 默认语言翻译文本是否加载完成的订阅事件。加载成功时订阅到的值为true，反之为false。加载完成后（不管是否加载成功）会自动complete，因此可以不用取消订阅 | 适合整个项目最外层的数据准备。当默认语言的翻译文本被加载完成后再显示整个项目，体验效果更好. |
+| Name  | Return  | Description  | Scenes  | Version |
+| ------------ | ------------ | ------------ | ------------ | ------------ |
+| changeLang(lang: string)  | `Observable<INbTransChangeLang>`  | 切换语言。lang参数需要和`NB_TRANS_LOADER`中的key值相对应。是一个观察者异步事件。当切换的语言的翻译文本被加载完成后才会返回结果。订阅后无需取消订阅，因为当语言切换后（不管是否成功），将自动complete。结果的具体内容见下方`INbTransChangeLang`的定义  | 需要切换语言时  | `v12.0.0` |
+| changeLangSync(lang: string)  | `void`  | 切换语言。lang参数需要和`NB_TRANS_LOADER`中的key值相对应。是一个同步事件。但是并不保证语言切换成功，以及何时成功。  | 适合只想出发切换语言操作，并不关心切换后的结果的场景  | `v12.0.0` |
+| getBrowserLang()  | `string ｜ undefined`  | 获取浏览器的首选语言 | 适合只关心浏览器界面语言的场景  | `v12.0.0` |
+| getBrowserLangs()  | `readonly string[]｜ undefined`  | 返回一个用户已知语言的数组，并按照优先级排列 | 适合需要知道用户已知语言的场景  | `v12.0.0` |
+| translationAsync(key: string, options?: INbTransOptions)  | `Observable<string>`  | 根据key和options异步获取翻译文本。options选填，具体配置见下方`INbTransOptions`定义。返回一个观察者对象。获取值后如果未取消订阅，当语言被切换时，将会订阅、获取切换后的语言下的翻译文本  | 适合将订阅事件变量在模板中使用，推荐结合ng官方的`async`管道使用。 | `v12.0.0` |
+| translationSync(key: string, options?: INbTransOptions)  | `string`  | 根据key和options同步获取翻译文本。options选填，具体配置见下方`INbTransOptions`定义。因为是同步获取，所以返回的获取后的文本内容。当语言被切换时，需要重新调用该方法才能获取切换后的语言下的文本。 | 适合文本内容临时使用，每次显示文本都需要重新获取的场景。比如通过service动态创建modal时，设置modal的title。 | `v12.0.0` |
+| subscribeLangChange()  | `Observable<string>`  | 语言切换的订阅事件。返回一个观察者对象。当订阅未取消时，语言被切换时，会自动被订阅到。订阅的内容为切换后的语言值 | 适合需要根据不同语言进行动态调整的地方 | `v12.0.0` |
+| subscribeLoadDefaultOver()  | `Observable<boolean>`  | 默认语言翻译文本是否加载完成的订阅事件。加载成功时订阅到的值为true，反之为false。加载完成后（不管是否加载成功）会自动complete，因此可以不用取消订阅 | 适合整个项目最外层的数据准备。当默认语言的翻译文本被加载完成后再显示整个项目，体验效果更好. | `v12.0.0` |
 
 ##### Usage
 ```ts
-constructor(private transService: NgTransService) {}
+constructor(private transService: NbTransService) {}
 
 // 切换语言，异步事件，subscribe()是必需的
 this.transService.changeLang(lang).subscribe(result=>{
@@ -97,29 +111,34 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
 });
 ```
 
+<br>
+
+
 ### Component
 
-#### `<ng-trans></ng-trans>`
+#### `<nb-trans></nb-trans>`
+##### `v12.0.0`
 ###### 当翻译文本中含有组件等复杂场景时使用的组件。当语言被切换时，组件渲染的内容将自动更新
+
 ##### Input
-| Name  | Type  | Default  | Description  |
-| ------------ | ------------ | ------------ | ------------ |
-| components  | `TemplateRef<{ content: string ｜ TemplateRef<any>; list?: INgTransSentencePart[] }>[]`  | []  | 翻译文本中的对应的组件。  |
-| key  | `string`  | `''`  | 获取翻译文本的key值  |
-| options  | `INgTransOptions`  | {}  | 翻译的配置信息。具体配置见下方的`INgTransOptions`定义。  |
+| Name  | Type  | Default  | Description  | Version |
+| ------------ | ------------ | ------------ | ------------ | ------------ |
+| components  | `TemplateRef<{ content: string ｜ TemplateRef<any>; list?: INbTransSentencePart[] }>[]`  | []  | 翻译文本中的对应的组件。  | `v12.0.0` |
+| key  | `string`  | `''`  | 获取翻译文本的key值  | `v12.0.0` |
+| options  | `INbTransOptions`  | {}  | 翻译的配置信息。具体配置见下方的`INbTransOptions`定义。  | `v12.0.0` |
 
 ##### Usage
 ```html
 <!-- only trans key -->
-<ng-trans key="title"></ng-trans>
-<ng-trans [key]="transKey"></ng-trans>
+<nb-trans key="title"></nb-trans>
+<nb-trans [key]="transKey"></nb-trans>
 
 <!-- trans key and options -->
-<ng-trans key="title" [options]="options"></ng-trans>
-<ng-trans key="helloWorld" [options]="({prefix:'content'})"></ng-trans>
+<nb-trans key="title" [options]="options"></nb-trans>
+<nb-trans key="helloWorld" [options]="({prefix:'content'})"></nb-trans>
 
 <!-- trans key, options and components -->
-<ng-trans [key]="complexContent" [options]="options" [components]="[com1,com2]"></ng-trans>
+<nb-trans [key]="complexContent" [options]="options" [components]="[com1,com2]"></nb-trans>
 <ng-template #comp1 let-compContent="content">
   <span>{{compContent}}</span>
 </ng-template>
@@ -128,67 +147,78 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
 </ng-template>
 ```
 
-#### `[ng-trans-subcontent]`
-###### 当翻译文本中含有组件嵌套时使用的一种官方提供的方案(可根据需要有自己的实现方式)，会将嵌套的组件内容渲染出来。selector为attribute，可用于`<div />`, `<span />`, `<a />`，`<ng-container />`等。该组件是搭配`<ng-trans></ng-trans>`使用，请勿单独使用。
+<br>
+
+#### `[nb-trans-subcontent]`
+##### `v12.0.0`
+###### 当翻译文本中含有组件嵌套时使用的一种官方提供的方案(可根据需要有自己的实现方式)，会将嵌套的组件内容渲染出来。selector为attribute，可用于`<div />`, `<span />`, `<a />`，`<ng-container />`等。该组件是搭配`<nb-trans></nb-trans>`使用，请勿单独使用。
+
 ##### Input
-| Name  | Type  | Default  | Description  |
-| ------------ | ------------ | ------------ | ------------ |
-| ng-trans-subcontent  | `string ｜ TemplateRef<any>`  | `''`  | 要显示的子内容。接受`string`类型和`TemplateRef`类型。当为`string`类型时，直接渲染出来，`trans-subcontent-list`输入参数不起作用。当为`TemplateRef`类型时，`trans-subcontent-list`参数将起作用。  |
-| trans-subcontent-list  | `INgTransSentencePart[]`  | []  | 仅当`ng-trans-subcontent`为`TemplateRef`类型时，且该内容为`<ng-trans></ng-trans>`的components输入属性的子内容时有效。`[ng-trans-subcontent]`会将该参数的值传到template的context中。详情见下方Usage  |
+| Name  | Type  | Default  | Description  | Version |
+| ------------ | ------------ | ------------ | ------------ | ------------ |
+| nb-trans-subcontent  | `string ｜ TemplateRef<any>`  | `''`  | 要显示的子内容。接受`string`类型和`TemplateRef`类型。当为`string`类型时，直接渲染出来，`subcontentList`输入参数不起作用。当为`TemplateRef`类型时，`subcontentList`参数将起作用。  | `v12.0.0` |
+| subcontentList  | `INbTransSentencePart[]`  | []  | 仅当`nb-trans-subcontent`为`TemplateRef`类型时，且该内容为`<nb-trans></nb-trans>`的components输入属性的子内容时有效。`[nb-trans-subcontent]`会将该参数的值传到template的context中。详情见下方Usage  | `v12.0.0` |
 
 ##### Usage
 ```html
-<!-- 和配合<ng-trans></ng-trans>使用 -->
-<ng-trans [key]="complexContent" [components]="[com1]"></ng-trans>
+<!-- 和配合<nb-trans></nb-trans>使用 -->
+<nb-trans [key]="complexContent" [components]="[com1]"></nb-trans>
 <ng-template #comp1 let-compContent="content" let-compList="list">
-  <div [ng-trans-subcontent]="compContent" [trans-subcontent-list]="compList"></div>
+  <div [nb-trans-subcontent]="compContent" [subcontentList]="compList"></div>
 </ng-template>
 ```
 
+<br>
+
 ### Pipe
 
-#### ngTrans: `transform(key: string, options?: INgTransOptions): string`
+#### nbTrans: `transform(key: string, options?: INbTransOptions): string`
+##### `v12.0.0`
 ###### 翻译文本的管道，可用于在模版中根据key值翻译文本。当语言被切换时，组件渲染的内容将自动更新
+
 ##### Params
-| Name  | Type  | Mandatory  | Description  |
-| ------------ | ------------ | ------------ | ------------ |
-| key  | `string`  | true  | 翻译文本的key值  |
-| options  | `INgTransOptions`  | false  | 翻译配置。具体配置见下方的`INgTransOptions`定义  |
+| Name  | Type  | Mandatory  | Description  | Version |
+| ------------ | ------------ | ------------ | ------------ | ------------ |
+| key  | `string`  | true  | 翻译文本的key值  | `v12.0.0` |
+| options  | `INbTransOptions`  | false  | 翻译配置。具体配置见下方的`INbTransOptions`定义  | `v12.0.0` |
 
 ##### Return
 | Type  | Description  |
 | ------------ | ------------ |
 | `string`  | 翻译后的文本  |
 
-
 ##### Usage
 ```html
 <!-- only key param -->
-<div>{{'title'|ngTrans}}</div>
+<div>{{'title'|nbTrans}}</div>
 
 <!-- key and options params -->
-<div>{{'title'|ngTrans:options}}</div>
-<div>{{'helloWorld'|ngTrans:({prefix:'content'})}}</div>
+<div>{{'title'|nbTrans:options}}</div>
+<div>{{'helloWorld'|nbTrans:({prefix:'content'})}}</div>
 ```
 
 ### Token
 
-#### NG_TRANS_DEFAULT_LANG：
-###### 用于设置默认语言，初始化`NgTransService`实例时将自动加载该语言的文本内容。不设置时默认为`NgTransLangEnum.ZH_CN`。一般只在AppModule设置一次
+#### NB_TRANS_DEFAULT_LANG：
+##### `v12.0.0`
+###### 用于设置默认语言，初始化`NbTransService`实例时将自动加载该语言的文本内容。不设置时默认为`NbTransLangEnum：.ZH_CN`。一般只在AppModule设置一次
 
 ##### Usage
 ```ts
   providers: [
     // ...
     {
-      provide: NG_TRANS_DEFAULT_LANG,
-      useValue: NgTransLangEnum.ZH_CN,
+      provide: NB_TRANS_DEFAULT_LANG,
+      useValue: NbTransLangEnum.ZH_CN,
     },
     // ...
   ]
 ```
 
-#### NG_TRANS_LOADER：
+<br>
+
+#### NB_TRANS_LOADER：
+##### `v12.0.0`
 ###### 翻译文本加载器。加载器支持急性加载和懒加载。一般只在AppModule设置一次
 - 急性加载：直接引入翻译文本内容，作为值赋给对应的语言。急性加载会增大项目初始化文件的体积.
 - 懒加载：通过`http.get()`或者`import()`等方式加载翻译文本文件。当翻译文本文件为`json`格式时，可使用`http.get()`加载。当翻译文本文件为`ts`格式时，可使用`import()`加载。
@@ -199,10 +229,10 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
   providers: [
     // ...
     {
-      provide: NG_TRANS_LOADER,
+      provide: NB_TRANS_LOADER,
       useValue: {
-        [NgTransLangEnum.ZH_CN]: zhCNTrans,
-        [NgTransLangEnum.EN]: enTrans,
+        [NbTransLangEnum.ZH_CN]: zhCNTrans,
+        [NbTransLangEnum.EN]: enTrans,
       }
     }
     // ...
@@ -214,14 +244,14 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
   providers: [
     // ...
     {
-      provide: NG_TRANS_LOADER,
+      provide: NB_TRANS_LOADER,
       useFactory: (http: HttpClient) => ({
         // dyn load and the content is a json file
         // the loader fn return value can be Observable<Object>/Promise<Object> type
-        // [NgTransLangEnum.EN]: () => http.get('./assets/localization/en/translations.json').toPromise(),
-        [NgTransLangEnum.EN]: () => http.get('./assets/localization/en/translations.json'),
-        // [NgTransLangEnum.ZH_CN]: () => http.get('./assets/localization/zh-CN/translations.json').toPromise(),
-        [NgTransLangEnum.ZH_CN]: () => http.get('./assets/localization/zh-CN/translations.json'),
+        // [NbTransLangEnum.EN]: () => http.get('./assets/localization/en/translations.json').toPromise(),
+        [NbTransLangEnum.EN]: () => http.get('./assets/localization/en/translations.json'),
+        // [NbTransLangEnum.ZH_CN]: () => http.get('./assets/localization/zh-CN/translations.json').toPromise(),
+        [NbTransLangEnum.ZH_CN]: () => http.get('./assets/localization/zh-CN/translations.json'),
       }),
       deps: [HttpClient]
     }
@@ -233,17 +263,20 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
   providers: [
     // ...
     {
-      provide: NG_TRANS_LOADER,
+      provide: NB_TRANS_LOADER,
       useValue: {
-        [NgTransLangEnum.EN]: () => import('./localization/en/translations').then(data => data.trans),
-        [NgTransLangEnum.ZH_CN]: () => import('./localization/zh-CN/translations').then(data => data.trans),
+        [NbTransLangEnum.EN]: () => import('./localization/en/translations').then(data => data.trans),
+        [NbTransLangEnum.ZH_CN]: () => import('./localization/zh-CN/translations').then(data => data.trans),
       }
     }
     // ...
   ]
 ```
 
-#### NG_TRANS_MAX_RETRY_TOKEN：
+<br>
+
+#### NB_TRANS_MAX_RETRY_TOKEN：：
+##### `v12.0.0`
 ###### 翻译文本加载失败时的最大重试次数，默认为5次。一般只在AppModule设置一次
 
 ##### Usage
@@ -251,65 +284,92 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
   providers: [
 	// ...
     {
-      provide: NG_TRANS_MAX_RETRY_TOKEN,
+      provide: NB_TRANS_MAX_RETRY_TOKEN：,
       useValue: 3
     },
 	// ...
   ]
 ```
 
+<br>
+
 ### Interface
 
-#### INgTransLoader：
+#### INbTransLoader：
+##### `v12.0.0`
 ###### 文本加载器
-| Property  | Type  | Mandatory  | Description  |
-| ------------ | ------------ | ------------ | ------------ |
-| [langKey: string]  | `Object ｜ (() => (Observable<Object> ｜ Promise<Object>))`  | false  | key值为字符串类型，通常使用对应的语言的字符串值；value为含有文本的Object，或者返回含有文本的Object的Observable或者Promise |
+| Property  | Type  | Mandatory  | Description  | Version |
+| ------------ | ------------ | ------------ | ------------ | ------------ |
+| [langKey: string]  | `Object ｜ (() => (Observable<Object> ｜ Promise<Object>))`  | false  | key值为字符串类型，通常使用对应的语言的字符串值；value为含有文本的Object，或者返回含有文本的Object的Observable或者Promise | `v12.0.0` |
 
-#### INgTransOptions：
+<br>
+
+#### INbTransOptions：
+##### `v12.0.0`
 ###### 翻译配置
-| Property  | Type  | Mandatory  | Description  |
-| ------------ | ------------ | ------------ | ------------ |
-| prefix  | `string`  | false  | key值的前缀。根据key值获取对应文本时，会自动将该值追加在key值之前，形成一个新的key值，并以此来获取文本  |
-| params  | `INgTransParams`  | false  | 翻译文本中的参数。为key值为字符串，value值为字符串的对象  |
-| returnKeyWhenEmpty  | `boolean`  | false  | 当根据key值获取不到文本时，是否返回key值。默认为true。当显式设为false时，会返回空字符串  |
+| Property  | Type  | Mandatory  | Description  | Version |
+| ------------ | ------------ | ------------ | ------------ | ------------ |
+| prefix  | `string`  | false  | key值的前缀。根据key值获取对应文本时，会自动将该值追加在key值之前，形成一个新的key值，并以此来获取文本  | `v12.0.0` |
+| params  | `INbTransParams`  | false  | 翻译文本中的参数。为key值为字符串，value值为字符串的对象  | `v12.0.0` |
+| returnKeyWhenEmpty  | `boolean`  | false  | 当根据key值获取不到文本时，是否返回key值。默认为true。当显式设为false时，会返回空字符串  | `v12.0.0` |
 
-#### INgTransParams：
+<br>
+
+#### INbTransParams：
+##### `v12.0.0`
 ###### 翻译文本中的参数
-| Property  | Type  | Mandatory  | Description  |
-| ------------ | ------------ | ------------ | ------------ |
-| [key: string]  | `string`  | false  | key值为字符串类型，value值为字符串类型  |
+| Property  | Type  | Mandatory  | Description  | Version |
+| ------------ | ------------ | ------------ | ------------ | ------------ |
+| [key: string]  | `string`  | false  | key值为字符串类型，value值为字符串类型  | `v12.0.0` |
 
-#### INgTransChangeLang：
+<br>
+
+#### INbTransChangeLang：
+##### `v12.0.0`
 ###### 切换语言的结果
-| Property  | Type  | Mandatory  | Description  |
-| ------------ | ------------ | ------------ | ------------ |
-| result  | `boolean`  | true  | 切换语言的结果。切换成功时为true，否则为false  |
-| curLang  | `string`  | true  | 当前语言。如果语言切换失败，则为切换前的语言；否则为切换后的语言  |
+| Property  | Type  | Mandatory  | Description  | Version |
+| ------------ | ------------ | ------------ | ------------ | ------------ |
+| result  | `boolean`  | true  | 切换语言的结果。切换成功时为true，否则为false  | `v12.0.0` |
+| curLang  | `string`  | true  | 当前语言。如果语言切换失败，则为切换前的语言；否则为切换后的语言  | `v12.0.0` |
 
-#### INgTransSentencePart：
-###### 句子部分，可能为`string`或者`INgTransSentenceCompPart`类型。为`string`时，即该句子为文本；为`INgTransSentenceCompPart`时，即该句子中含有需要解析的组件。一般交给组件自己处理便可，可不用关心内部逻辑
+<br>
 
-#### INgTransSentenceCompPart：
+#### INbTransSentencePart：
+##### `v12.0.0`
+###### 句子部分，可能为`string`或者`INbTransSentenceCompPart`类型。为`string`时，即该句子为文本；为`INbTransSentenceCompPart`时，即该句子中含有需要解析的组件。一般交给组件自己处理便可，可不用关心内部逻辑
+
+<br>
+
+#### INbTransSentenceCompPart：
+##### `v12.0.0`
 ###### 句子中含有组件的部分
-| Property  | Type  | Mandatory  | Description  |
-| ------------ | ------------ | ------------ | ------------ |
-| index  | `number`  | true  | 组件索引，用于匹配`<ng-trans />`组件的`components`输入属性中的组件  |
-| content  | `string`  | true  | 翻译文本  |
-| list  | `INgTransSentencePart[]`  | false  | 文本句子的解析部分 |
+| Property  | Type  | Mandatory  | Description  | Version |
+| ------------ | ------------ | ------------ | ------------ | ------------ |
+| index  | `number`  | true  | 组件索引，用于匹配`<nb-trans />`组件的`components`输入属性中的组件  | `v12.0.0` |
+| content  | `string`  | true  | 翻译文本  | `v12.0.0` |
+| list  | `INbTransSentencePart[]`  | false  | 文本句子的解析部分 | `v12.0.0` |
+
+<br>
 
 ### Enum
-#### NgTransLangEnum：
+#### NbTransLangEnum：
+##### `v12.0.0`
 ###### 常用语言枚举。除了默认语言未设置时的默认值外，组件以及服务中均未直接使用该枚举中的值，所以不强制要求使用该枚举。
 
-#### NgTransSentenceItemEnum：
+<br>
+
+#### NbTransSentenceItemEnum：
+##### `v12.0.0`
 ###### 句子项类型枚举。在对句子内容进行解析时，会将句子分为`STR`,`COMP`和`MULTI_COMP`这3种类型
 
+<br>
 
 ### 贡献
 > 欢迎提feature和PR，一起使该项目更好
 
 <a href="https://github.com/bigBear713" target="_blank"><img src="https://avatars.githubusercontent.com/u/12368900?v=4" alt="bigBear713" width="30px" height="30px"></a>
+
+<br>
 
 ### License
 MIT
