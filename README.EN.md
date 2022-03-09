@@ -4,17 +4,17 @@
 
 Angular i18n translation component.
 
-[OnlineDemo](https://bigBear713.github.io/nb-translation/)
+[OnlineDemo](https://bigBear713.github.io/nb-trans/)
 
-[Bug Report](https://github.com/bigBear713/nb-translation/issues)
+[Bug Report](https://github.com/bigBear713/nb-trans/issues)
 
-[Feature Request](https://github.com/bigBear713/nb-translation/issues)
+[Feature Request](https://github.com/bigBear713/nb-trans/issues)
 
 </div>
 
 ## Document
-- [中文](https://github.com/bigBear713/nb-translation/blob/master/projects/nb-translation/README.md "中文文档")
-- [English](https://github.com/bigBear713/nb-translation/blob/master/projects/nb-translation/README.EN.md "English Document")
+- [中文](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md "中文文档")
+- [English](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.EN.md "English Document")
 
 
 ## Feature
