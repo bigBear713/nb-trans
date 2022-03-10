@@ -118,10 +118,16 @@ export class NbTransService {
   }
 
   getBrowserLang(): string | undefined {
+    if (!this.transToolsService.checkNavigator()) {
+      return undefined;
+    }
     return window?.navigator?.language;
   }
 
   getBrowserLangs(): readonly string[] | undefined {
+    if (!this.transToolsService.checkNavigator()) {
+      return undefined;
+    }
     return window?.navigator?.languages;
   }
 

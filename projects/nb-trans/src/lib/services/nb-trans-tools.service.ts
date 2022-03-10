@@ -10,6 +10,14 @@ export class NbTransToolsService {
 
   constructor(private valueType: NbValueTypeService) { }
 
+  checkNavigator(): boolean {
+    return this.checkWindow() && typeof window.navigator !== 'undefined'
+  }
+
+  checkWindow(): boolean {
+    return typeof window !== 'undefined';
+  }
+
   getFinalKey(key: string, prefix?: string): string {
     return prefix ? `${prefix}.${key}` : key;
   }

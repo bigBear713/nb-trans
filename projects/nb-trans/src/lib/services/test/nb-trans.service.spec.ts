@@ -4,10 +4,10 @@ import { NB_TRANS_DEFAULT_LANG, NB_TRANS_LOADER, NB_TRANS_MAX_RETRY_TOKEN, NbTra
 import { translationSyncTestData, transLoader, NbTransTestingModule } from '../../testing';
 import { NbTransService } from '../nb-trans.service';
 
-describe('Service: NgTrans', () => {
+describe('Service: NbTrans', () => {
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       imports: [NbTransTestingModule]
     });
   });

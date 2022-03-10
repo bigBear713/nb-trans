@@ -1,31 +1,37 @@
 import { NbTransToolsService } from '../nb-trans-tools.service';
-import { TestBed, inject } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { INbTransParams } from '../../models';
 import { handleSentenceWithParamsTestData } from '../../testing';
 import { NbCommonTestingModule } from '@bigbear713/nb-common';
 
-describe('Service: NgTransTools', () => {
-  beforeEach(() => {
-    TestBed.configureTestingModule({
+describe('Service: NbTransTools', () => {
+  let service: NbTransToolsService;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       imports: [NbCommonTestingModule],
       providers: [NbTransToolsService]
     });
   });
 
-  it('should be created', inject([NbTransToolsService], (service: NbTransToolsService) => {
+  beforeEach(() => {
+    service = TestBed.inject(NbTransToolsService);
+  });
+
+  it('should be created', () => {
     expect(service).toBeTruthy();
-  }));
+  });
 
   describe('#getFinalKey()', () => {
     [
       { params: { key: 'transKey' }, expect: 'transKey' },
       { params: { key: 'transKey', prefix: 'prefix' }, expect: 'prefix.transKey' },
     ].forEach(item => {
-      it(`the params is ${JSON.stringify(item.params)}`, inject([NbTransToolsService], (service: NbTransToolsService) => {
+      it(`the params is ${JSON.stringify(item.params)}`, () => {
         const { key, prefix } = item.params;
         const finalKey = service.getFinalKey(key, prefix);
         expect(finalKey).toEqual(item.expect);
-      }));
+      });
     });
   });
 
@@ -37,21 +43,21 @@ describe('Service: NgTransTools', () => {
       { params: { str: 'sentence {{p1}}', searchStr: '{{p1}}', replaceStr: '' }, expect: 'sentence ' },
       { params: { str: 'sentence {{p1}}', searchStr: '{{p1}}', replaceStr: '{{p1}}' }, expect: 'sentence {{p1}}' },
     ].forEach(item => {
-      it(`the params is ${JSON.stringify(item.params)}`, inject([NbTransToolsService], (service: NbTransToolsService) => {
+      it(`the params is ${JSON.stringify(item.params)}`, () => {
         const { str, searchStr, replaceStr } = item.params;
         const finalKey = service.handleSentence(str, searchStr, replaceStr);
         expect(finalKey).toEqual(item.expect);
-      }));
+      });
     });
   });
 
   describe('#handleSentenceWithParams()', () => {
     handleSentenceWithParamsTestData.forEach(item => {
-      it(item.title, inject([NbTransToolsService], (service: NbTransToolsService) => {
+      it(item.title, () => {
         const params: INbTransParams | undefined = item.test.params;
         const result = service.handleSentenceWithParams(item.test.trans, params);
         expect(result).toEqual(item.expect.result);
-      }));
+      });
     });
   });
 
@@ -94,11 +100,19 @@ describe('Service: NgTransTools', () => {
         ]
       },
     ].forEach(item => {
-      it(`the params is ${JSON.stringify(item.params)}`, inject([NbTransToolsService], (service: NbTransToolsService) => {
+      it(`the params is ${JSON.stringify(item.params)}`, () => {
         const { trans } = item.params;
         const handleResult = service.handleTrans(trans);
         expect(handleResult).toEqual(item.expect);
-      }));
+      });
     });
+  });
+
+  it('#checkWindow()', () => {
+    expect(service.checkWindow()).toEqual(true);
+  });
+
+  it('#checkNavigator()', () => {
+    expect(service.checkNavigator()).toEqual(true);
   });
 });
