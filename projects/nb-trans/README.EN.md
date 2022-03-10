@@ -45,10 +45,10 @@ $ yarn add @bigbear713/nb-trans
 
 ### Module
 
-#### NgTransModule
+#### NbTransModule
 ###### Translation module. After importing the module, you can use the `component`，`pipe`. And `service` also can be used if you don't import the module, the default is root.
 
-#### NgTransTestingModule
+#### NbTransTestingModule
 ###### Translation test module, it is for Unit Test.
 
 <br>
@@ -306,7 +306,7 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
 | Property  | Type  | Mandatory  | Description  | Version |
 | ------------ | ------------ | ------------ | ------------ | ------------ |
 | prefix  | `string`  | false  | The prefix of trans key. The prefix value will be append to the front of the key. So there is a new key and will be used to get translated text.  | `v12.0.0` |
-| params  | `INgTransParams`  | false  | The params in the translated text.  | `v12.0.0` |
+| params  | `INbTransParams`  | false  | The params in the translated text.  | `v12.0.0` |
 | returnKeyWhenEmpty  | `boolean`  | false  | It is used to config whether to return key value when can't get the translated text by the key. The default is true. When you set it as false, it will return whitespace string.  | `v12.0.0` |
 
 <br>
