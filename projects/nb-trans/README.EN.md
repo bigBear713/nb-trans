@@ -207,7 +207,7 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
 
 ### Token
 
-#### NB_TRANS_DEFAULT_LANG：
+#### NB_TRANS_DEFAULT_LANG
 ##### `v12.0.0`
 ###### The default lang. When initial the instance of `NbTransService`, it will auto to load the default lang's translated content. The value is `NbTransLangEnum.ZH_CN` when you do not set it in AppModule. It will be set in AppModule in common
 

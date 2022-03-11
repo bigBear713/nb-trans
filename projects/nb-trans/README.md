@@ -210,7 +210,7 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
 
 ### Token
 
-#### NB_TRANS_DEFAULT_LANG：
+#### NB_TRANS_DEFAULT_LANG
 ##### `v12.0.0`
 ###### 用于设置默认语言，初始化`NbTransService`实例时将自动加载该语言的文本内容。不设置时默认为`NbTransLangEnum.ZH_CN`。一般只在AppModule设置一次
 
@@ -228,7 +228,7 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
 
 <br>
 
-#### NB_TRANS_LOADER：
+#### NB_TRANS_LOADER
 ##### `v12.0.0`
 ###### 翻译文本加载器。加载器支持急性加载和懒加载。一般只在AppModule设置一次
 - 急性加载：直接引入翻译文本内容，作为值赋给对应的语言。急性加载会增大项目初始化文件的体积.
@@ -286,7 +286,7 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
 
 <br>
 
-#### NB_TRANS_MAX_RETRY_TOKEN：：
+#### NB_TRANS_MAX_RETRY_TOKEN
 ##### `v12.0.0`
 ###### 翻译文本加载失败时的最大重试次数，默认为5次。一般只在AppModule设置一次
 
@@ -295,7 +295,7 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
   providers: [
     // ...
     {
-      provide: NB_TRANS_MAX_RETRY_TOKEN：,
+      provide: NB_TRANS_MAX_RETRY_TOKEN,
       useValue: 3
     },
     // ...
@@ -306,7 +306,7 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
 
 ### Interface
 
-#### INbTransLoader：
+#### INbTransLoader
 ##### `v12.0.0`
 ###### 文本加载器
 | Property  | Type  | Mandatory  | Description  | Version |
@@ -315,7 +315,7 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
 
 <br>
 
-#### INbTransOptions：
+#### INbTransOptions
 ##### `v12.0.0`
 ###### 翻译配置
 | Property  | Type  | Mandatory  | Description  | Version |
@@ -326,7 +326,7 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
 
 <br>
 
-#### INbTransParams：
+#### INbTransParams
 ##### `v12.0.0`
 ###### 翻译文本中的参数
 | Property  | Type  | Mandatory  | Description  | Version |
@@ -335,7 +335,7 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
 
 <br>
 
-#### INbTransChangeLang：
+#### INbTransChangeLang
 ##### `v12.0.0`
 ###### 切换语言的结果
 | Property  | Type  | Mandatory  | Description  | Version |
@@ -345,13 +345,13 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
 
 <br>
 
-#### INbTransSentencePart：
+#### INbTransSentencePart
 ##### `v12.0.0`
 ###### 句子部分，可能为`string`或者`INbTransSentenceCompPart`类型。为`string`时，即该句子为文本；为`INbTransSentenceCompPart`时，即该句子中含有需要解析的组件。一般交给组件自己处理便可，可不用关心内部逻辑
 
 <br>
 
-#### INbTransSentenceCompPart：
+#### INbTransSentenceCompPart
 ##### `v12.0.0`
 ###### 句子中含有组件的部分
 | Property  | Type  | Mandatory  | Description  | Version |
@@ -363,13 +363,13 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
 <br>
 
 ### Enum
-#### NbTransLangEnum：
+#### NbTransLangEnum
 ##### `v12.0.0`
 ###### 常用语言枚举。除了默认语言未设置时的默认值外，组件以及服务中均未直接使用该枚举中的值，所以不强制要求使用该枚举。
 
 <br>
 
-#### NbTransSentenceItemEnum：
+#### NbTransSentenceItemEnum
 ##### `v12.0.0`
 ###### 句子项类型枚举。在对句子内容进行解析时，会将句子分为`STR`,`COMP`和`MULTI_COMP`这3种类型
 
