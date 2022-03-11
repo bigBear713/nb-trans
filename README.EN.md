@@ -2,7 +2,7 @@
 
 ### @bigbear713/nb-trans
 
-Angular i18n translation component.
+Angular translation lib by bigBear713.
 
 [OnlineDemo](https://bigBear713.github.io/nb-trans/)
 

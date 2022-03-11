@@ -71,7 +71,7 @@ $ yarn add @bigbear713/nb-trans
 | Name  | Return  | Description  | Scenes  | Version |
 | ------------ | ------------ | ------------ | ------------ | ------------ |
 | changeLang(lang: string)  | `Observable<INbTransChangeLang>`  | 切换语言。lang参数需要和`NB_TRANS_LOADER`中的key值相对应。是一个观察者异步事件。当切换的语言的翻译文本被加载完成后才会返回结果。订阅后无需取消订阅，因为当语言切换后（不管是否成功），将自动complete。结果的具体内容见下方`INbTransChangeLang`的定义  | 需要切换语言时  | `v12.0.0` |
-| changeLangSync(lang: string)  | `void`  | 切换语言。lang参数需要和`NB_TRANS_LOADER`中的key值相对应。是一个同步事件。但是并不保证语言切换成功，以及何时成功。  | 适合只想出发切换语言操作，并不关心切换后的结果的场景  | `v12.0.0` |
+| changeLangSync(lang: string)  | `void`  | 切换语言。lang参数需要和`NB_TRANS_LOADER`中的key值相对应。是一个同步事件。但是并不保证语言切换成功，以及何时成功。  | 适合只想触发切换语言操作，并不关心切换后的结果的场景  | `v12.0.0` |
 | getBrowserLang()  | `string ｜ undefined`  | 获取浏览器的首选语言 | 适合只关心浏览器界面语言的场景  | `v12.0.0` |
 | getBrowserLangs()  | `readonly string[]｜ undefined`  | 返回一个用户已知语言的数组，并按照优先级排列 | 适合需要知道用户已知语言的场景  | `v12.0.0` |
 | translationAsync(key: string, options?: INbTransOptions)  | `Observable<string>`  | 根据key和options异步获取翻译文本。options选填，具体配置见下方`INbTransOptions`定义。返回一个观察者对象。获取值后如果未取消订阅，当语言被切换时，将会订阅、获取切换后的语言下的翻译文本  | 适合将订阅事件变量在模板中使用，推荐结合ng官方的`async`管道使用。 | `v12.0.0` |
@@ -162,9 +162,16 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
 ##### Usage
 ```html
 <!-- 和配合<nb-trans></nb-trans>使用 -->
-<nb-trans [key]="complexContent" [components]="[com1]"></nb-trans>
-<ng-template #comp1 let-compContent="content" let-compList="list">
-  <div [nb-trans-subcontent]="compContent" [subcontentList]="compList"></div>
+<!-- 示例：这是一个句子：<0>组件1</0>.<1> <0>组件2中的组件1</0> 组件2的其他部分 </1>.<2>组件3</2> -->
+<nb-trans [key]="complexContent" [components]="[comp1,comp2,comp3]"></nb-trans>
+<ng-template #comp1 let-comContent="content" let-list="list">
+  <b [nb-trans-subcontent]="comContent" [subcontentList]="list"></b>
+</ng-template>
+<ng-template #comp2 let-comContent="content" let-list="list">
+  <app-widget [comContent]="comContent" [list]="list"></app-widget>
+</ng-template>
+<ng-template #comp3 let-comContent="content">
+  <b>{{comContent}}</b>
 </ng-template>
 ```
 
@@ -201,7 +208,7 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
 
 #### NB_TRANS_DEFAULT_LANG：
 ##### `v12.0.0`
-###### 用于设置默认语言，初始化`NbTransService`实例时将自动加载该语言的文本内容。不设置时默认为`NbTransLangEnum：.ZH_CN`。一般只在AppModule设置一次
+###### 用于设置默认语言，初始化`NbTransService`实例时将自动加载该语言的文本内容。不设置时默认为`NbTransLangEnum.ZH_CN`。一般只在AppModule设置一次
 
 ##### Usage
 ```ts
@@ -282,12 +289,12 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
 ##### Usage
 ```ts
   providers: [
-	// ...
+    // ...
     {
       provide: NB_TRANS_MAX_RETRY_TOKEN：,
       useValue: 3
     },
-	// ...
+    // ...
   ]
 ```
 

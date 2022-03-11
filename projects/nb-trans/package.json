@@ -4,6 +4,8 @@
   "homepage": "https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md",
   "description": "An angular(2+) component about i18n.",
   "keywords": [
+    "ng",
+    "angular",
     "angular2+",
     "i18n",
     "translation",
