@@ -91,6 +91,10 @@ this.transService.changeLang(lang).subscribe(result=>{
 // 切换语言，同步事件，但不保证语言切换成功
 this.transService.changeLangSync(lang);
 
+this.transService.getBrowserLang(); // 'en'
+
+this.transService.getBrowserLangs(); // ['en']
+
 // 语言异步翻译。可订阅获取翻译后的值，也可在模板中和async管道结合使用
 const trans$ = this.transService.translationAsync('title');
 trans$.subscribe(trans=>{

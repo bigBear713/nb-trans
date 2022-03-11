@@ -89,6 +89,10 @@ this.transService.changeLang(lang).subscribe(result=>{
 // switch language, sync event, not guaranteed to succeed
 this.transService.changeLangSync(lang);
 
+this.transService.getBrowserLang(); // 'en'
+
+this.transService.getBrowserLangs(); // ['en']
+
 // async to translate text. can subscribe the translated text, also can use it with async pipe in template
 const trans$ = this.transService.translationAsync('title');
 trans$.subscribe(trans=>{
