@@ -20,12 +20,8 @@ import { INbTransSentencePart } from '../../models';
 })
 export class NbTransSubcontentComponent {
 
-  @Input('nb-trans-subcontent')
-  content: string | TemplateRef<any> = '';
+  @Input('nb-trans-subcontent') content: string | TemplateRef<any> = '';
 
-  @Input()
-  subcontentList: INbTransSentencePart[] = [];
-
-  constructor() { }
+  @Input() subcontentList: INbTransSentencePart[] = [];
 
 }

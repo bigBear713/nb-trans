@@ -1,24 +1,11 @@
 import { Subject } from 'rxjs';
-import {
-  switchMap,
-  takeUntil,
-} from 'rxjs/operators';
-
-import {
-  ChangeDetectorRef,
-  OnDestroy,
-  Pipe,
-  PipeTransform
-} from '@angular/core';
-
+import { switchMap, takeUntil } from 'rxjs/operators';
+import { ChangeDetectorRef, OnDestroy, Pipe, PipeTransform } from '@angular/core';
 import { INbTransOptions } from '../models';
 import { NbTransService } from '../services';
 import { isEqual } from 'lodash-es';
 
-@Pipe({
-  name: 'nbTrans',
-  pure: false
-})
+@Pipe({ name: 'nbTrans', pure: false })
 export class NbTransPipe implements PipeTransform, OnDestroy {
 
   private latestValue: string = '';
@@ -63,5 +50,4 @@ export class NbTransPipe implements PipeTransform, OnDestroy {
     this.latestValue = latestValue;
     this.changeDR.markForCheck();
   }
-
 }

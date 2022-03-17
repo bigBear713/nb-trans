@@ -1,9 +1,5 @@
 import { Subject } from 'rxjs';
-import {
-  switchMap,
-  takeUntil,
-} from 'rxjs/operators';
-
+import { switchMap, takeUntil } from 'rxjs/operators';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -14,12 +10,7 @@ import {
   SimpleChanges,
   TemplateRef,
 } from '@angular/core';
-
-import {
-  INbTransOptions,
-  INbTransParams,
-  INbTransSentencePart
-} from '../../models';
+import { INbTransOptions, INbTransParams, INbTransSentencePart } from '../../models';
 import { NbTransService, NbTransToolsService } from '../../services';
 import { NbTransSentenceItemEnum } from '../../constants';
 
@@ -30,14 +21,11 @@ import { NbTransSentenceItemEnum } from '../../constants';
 })
 export class NbTransComponent implements OnChanges, OnDestroy {
 
-  @Input()
-  components: TemplateRef<{ content: string | TemplateRef<any>; list?: INbTransSentencePart[] }>[] = [];
+  @Input() components: TemplateRef<{ content: string | TemplateRef<any>; list?: INbTransSentencePart[] }>[] = [];
 
-  @Input()
-  key: string = '';
+  @Input() key: string = '';
 
-  @Input()
-  options: INbTransOptions = {};
+  @Input() options: INbTransOptions = {};
 
   params: INbTransParams | undefined;
 

@@ -20,13 +20,7 @@ const PIPES = [
     NbTransContentPipe,
     NbSentenceItemTypePipe,
   ],
-  imports: [
-    CommonModule,
-    NbCommonModule,
-  ],
-  exports: [
-    ...COMPONENTS,
-    ...PIPES,
-  ]
+  imports: [CommonModule, NbCommonModule],
+  exports: [...COMPONENTS, ...PIPES]
 })
 export class NbTransModule { }

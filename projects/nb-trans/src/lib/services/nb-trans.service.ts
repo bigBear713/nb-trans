@@ -1,46 +1,12 @@
-import {
-  get,
-  isFunction
-} from 'lodash-es';
-import {
-  BehaviorSubject,
-  from,
-  Observable,
-  of,
-  Subject,
-  timer
-} from 'rxjs';
-import {
-  catchError,
-  map,
-  retry,
-  skipWhile,
-  switchMap,
-  tap
-} from 'rxjs/operators';
-
-import {
-  Inject,
-  Injectable,
-  Optional
-} from '@angular/core';
-
-import {
-  NB_TRANS_DEFAULT_LANG,
-  NB_TRANS_LOADER,
-  NB_TRANS_MAX_RETRY_TOKEN,
-  NbTransLangEnum
-} from '../constants';
-import {
-  INbTransChangeLang,
-  INbTransLoader,
-  INbTransOptions
-} from '../models';
+import { get, isFunction } from 'lodash-es';
+import { BehaviorSubject, from, Observable, of, Subject, timer } from 'rxjs';
+import { catchError, map, retry, skipWhile, switchMap, tap } from 'rxjs/operators';
+import { Inject, Injectable, Optional } from '@angular/core';
+import { NB_TRANS_DEFAULT_LANG, NB_TRANS_LOADER, NB_TRANS_MAX_RETRY_TOKEN, NbTransLangEnum } from '../constants';
+import { INbTransChangeLang, INbTransLoader, INbTransOptions } from '../models';
 import { NbTransToolsService } from './nb-trans-tools.service';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class NbTransService {
 
   private lang$ = new BehaviorSubject<string>(NbTransLangEnum.ZH_CN);
