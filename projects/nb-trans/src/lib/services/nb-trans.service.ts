@@ -27,6 +27,20 @@ export class NbTransService {
     return this.loadDefaultOver$.value;
   }
 
+  static getBrowserLang(): string | undefined {
+    if (!NbTransToolsService.checkNavigator()) {
+      return undefined;
+    }
+    return window?.navigator?.language;
+  }
+
+  static getBrowserLangs(): readonly string[] | undefined {
+    if (!NbTransToolsService.checkNavigator()) {
+      return undefined;
+    }
+    return window?.navigator?.languages;
+  }
+
   constructor(
     @Inject(NB_TRANS_DEFAULT_LANG) @Optional() private transDefaultLang: string,
     @Inject(NB_TRANS_LOADER) @Optional() private transLoader: INbTransLoader,
@@ -84,17 +98,13 @@ export class NbTransService {
   }
 
   getBrowserLang(): string | undefined {
-    if (!this.transToolsService.checkNavigator()) {
-      return undefined;
-    }
-    return window?.navigator?.language;
+    console.warn('The function will be deprecated in the future, we recommend using NbTransService.getBrowserLang()!');
+    return NbTransService.getBrowserLang();
   }
 
   getBrowserLangs(): readonly string[] | undefined {
-    if (!this.transToolsService.checkNavigator()) {
-      return undefined;
-    }
-    return window?.navigator?.languages;
+    console.warn('The function will be deprecated in the future, we recommend using NbTransService.getBrowserLangs()!');
+    return NbTransService.getBrowserLangs();
   }
 
   translationAsync(key: string, options?: INbTransOptions): Observable<string> {
