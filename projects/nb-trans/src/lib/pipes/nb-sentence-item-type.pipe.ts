@@ -14,7 +14,7 @@ export class NbSentenceItemTypePipe implements PipeTransform {
     if (this.valueType.isString(value)) {
       type = NbTransSentenceItemEnum.STR;
     } else if (this.valueType.isNumber((value?.index))) {
-      type = (Array.isArray(value?.list) && value.list.length)
+      type = (Array.isArray(value.list) && value.list.length)
         ? NbTransSentenceItemEnum.MULTI_COMP
         : NbTransSentenceItemEnum.COMP;
     }
