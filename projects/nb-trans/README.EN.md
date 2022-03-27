@@ -1,6 +1,6 @@
 <div align="center">
 
-### @bigbear713/nb-trans
+# @bigbear713/nb-trans
 
 Angular translation lib by bigBear713.
 
@@ -13,8 +13,14 @@ Angular translation lib by bigBear713.
 </div>
 
 ## Document
-- [中文](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md "中文文档")
-- [English](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.EN.md "English Document")
+- [中文](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md "文档 - 中文")
+- [English](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.EN.md "Document - English")
+
+<br>
+
+## Changelog
+- [中文](https://github.com/bigBear713/nb-form/blob/master/projects/nb-form/CHANGELOG.md "更新日志 - 中文")
+- [English](https://github.com/bigBear713/nb-form/blob/master/projects/nb-form/CHANGELOG.EN.md "Changelog - English")
 
 <br>
 
@@ -28,13 +34,13 @@ Angular translation lib by bigBear713.
 
 <br>
 
-### Version
+## Version
 ###### The nb-trans's major version will keep up with the Angular's major version
 - "@bigbear713/nb-trans":"^12.0.0" - "@angular/core": "^12.0.0"
 
 <br>
 
-### Installation
+## Installation
 ```bash
 $ npm i @bigbear713/nb-trans
 // or
@@ -53,7 +59,7 @@ $ yarn add @bigbear713/nb-trans
 
 <br>
 
-### Service
+### Services
 
 #### NbTransService
 ##### `v12.0.0`
@@ -118,7 +124,7 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
 
 <br>
 
-### Component
+### Components
 
 #### `<nb-trans></nb-trans>`
 ##### `v12.0.0`
@@ -180,7 +186,7 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
 
 <br>
 
-### Pipe
+### Pipes
 
 #### nbTrans: `transform(key: string, options?: INbTransOptions): string`
 ##### `v12.0.0`
@@ -208,7 +214,7 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
 
 <br>
 
-### Token
+### Tokens
 
 #### NB_TRANS_DEFAULT_LANG
 ##### `v12.0.0`
@@ -303,7 +309,7 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
 
 <br>
 
-### Interface
+### Interfaces
 
 #### INbTransLoader
 ##### `v12.0.0`
@@ -361,7 +367,7 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
 
 <br>
 
-### Enum
+### Enums
 #### NbTransLangEnum
 ##### `v12.0.0`
 ###### The enum of common language. You can not use it if you don't like, because only use it to set the default lang in lib (you can overwrite it), it is not used anywhere.

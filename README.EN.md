@@ -1,6 +1,6 @@
 <div align="center">
 
-### @bigbear713/nb-trans
+# @bigbear713/nb-trans
 
 Angular translation lib by bigBear713.
 
@@ -13,9 +13,12 @@ Angular translation lib by bigBear713.
 </div>
 
 ## Document
-- [中文](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md "中文文档")
-- [English](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.EN.md "English Document")
+- [中文](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md "文档 - 中文")
+- [English](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.EN.md "Document - English")
 
+## Changelog
+- [中文](https://github.com/bigBear713/nb-form/blob/master/projects/nb-form/CHANGELOG.md "中文文档")
+- [English](https://github.com/bigBear713/nb-form/blob/master/projects/nb-form/CHANGELOG.EN.md "English Document")
 
 ## Feature
 - Support to direct/lazing loading translation file;
