@@ -17,8 +17,8 @@ Angular translation lib by bigBear713.
 - [English](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.EN.md "Document - English")
 
 ## Changelog
-- [中文](https://github.com/bigBear713/nb-form/blob/master/projects/nb-form/CHANGELOG.md "中文文档")
-- [English](https://github.com/bigBear713/nb-form/blob/master/projects/nb-form/CHANGELOG.EN.md "English Document")
+- [中文](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/CHANGELOG.md "中文文档")
+- [English](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/CHANGELOG.EN.md "English Document")
 
 ## Feature
 - Support to direct/lazing loading translation file;

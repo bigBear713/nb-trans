@@ -19,8 +19,8 @@ Angular translation lib by bigBear713.
 <br>
 
 ## Changelog
-- [中文](https://github.com/bigBear713/nb-form/blob/master/projects/nb-form/CHANGELOG.md "更新日志 - 中文")
-- [English](https://github.com/bigBear713/nb-form/blob/master/projects/nb-form/CHANGELOG.EN.md "Changelog - English")
+- [中文](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/CHANGELOG.md "更新日志 - 中文")
+- [English](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/CHANGELOG.EN.md "Changelog - English")
 
 <br>
 
