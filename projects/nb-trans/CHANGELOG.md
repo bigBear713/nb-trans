@@ -1,6 +1,6 @@
 # v12.1.0
 ## [Services](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#Services "Services")
-### [NbTransService](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.EN.md#nbtransservice "NbTransService")
+### [NbTransService](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#nbtransservice "NbTransService")
 - feat: `NbTransService.getBrowserLang()`可以直接获取浏览器的首选语言;
 - depr: `getBrowserLang()`被标志为`deprecated`;
 - feat: `NbTransService.getBrowserLangs()`可以直接获取一个用户已知语言的数组;
