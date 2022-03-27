@@ -108,11 +108,11 @@ describe('Service: NbTransTools', () => {
     });
   });
 
-  it('#checkWindow()', () => {
-    expect(service.checkWindow()).toEqual(true);
+  it('#NbTransToolsService.checkWindow()', () => {
+    expect(NbTransToolsService.checkWindow()).toEqual(true);
   });
 
-  it('#checkNavigator()', () => {
-    expect(service.checkNavigator()).toEqual(true);
+  it('#NbTransToolsService.checkNavigator()', () => {
+    expect(NbTransToolsService.checkNavigator()).toEqual(true);
   });
 });

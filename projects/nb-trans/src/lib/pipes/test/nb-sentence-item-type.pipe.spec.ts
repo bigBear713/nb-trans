@@ -19,6 +19,7 @@ describe('Pipe: NbSentenceItemType', () => {
 
   describe('#transform()', () => {
     [
+      { params: undefined as any, expect: undefined },
       { params: 'strContent', expect: NbTransSentenceItemEnum.STR },
       { params: { index: 0, content: 'strContent', list: [] }, expect: NbTransSentenceItemEnum.COMP },
       { params: { index: 0, content: '<0>str</0>', list: [{ index: 0, content: 'str', list: [] }] }, expect: NbTransSentenceItemEnum.MULTI_COMP },

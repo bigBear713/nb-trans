@@ -54,6 +54,9 @@ export class Feature1Component implements OnInit {
     </ng-template>
   `;
 
+  browserLang: string | undefined = '';
+  browserLangs: readonly string[] | undefined = [];
+
   constructor(
     private transService: NbTransService,
   ) { }
@@ -61,8 +64,8 @@ export class Feature1Component implements OnInit {
   ngOnInit(): void {
     this.title$ = this.transService.translationAsync('title');
     this.titleWithParams$ = this.transService.translationAsync('content.contentWithParams', { params: this.params });
-    console.log(this.transService.getBrowserLang());
-    console.log(this.transService.getBrowserLangs());
+    this.browserLang = NbTransService.getBrowserLang();
+    this.browserLangs = NbTransService.getBrowserLangs();
 
   }
 

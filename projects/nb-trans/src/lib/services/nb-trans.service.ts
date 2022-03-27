@@ -1,46 +1,12 @@
-import {
-  get,
-  isFunction
-} from 'lodash-es';
-import {
-  BehaviorSubject,
-  from,
-  Observable,
-  of,
-  Subject,
-  timer
-} from 'rxjs';
-import {
-  catchError,
-  map,
-  retry,
-  skipWhile,
-  switchMap,
-  tap
-} from 'rxjs/operators';
-
-import {
-  Inject,
-  Injectable,
-  Optional
-} from '@angular/core';
-
-import {
-  NB_TRANS_DEFAULT_LANG,
-  NB_TRANS_LOADER,
-  NB_TRANS_MAX_RETRY_TOKEN,
-  NbTransLangEnum
-} from '../constants';
-import {
-  INbTransChangeLang,
-  INbTransLoader,
-  INbTransOptions
-} from '../models';
+import { get, isFunction } from 'lodash-es';
+import { BehaviorSubject, from, Observable, of, Subject, timer } from 'rxjs';
+import { catchError, map, retry, skipWhile, switchMap, tap } from 'rxjs/operators';
+import { Inject, Injectable, Optional } from '@angular/core';
+import { NB_TRANS_DEFAULT_LANG, NB_TRANS_LOADER, NB_TRANS_MAX_RETRY_TOKEN, NbTransLangEnum } from '../constants';
+import { INbTransChangeLang, INbTransLoader, INbTransOptions } from '../models';
 import { NbTransToolsService } from './nb-trans-tools.service';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class NbTransService {
 
   private lang$ = new BehaviorSubject<string>(NbTransLangEnum.ZH_CN);
@@ -59,6 +25,20 @@ export class NbTransService {
 
   get loadDefaultOver(): boolean {
     return this.loadDefaultOver$.value;
+  }
+
+  static getBrowserLang(): string | undefined {
+    if (!NbTransToolsService.checkNavigator()) {
+      return undefined;
+    }
+    return window?.navigator?.language;
+  }
+
+  static getBrowserLangs(): readonly string[] | undefined {
+    if (!NbTransToolsService.checkNavigator()) {
+      return undefined;
+    }
+    return window?.navigator?.languages;
   }
 
   constructor(
@@ -118,17 +98,13 @@ export class NbTransService {
   }
 
   getBrowserLang(): string | undefined {
-    if (!this.transToolsService.checkNavigator()) {
-      return undefined;
-    }
-    return window?.navigator?.language;
+    console.warn('The function will be deprecated in the future, we recommend using NbTransService.getBrowserLang()!');
+    return NbTransService.getBrowserLang();
   }
 
   getBrowserLangs(): readonly string[] | undefined {
-    if (!this.transToolsService.checkNavigator()) {
-      return undefined;
-    }
-    return window?.navigator?.languages;
+    console.warn('The function will be deprecated in the future, we recommend using NbTransService.getBrowserLangs()!');
+    return NbTransService.getBrowserLangs();
   }
 
   translationAsync(key: string, options?: INbTransOptions): Observable<string> {

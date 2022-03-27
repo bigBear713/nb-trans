@@ -1,6 +1,6 @@
 <div align="center">
 
-### @bigbear713/nb-trans
+# @bigbear713/nb-trans
 
 Angular translation lib by bigBear713.
 
@@ -13,11 +13,16 @@ Angular translation lib by bigBear713.
 </div>
 
 ## Document
-- [中文](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md "中文文档")
-- [English](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.EN.md "English Document")
+- [中文](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md "文档 - 中文")
+- [English](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.EN.md "Document - English")
 
 <br>
 
+## Changelog
+- [中文](https://github.com/bigBear713/nb-form/blob/master/projects/nb-form/CHANGELOG.md "更新日志 - 中文")
+- [English](https://github.com/bigBear713/nb-form/blob/master/projects/nb-form/CHANGELOG.EN.md "Changelog - English")
+
+<br>
 
 ## Feature
 - 支持翻译文本懒加载，或者急性加载；
@@ -29,14 +34,13 @@ Angular translation lib by bigBear713.
 
 <br>
 
-
-### Version
+## Version
 ###### nb-trans的大版本和Angular的大版本保持对应关系
 - "@bigbear713/nb-trans":"^12.0.0" - "@angular/core": "^12.0.0"
 
 <br>
 
-### Installation
+## Installation
 ```bash
 $ npm i @bigbear713/nb-trans
 // or
@@ -55,7 +59,7 @@ $ yarn add @bigbear713/nb-trans
 
 <br>
 
-### Service
+### Services
 
 #### NbTransService
 ##### `v12.0.0`
@@ -72,8 +76,10 @@ $ yarn add @bigbear713/nb-trans
 | ------------ | ------------ | ------------ | ------------ | ------------ |
 | changeLang(lang: string)  | `Observable<INbTransChangeLang>`  | 切换语言。lang参数需要和`NB_TRANS_LOADER`中的key值相对应。是一个观察者异步事件。当切换的语言的翻译文本被加载完成后才会返回结果。订阅后无需取消订阅，因为当语言切换后（不管是否成功），将自动complete。结果的具体内容见下方`INbTransChangeLang`的定义  | 需要切换语言时  | `v12.0.0` |
 | changeLangSync(lang: string)  | `void`  | 切换语言。lang参数需要和`NB_TRANS_LOADER`中的key值相对应。是一个同步事件。但是并不保证语言切换成功，以及何时成功。  | 适合只想触发切换语言操作，并不关心切换后的结果的场景  | `v12.0.0` |
-| getBrowserLang()  | `string ｜ undefined`  | 获取浏览器的首选语言 | 适合只关心浏览器界面语言的场景  | `v12.0.0` |
-| getBrowserLangs()  | `readonly string[]｜ undefined`  | 返回一个用户已知语言的数组，并按照优先级排列 | 适合需要知道用户已知语言的场景  | `v12.0.0` |
+| getBrowserLang()`deprecated`  | `string ｜ undefined`  | 获取浏览器的首选语言 | 适合只关心浏览器界面语言的场景  | `v12.0.0` |
+| NbTransService.getBrowserLang()  | `string ｜ undefined`  | 获取浏览器的首选语言 | 适合只关心浏览器界面语言的场景  | `v12.1.0` |
+| getBrowserLangs()`deprecated`  | `readonly string[]｜ undefined`  | 返回一个用户已知语言的数组，并按照优先级排列 | 适合需要知道用户已知语言的场景  | `v12.0.0` |
+| NbTransService.getBrowserLangs()  | `readonly string[]｜ undefined`  | 返回一个用户已知语言的数组，并按照优先级排列 | 适合需要知道用户已知语言的场景  | `v12.1.0` |
 | translationAsync(key: string, options?: INbTransOptions)  | `Observable<string>`  | 根据key和options异步获取翻译文本。options选填，具体配置见下方`INbTransOptions`定义。返回一个观察者对象。获取值后如果未取消订阅，当语言被切换时，将会订阅、获取切换后的语言下的翻译文本  | 适合将订阅事件变量在模板中使用，推荐结合ng官方的`async`管道使用。 | `v12.0.0` |
 | translationSync(key: string, options?: INbTransOptions)  | `string`  | 根据key和options同步获取翻译文本。options选填，具体配置见下方`INbTransOptions`定义。因为是同步获取，所以返回的获取后的文本内容。当语言被切换时，需要重新调用该方法才能获取切换后的语言下的文本。 | 适合文本内容临时使用，每次显示文本都需要重新获取的场景。比如通过service动态创建modal时，设置modal的title。 | `v12.0.0` |
 | subscribeLangChange()  | `Observable<string>`  | 语言切换的订阅事件。返回一个观察者对象。当订阅未取消时，语言被切换时，会自动被订阅到。订阅的内容为切换后的语言值 | 适合需要根据不同语言进行动态调整的地方 | `v12.0.0` |
@@ -91,9 +97,9 @@ this.transService.changeLang(lang).subscribe(result=>{
 // 切换语言，同步事件，但不保证语言切换成功
 this.transService.changeLangSync(lang);
 
-this.transService.getBrowserLang(); // 'en'
+NbTransService.transService.getBrowserLang(); // 'en'
 
-this.transService.getBrowserLangs(); // ['en']
+NbTransService.transService.getBrowserLangs(); // ['en']
 
 // 语言异步翻译。可订阅获取翻译后的值，也可在模板中和async管道结合使用
 const trans$ = this.transService.translationAsync('title');
@@ -118,7 +124,7 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
 <br>
 
 
-### Component
+### Components
 
 #### `<nb-trans></nb-trans>`
 ##### `v12.0.0`
@@ -181,7 +187,7 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
 
 <br>
 
-### Pipe
+### Pipes
 
 #### nbTrans: `transform(key: string, options?: INbTransOptions): string`
 ##### `v12.0.0`
@@ -210,7 +216,7 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
 
 ### Token
 
-#### NB_TRANS_DEFAULT_LANG：
+#### NB_TRANS_DEFAULT_LANG
 ##### `v12.0.0`
 ###### 用于设置默认语言，初始化`NbTransService`实例时将自动加载该语言的文本内容。不设置时默认为`NbTransLangEnum.ZH_CN`。一般只在AppModule设置一次
 
@@ -228,7 +234,7 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
 
 <br>
 
-#### NB_TRANS_LOADER：
+#### NB_TRANS_LOADER
 ##### `v12.0.0`
 ###### 翻译文本加载器。加载器支持急性加载和懒加载。一般只在AppModule设置一次
 - 急性加载：直接引入翻译文本内容，作为值赋给对应的语言。急性加载会增大项目初始化文件的体积.
@@ -286,7 +292,7 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
 
 <br>
 
-#### NB_TRANS_MAX_RETRY_TOKEN：：
+#### NB_TRANS_MAX_RETRY_TOKEN
 ##### `v12.0.0`
 ###### 翻译文本加载失败时的最大重试次数，默认为5次。一般只在AppModule设置一次
 
@@ -295,7 +301,7 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
   providers: [
     // ...
     {
-      provide: NB_TRANS_MAX_RETRY_TOKEN：,
+      provide: NB_TRANS_MAX_RETRY_TOKEN,
       useValue: 3
     },
     // ...
@@ -304,9 +310,9 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
 
 <br>
 
-### Interface
+### Interfaces
 
-#### INbTransLoader：
+#### INbTransLoader
 ##### `v12.0.0`
 ###### 文本加载器
 | Property  | Type  | Mandatory  | Description  | Version |
@@ -315,7 +321,7 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
 
 <br>
 
-#### INbTransOptions：
+#### INbTransOptions
 ##### `v12.0.0`
 ###### 翻译配置
 | Property  | Type  | Mandatory  | Description  | Version |
@@ -326,7 +332,7 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
 
 <br>
 
-#### INbTransParams：
+#### INbTransParams
 ##### `v12.0.0`
 ###### 翻译文本中的参数
 | Property  | Type  | Mandatory  | Description  | Version |
@@ -335,7 +341,7 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
 
 <br>
 
-#### INbTransChangeLang：
+#### INbTransChangeLang
 ##### `v12.0.0`
 ###### 切换语言的结果
 | Property  | Type  | Mandatory  | Description  | Version |
@@ -345,13 +351,13 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
 
 <br>
 
-#### INbTransSentencePart：
+#### INbTransSentencePart
 ##### `v12.0.0`
 ###### 句子部分，可能为`string`或者`INbTransSentenceCompPart`类型。为`string`时，即该句子为文本；为`INbTransSentenceCompPart`时，即该句子中含有需要解析的组件。一般交给组件自己处理便可，可不用关心内部逻辑
 
 <br>
 
-#### INbTransSentenceCompPart：
+#### INbTransSentenceCompPart
 ##### `v12.0.0`
 ###### 句子中含有组件的部分
 | Property  | Type  | Mandatory  | Description  | Version |
@@ -362,14 +368,14 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
 
 <br>
 
-### Enum
-#### NbTransLangEnum：
+### Enums
+#### NbTransLangEnum
 ##### `v12.0.0`
 ###### 常用语言枚举。除了默认语言未设置时的默认值外，组件以及服务中均未直接使用该枚举中的值，所以不强制要求使用该枚举。
 
 <br>
 
-#### NbTransSentenceItemEnum：
+#### NbTransSentenceItemEnum
 ##### `v12.0.0`
 ###### 句子项类型枚举。在对句子内容进行解析时，会将句子分为`STR`,`COMP`和`MULTI_COMP`这3种类型
 

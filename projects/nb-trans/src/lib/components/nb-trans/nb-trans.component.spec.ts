@@ -58,18 +58,46 @@ describe('Component: NbTrans', () => {
     expect(component).toBeTruthy();
   });
 
-  it('#ngOnChanges()', () => {
-    const spyFn = spyOn(transToolsService, 'handleTrans').and.callThrough();
+  describe('#ngOnChanges()', () => {
+    it('key param and options param all have values', () => {
+      const spyFn = spyOn(transToolsService, 'handleTrans').and.callThrough();
 
-    component.key = 'title';
-    component.options = {};
-    const changes = {
-      key: new SimpleChange(undefined, component.key, true),
-      options: new SimpleChange(undefined, component.options, true),
-    };
-    component.ngOnChanges(changes);
+      component.key = 'title';
+      component.options = {};
+      const changes = {
+        key: new SimpleChange(undefined, component.key, true),
+        options: new SimpleChange(undefined, component.options, true),
+      };
+      component.ngOnChanges(changes);
 
-    expect(spyFn).toHaveBeenCalledTimes(1);
+      expect(spyFn).toHaveBeenCalledTimes(1);
+    });
+
+    it('only key param has value', () => {
+      const spyFn = spyOn(transToolsService, 'handleTrans').and.callThrough();
+
+      component.key = 'title';
+      component.options = undefined as any;
+      const changes = {
+        key: new SimpleChange(undefined, component.key, true),
+      };
+      component.ngOnChanges(changes);
+
+      expect(spyFn).toHaveBeenCalledTimes(1);
+    });
+
+    it('only option param has value', () => {
+      const spyFn = spyOn(transToolsService, 'handleTrans').and.callThrough();
+
+      component.key = 'title';
+      component.options = {};
+      const changes = {
+        options: new SimpleChange(undefined, component.options, true),
+      };
+      component.ngOnChanges(changes);
+
+      expect(spyFn).toHaveBeenCalledTimes(1);
+    });
   });
 
   it('verify has subscribed lang change event', (done) => {

@@ -8,15 +8,15 @@ import { NbValueTypeService } from '@bigbear713/nb-common';
 })
 export class NbTransToolsService {
 
-  constructor(private valueType: NbValueTypeService) { }
-
-  checkNavigator(): boolean {
-    return this.checkWindow() && typeof window.navigator !== 'undefined'
+  static checkNavigator(): boolean {
+    return NbTransToolsService.checkWindow() && typeof window.navigator !== 'undefined'
   }
 
-  checkWindow(): boolean {
+  static checkWindow(): boolean {
     return typeof window !== 'undefined';
   }
+
+  constructor(private valueType: NbValueTypeService) { }
 
   getFinalKey(key: string, prefix?: string): string {
     return prefix ? `${prefix}.${key}` : key;
