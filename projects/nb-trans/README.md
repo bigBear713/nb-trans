@@ -19,8 +19,8 @@ Angular translation lib by bigBear713.
 <br>
 
 ## Changelog
-- [中文](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/CHANGELOG.md "更新日志 - 中文")
-- [English](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/CHANGELOG.EN.md "Changelog - English")
+- [中文](https://github.com/bigBear713/nb-trans/blob/master/CHANGELOG.md "更新日志 - 中文")
+- [English](https://github.com/bigBear713/nb-trans/blob/master/CHANGELOG.EN.md "Changelog - English")
 
 <br>
 
@@ -213,6 +213,8 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
 <div>{{'title'|nbTrans:options}}</div>
 <div>{{'helloWorld'|nbTrans:({prefix:'content'})}}</div>
 ```
+
+<br>
 
 ### Tokens
 
