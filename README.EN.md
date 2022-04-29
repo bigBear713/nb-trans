@@ -28,6 +28,14 @@ Angular translation lib by bigBear713.
 - Support there are some components in the translation sentence;
 - Support the changeDetection of components as `ChangeDetectionStrategy.OnPush`;
 
+<br>
+
+## Version
+###### The nb-trans's major version will keep up with the Angular's major version
+- "@bigbear713/nb-trans":"^12.0.0" - "@angular/core": "^12.0.0"
+
+<br>
+
 ## Installation
 ```bash
 $ npm i @bigbear713/nb-trans

@@ -28,6 +28,14 @@ Angular translation lib by bigBear713.
 - 支持翻译文本中带有组件的复杂场景；
 - 支持组件的更新策略为`ChangeDetectionStrategy.OnPush`;
 
+<br>
+
+## Version
+###### nb-trans的大版本和Angular的大版本保持对应关系
+- "@bigbear713/nb-trans":"^12.0.0" - "@angular/core": "^12.0.0"
+
+<br>
+
 ## Installation
 ```bash
 $ npm i @bigbear713/nb-trans
