@@ -17,8 +17,8 @@ Angular translation lib by bigBear713.
 - [English](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.EN.md "Document - English")
 
 ## Changelog
-- [中文](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/CHANGELOG.md "中文文档")
-- [English](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/CHANGELOG.EN.md "English Document")
+- [中文](https://github.com/bigBear713/nb-trans/blob/master/CHANGELOG.md "更新日志 - 中文")
+- [English](https://github.com/bigBear713/nb-trans/blob/master/CHANGELOG.EN.md "Changelog - English")
 
 ## Feature
 - 支持翻译文本懒加载，或者急性加载；
@@ -27,6 +27,15 @@ Angular translation lib by bigBear713.
 - 支持翻译文本中带有参数；
 - 支持翻译文本中带有组件的复杂场景；
 - 支持组件的更新策略为`ChangeDetectionStrategy.OnPush`;
+
+<br>
+
+## Version
+###### nb-trans的大版本和Angular的大版本保持对应关系
+- "@bigbear713/nb-trans":"^12.0.0" - "@angular/core": "^12.0.0"
+- "@bigbear713/nb-trans":"^13.0.0" - "@angular/core": "^13.0.0"
+
+<br>
 
 ## Installation
 ```bash

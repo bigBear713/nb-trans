@@ -17,8 +17,8 @@ Angular translation lib by bigBear713.
 - [English](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.EN.md "Document - English")
 
 ## Changelog
-- [中文](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/CHANGELOG.md "中文文档")
-- [English](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/CHANGELOG.EN.md "English Document")
+- [中文](https://github.com/bigBear713/nb-trans/blob/master/CHANGELOG.md "更新日志 - 中文")
+- [English](https://github.com/bigBear713/nb-trans/blob/master/CHANGELOG.EN.md "Changelog - English")
 
 ## Feature
 - Support to direct/lazing loading translation file;
@@ -27,6 +27,15 @@ Angular translation lib by bigBear713.
 - Support there are some params in translation sentence;
 - Support there are some components in the translation sentence;
 - Support the changeDetection of components as `ChangeDetectionStrategy.OnPush`;
+
+<br>
+
+## Version
+###### The nb-trans's major version will keep up with the Angular's major version
+- "@bigbear713/nb-trans":"^12.0.0" - "@angular/core": "^12.0.0"
+- "@bigbear713/nb-trans":"^13.0.0" - "@angular/core": "^13.0.0"
+
+<br>
 
 ## Installation
 ```bash
