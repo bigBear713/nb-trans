@@ -1,3 +1,9 @@
+# v13.0.0
+## Breaking Changes
+- feat: Upgrade `angular` to `v13`;
+
+<br/>
+
 # v12.1.0
 ## [Services](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.EN.md#Services "Services")
 ### [NbTransService](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.EN.md#nbtransservice "NbTransService")

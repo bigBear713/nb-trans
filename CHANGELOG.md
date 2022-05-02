@@ -1,3 +1,9 @@
+# v13.0.0
+## 破坏性更新
+- feat: `angular`升级到`v13`;
+
+<br/>
+
 # v12.1.0
 ## [Services](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#Services "Services")
 ### [NbTransService](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#nbtransservice "NbTransService")

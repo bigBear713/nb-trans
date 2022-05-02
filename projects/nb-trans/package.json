@@ -1,13 +1,13 @@
 {
   "name": "@bigbear713/nb-trans",
-  "version": "12.1.0",
+  "version": "13.0.0",
   "homepage": "https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md",
   "description": "Angular translation lib by bigBear713.",
   "keywords": [
     "ng",
     "angular",
     "angular2+",
-    "angular12",
+    "angular13",
     "i18n",
     "translation",
     "nb-trans",
@@ -23,8 +23,8 @@
     "url": "https://github.com/bigBear713/nb-trans/issues"
   },
   "peerDependencies": {
-    "@angular/common": "^12.2.0",
-    "@angular/core": "^12.2.0"
+    "@angular/common": "^13.0.0",
+    "@angular/core": "^13.0.0"
   },
   "dependencies": {
     "@bigbear713/nb-common": "^12.1.0",
