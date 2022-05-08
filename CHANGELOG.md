@@ -1,3 +1,9 @@
+# v13.0.1
+## 依赖
+- fix: `nb-common`版本调整为`^13.0.0`;
+
+<br/>
+
 # v13.0.0
 ## 破坏性更新
 - feat: `angular`升级到`v13`;
@@ -12,6 +18,7 @@
 - feat: `NbTransService.getBrowserLangs()`可以直接获取一个用户已知语言的数组;
 - depr: `getBrowserLangs()`被标志为`deprecated`;
 
+<br/>
 
 # v12.0.0
 ## [Module](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#Module "Module")

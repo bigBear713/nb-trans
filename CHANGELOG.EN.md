@@ -1,3 +1,9 @@
+# v13.0.1
+## Dependencies
+- fix: Update the version of `nb-common` as `^13.0.0`;
+
+<br/>
+
 # v13.0.0
 ## Breaking Changes
 - feat: Upgrade `angular` to `v13`;
@@ -11,6 +17,8 @@
 - depr: `getBrowserLang()` has been marked as `deprecated`;
 - feat: `NbTransService.getBrowserLangs()` can a language array known directly
 - depr: `getBrowserLangs()` has been marked as `deprecated`;
+
+<br/>
 
 # v12.0.0
 ## [Module](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.EN.md#Module "Module")
