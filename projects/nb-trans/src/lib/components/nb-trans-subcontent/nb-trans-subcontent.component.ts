@@ -23,5 +23,4 @@ export class NbTransSubcontentComponent {
   @Input('nb-trans-subcontent') content: string | TemplateRef<any> = '';
 
   @Input() subcontentList: INbTransSentencePart[] = [];
-
 }

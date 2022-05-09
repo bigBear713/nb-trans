@@ -21,5 +21,4 @@ export class NbSentenceItemTypePipe implements PipeTransform {
 
     return type;
   }
-
 }
