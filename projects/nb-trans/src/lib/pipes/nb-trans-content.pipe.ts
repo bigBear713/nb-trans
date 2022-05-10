@@ -10,5 +10,4 @@ export class NbTransContentPipe implements PipeTransform {
   transform(trans: string, params?: INbTransParams): string {
     return this.transToolsService.handleSentenceWithParams(trans, params);
   }
-
 }

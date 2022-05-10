@@ -76,5 +76,4 @@ export class NbTransComponent implements OnChanges, OnDestroy {
       this.reRender();
     });
   }
-
 }

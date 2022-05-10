@@ -19,14 +19,23 @@ export class NbTransService {
 
   private translations: { [key: string]: Object } = {};
 
+  /**
+   * Current language value
+   */
   get lang(): string {
     return this.lang$.value;
   }
 
+  /**
+   * Whether the translated file of the default language is loaded
+   */
   get loadDefaultOver(): boolean {
     return this.loadDefaultOver$.value;
   }
 
+  /**
+   * Get the first language of browser
+   */
   static getBrowserLang(): string | undefined {
     if (!NbTransToolsService.checkNavigator()) {
       return undefined;
@@ -34,6 +43,9 @@ export class NbTransService {
     return window?.navigator?.language;
   }
 
+  /**
+   * Get a language array known to the user, by order of preference
+   */
   static getBrowserLangs(): readonly string[] | undefined {
     if (!NbTransToolsService.checkNavigator()) {
       return undefined;
@@ -57,6 +69,10 @@ export class NbTransService {
     this.loadDefaultTrans();
   }
 
+  /**
+   * Switch language async
+   * @param lang language key
+   */
   changeLang(lang: string): Observable<INbTransChangeLang> {
     const successResult: INbTransChangeLang = {
       curLang: lang,
@@ -93,20 +109,37 @@ export class NbTransService {
     );
   }
 
+  /**
+   * Switch language sync
+   * @param lang language key
+   */
   changeLangSync(lang: string): void {
     this.changeLang(lang).subscribe();
   }
 
+  /**
+   * get the first language of browser
+   * @deprecated
+   */
   getBrowserLang(): string | undefined {
     console.warn('The function will be deprecated in the future, we recommend using NbTransService.getBrowserLang()!');
     return NbTransService.getBrowserLang();
   }
 
+  /**
+   * get a language array known to the user, by order of preference
+   * @deprecated
+   */
   getBrowserLangs(): readonly string[] | undefined {
     console.warn('The function will be deprecated in the future, we recommend using NbTransService.getBrowserLangs()!');
     return NbTransService.getBrowserLangs();
   }
 
+  /**
+   * Get translated text asynchronously based on key and options
+   * @param key trans key
+   * @param options trans options
+   */
   translationAsync(key: string, options?: INbTransOptions): Observable<string> {
     return this.lang$.pipe(
       switchMap(_ => {
@@ -118,6 +151,11 @@ export class NbTransService {
     );
   }
 
+  /**
+   * Synchronously get translated text according to key and options
+   * @param key trans key
+   * @param options trans options
+   */
   translationSync(key: string, options?: INbTransOptions): string {
     const finalKey = this.transToolsService.getFinalKey(key, options?.prefix);
     const emptyTrans = options?.returnKeyWhenEmpty === false ? '' : finalKey;
@@ -137,10 +175,16 @@ export class NbTransService {
     return trans || emptyTrans;
   }
 
+  /**
+   * An subscribe event of switching language
+   */
   subscribeLangChange(): Observable<string> {
     return this.lang$.asObservable();
   }
 
+  /**
+   * Whethe the translated file of default lang has been load over
+   */
   subscribeLoadDefaultOver(): Observable<boolean> {
     return this.loadDefaultOver
       ? of(true)
@@ -188,5 +232,4 @@ export class NbTransService {
       catchError(_ => of(null))
     );
   }
-
 }
