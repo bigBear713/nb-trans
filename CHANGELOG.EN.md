@@ -1,3 +1,9 @@
+# v14.0.0
+## Breaking Changes
+- feat: Upgrade `angular` to `v14`;
+
+<br/>
+
 # v13.0.1
 ## Dependencies
 - fix: Update the version of `nb-common` as `^13.0.0`;
