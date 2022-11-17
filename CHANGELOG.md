@@ -1,3 +1,12 @@
+# v15.0.0
+## 破坏性更新
+- feat: `angular`升级到`v15`; 
+- feat: `@bigbear713/nb-common`升级到`v15.0.0`; 
+- feat: `uuid`升级到`v9.0.0`;
+- feat: `tslib`升级到`v2.4.1`;
+
+<br/>
+
 # v14.0.0
 ## 破坏性更新
 - feat: `angular`升级到`v14`;

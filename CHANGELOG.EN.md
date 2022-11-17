@@ -1,3 +1,12 @@
+# v15.0.0
+## Breaking Changes
+- feat: Upgrade `angular` to `v15`;
+- feat: Upgrade `@bigbear713/nb-common` to `v15.0.0`;
+- feat: Upgrade `uuid` to `v9.0.0`;
+- feat: Upgrade `tslib` to `v2.4.1`;
+
+<br/>
+
 # v14.0.0
 ## Breaking Changes
 - feat: Upgrade `angular` to `v14`;
