@@ -224,7 +224,7 @@ export class NbTransService {
     const loaderFn: Observable<Object> = isFunction(loader)
       // switch map as load lang observable, 
       // so it will retry when failure to load the lang content
-      ? of(null).pipe(switchMap(() => from(loader())))
+      ? of(null).pipe(switchMap(() => (from(loader()) as Observable<Object>)))
       : of(loader);
     return loaderFn.pipe(
       tap(trans => this.translations[lang] = trans),
