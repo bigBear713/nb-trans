@@ -197,8 +197,9 @@ export class NbTransService {
   }
 
   private loadDefaultTrans(): void {
-    this.loadTrans(this.lang).subscribe(trans => {
-      const result = !!trans;
+    this.loadTrans(this.lang).pipe(
+      map(trans => !!trans),
+    ).subscribe(result => {
       this.loadDefaultOver$.next(result);
       this.loadDefaultOver$.complete();
       this.loadLangTrans$.next(result);
@@ -207,11 +208,8 @@ export class NbTransService {
 
   private loadLangTrans(lang: string): Observable<boolean> {
     return this.loadTrans(lang).pipe(
-      map(trans => {
-        const result = !!trans;
-        this.loadLangTrans$.next(result);
-        return result;
-      })
+      map(trans => !!trans),
+      tap(result => this.loadLangTrans$.next(result))
     );
   }
 
