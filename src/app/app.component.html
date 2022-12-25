@@ -7,11 +7,12 @@
   </a>
 </h2>
 <hr>
-<button (click)="onChangeLang('zh-CN')">切换为中文</button>
-<button (click)="onChangeLang('en')">切换为英文</button>
-<button (click)="onChangeLang('other')">切换为其它不存在的语言</button>
-
-<hr>
+<div class="actions">
+  <button (click)="onChangeLang('zh-CN')">切换为中文</button>
+  <button (click)="onChangeLang('en')">切换为英文</button>
+  <button (click)="onChangeLang('other')">切换为其它不存在的语言</button>
+  <hr>
+</div>
 
 <div>
   <h5>使用 nbTrans 管道，语言切换时自动获取最新的翻译</h5>
@@ -65,5 +66,7 @@
 <hr>
 
 <h3>children component</h3>
+<a routerLink="/">Module Component</a>
+<a routerLink="/standalone">Standalone Component</a>
 
 <router-outlet></router-outlet>
