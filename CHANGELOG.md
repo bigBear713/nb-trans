@@ -53,7 +53,7 @@
 ## [Tokens](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#Tokens "Tokens")
 - feat: [NB_TRANS_DEFAULT_LANG](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#nb_trans_default_lang) - 设置默认语言
 - feat: [NB_TRANS_LOADER](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#nb_trans_loader) - 翻译文本加载器
-- feat: [NB_TRANS_MAX_RETRY_TOKEN](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#nb_trans_max_retry_token) - 翻译文本加载失败时的最大重试次数
+- feat: [NB_TRANS_MAX_RETRY](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#nb_trans_max_retry) - 翻译文本加载失败时的最大重试次数
 
 ## [Interfaces](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#Interfaces "Interfaces")
 - feat: [INbTransLoader](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#inbtransloader) - 文本加载器
@@ -64,5 +64,5 @@
 - feat: [INbTransSentenceCompPart](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#inbtranssentencecomppart) - 句子中含有组件的部分
 
 ## [Enums](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#Enums "Enums")
-- feat: [NbTransLangEnum](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#nbtranslangenum) - 常用语言枚举
-- feat: [NbTransSentenceItemEnum](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#nbtranssentenceitemenum) - 句子项类型枚举
+- feat: [NbTransLang](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#nbtranslang) - 常用语言枚举
+- feat: [NbTransSentenceItem](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#nbtranssentenceitem) - 句子项类型枚举

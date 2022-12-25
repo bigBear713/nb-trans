@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, TemplateRef, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { NbTransTestingModule } from '../../testing';
-import { NbTransSubcontentComponent } from './nb-trans-subcontent.component';
+import { NbTransTestingModule } from '../../../testing';
+import { NbTransSubcontentComponent } from '../nb-trans-subcontent.component';
 
 @Component({
   selector: 'mock-tpl-ref',

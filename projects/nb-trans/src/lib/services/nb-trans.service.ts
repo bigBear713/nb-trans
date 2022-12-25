@@ -2,14 +2,14 @@ import { get, isFunction } from 'lodash-es';
 import { BehaviorSubject, from, Observable, of, Subject, timer } from 'rxjs';
 import { catchError, map, retry, skipWhile, switchMap, tap } from 'rxjs/operators';
 import { Inject, Injectable, Optional } from '@angular/core';
-import { NB_TRANS_DEFAULT_LANG, NB_TRANS_LOADER, NB_TRANS_MAX_RETRY_TOKEN, NbTransLangEnum } from '../constants';
+import { NB_TRANS_DEFAULT_LANG, NB_TRANS_LOADER, NB_TRANS_MAX_RETRY, NbTransLang } from '../constants';
 import { INbTransChangeLang, INbTransLoader, INbTransOptions } from '../models';
 import { NbTransToolsService } from './nb-trans-tools.service';
 
 @Injectable({ providedIn: 'root' })
 export class NbTransService {
 
-  private lang$ = new BehaviorSubject<string>(NbTransLangEnum.ZH_CN);
+  private lang$ = new BehaviorSubject<string>(NbTransLang.ZH_CN);
 
   private loadDefaultOver$ = new BehaviorSubject<boolean>(false);
 
@@ -56,7 +56,7 @@ export class NbTransService {
   constructor(
     @Inject(NB_TRANS_DEFAULT_LANG) @Optional() private transDefaultLang: string,
     @Inject(NB_TRANS_LOADER) @Optional() private transLoader: INbTransLoader,
-    @Inject(NB_TRANS_MAX_RETRY_TOKEN) @Optional() private maxRetry: number,
+    @Inject(NB_TRANS_MAX_RETRY) @Optional() private maxRetry: number,
     private transToolsService: NbTransToolsService,
   ) {
     // if the maxRetry is undefined/null, use default settings,
@@ -65,7 +65,7 @@ export class NbTransService {
 
     this.transLoader = this.transLoader || {};
 
-    this.lang$.next(transDefaultLang || NbTransLangEnum.ZH_CN);
+    this.lang$.next(transDefaultLang || NbTransLang.ZH_CN);
     this.loadDefaultTrans();
   }
 

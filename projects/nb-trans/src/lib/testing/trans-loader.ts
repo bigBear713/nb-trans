@@ -1,12 +1,12 @@
-import { NbTransLangEnum } from '../constants';
+import { NbTransLang } from '../constants';
 
 export const transLoader = {
   dynamicLoader: {
-    [NbTransLangEnum.EN]: () => import('./localization/en/translations').then(data => data.trans),
-    [NbTransLangEnum.ZH_CN]: () => import('./localization/zh-CN/translations').then(data => data.trans),
+    [NbTransLang.EN]: () => import('./localization/en/translations').then(data => data.trans),
+    [NbTransLang.ZH_CN]: () => import('./localization/zh-CN/translations').then(data => data.trans),
   },
   staticLoader: {
-    [NbTransLangEnum.EN]: {
+    [NbTransLang.EN]: {
       title: 'title  ',
       content: {
         'helloWorld': 'hello world',
@@ -15,7 +15,7 @@ export const transLoader = {
       component: '<0>component</0>',
       complexComponent: '<0>component0<1>component1</1></0>',
     },
-    [NbTransLangEnum.ZH_CN]: {
+    [NbTransLang.ZH_CN]: {
       title: '标题  ',
       content: {
         'helloWorld': '你好，世界',
