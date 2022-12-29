@@ -1,4 +1,4 @@
-export enum NbTransLang {
+export enum NbTransLangEnum {
   // 简体中文
   ZH_CN = 'zh-CN',
   // 繁体中文	
@@ -105,7 +105,3 @@ export enum NbTransLang {
   // 越南语	
   VI_VN = 'vi-VN',
 }
-/**
- * @deprecated use "NbTransLang" please
- */
-export const NbTransLangEnum = NbTransLang;

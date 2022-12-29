@@ -31,7 +31,6 @@ Angular translation lib by bigBear713.
 - 支持翻译文本中带有参数；
 - 支持翻译文本中带有组件的复杂场景；
 - 支持组件的更新策略为`ChangeDetectionStrategy.OnPush`;
-- 支持在`standalone component`中使用；
 
 <br>
 
@@ -40,7 +39,6 @@ Angular translation lib by bigBear713.
 - "@bigbear713/nb-trans":"^12.0.0" - "@angular/core": "^12.0.0"
 - "@bigbear713/nb-trans":"^13.0.0" - "@angular/core": "^13.0.0"
 - "@bigbear713/nb-trans":"^14.0.0" - "@angular/core": "^14.0.0"
-- "@bigbear713/nb-trans":"^15.0.0" - "@angular/core": "^15.0.0"
 
 <br>
 
@@ -225,7 +223,7 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
 #### NB_TRANS_DEFAULT_LANG
 ##### string
 ##### `v12.0.0`
-###### 用于设置默认语言，初始化`NbTransService`实例时将自动加载该语言的文本内容。不设置时默认为`NbTransLang.ZH_CN`。一般只在AppModule设置一次
+###### 用于设置默认语言，初始化`NbTransService`实例时将自动加载该语言的文本内容。不设置时默认为`NbTransLangEnum.ZH_CN`。一般只在AppModule设置一次
 
 ##### Usage
 ```ts
@@ -233,7 +231,7 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
     // ...
     {
       provide: NB_TRANS_DEFAULT_LANG,
-      useValue: NbTransLang.ZH_CN,
+      useValue: NbTransLangEnum.ZH_CN,
     },
     // ...
   ]
@@ -256,8 +254,8 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
     {
       provide: NB_TRANS_LOADER,
       useValue: {
-        [NbTransLang.ZH_CN]: zhCNTrans,
-        [NbTransLang.EN]: enTrans,
+        [NbTransLangEnum.ZH_CN]: zhCNTrans,
+        [NbTransLangEnum.EN]: enTrans,
       }
     }
     // ...
@@ -273,10 +271,10 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
       useFactory: (http: HttpClient) => ({
         // dyn load and the content is a json file
         // the loader fn return value can be Observable<Object>/Promise<Object> type
-        // [NbTransLang.EN]: () => http.get('./assets/localization/en/translations.json').toPromise(),
-        [NbTransLang.EN]: () => http.get('./assets/localization/en/translations.json'),
-        // [NbTransLang.ZH_CN]: () => http.get('./assets/localization/zh-CN/translations.json').toPromise(),
-        [NbTransLang.ZH_CN]: () => http.get('./assets/localization/zh-CN/translations.json'),
+        // [NbTransLangEnum.EN]: () => http.get('./assets/localization/en/translations.json').toPromise(),
+        [NbTransLangEnum.EN]: () => http.get('./assets/localization/en/translations.json'),
+        // [NbTransLangEnum.ZH_CN]: () => http.get('./assets/localization/zh-CN/translations.json').toPromise(),
+        [NbTransLangEnum.ZH_CN]: () => http.get('./assets/localization/zh-CN/translations.json'),
       }),
       deps: [HttpClient]
     }
@@ -290,8 +288,8 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
     {
       provide: NB_TRANS_LOADER,
       useValue: {
-        [NbTransLang.EN]: () => import('./localization/en/translations').then(data => data.trans),
-        [NbTransLang.ZH_CN]: () => import('./localization/zh-CN/translations').then(data => data.trans),
+        [NbTransLangEnum.EN]: () => import('./localization/en/translations').then(data => data.trans),
+        [NbTransLangEnum.ZH_CN]: () => import('./localization/zh-CN/translations').then(data => data.trans),
       }
     }
     // ...
@@ -300,12 +298,9 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
 
 <br>
 
-#### NB_TRANS_MAX_RETRY
-##### number
-##### `v15.0.0`
 #### NB_TRANS_MAX_RETRY_TOKEN
 ##### number
-##### `v12.0.0`, `@deprecated` from `v15.0.0`
+##### `v12.0.0`
 ###### 翻译文本加载失败时的最大重试次数，默认为5次。一般只在AppModule设置一次
 
 ##### Usage
@@ -313,7 +308,7 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
   providers: [
     // ...
     {
-      provide: NB_TRANS_MAX_RETRY,
+      provide: NB_TRANS_MAX_RETRY_TOKEN,
       useValue: 3
     },
     // ...
@@ -381,18 +376,14 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
 <br>
 
 ### Enums
-#### NbTransLang
-##### `v15.0.0`
 #### NbTransLangEnum
-##### `v12.0.0`, `@deprecated` from `v15.0.0`
+##### `v12.0.0`
 ###### 常用语言枚举。除了默认语言未设置时的默认值外，组件以及服务中均未直接使用该枚举中的值，所以不强制要求使用该枚举。
 
 <br>
 
-#### NbTransSentenceItem
-##### `v15.0.0`
 #### NbTransSentenceItemEnum
-##### `v12.0.0`, `@deprecated` from `v15.0.0`
+##### `v12.0.0`
 ###### 句子项类型枚举。在对句子内容进行解析时，会将句子分为`STR`,`COMP`和`MULTI_COMP`这3种类型
 
 <br>

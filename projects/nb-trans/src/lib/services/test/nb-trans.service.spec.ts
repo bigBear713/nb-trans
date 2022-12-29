@@ -1,6 +1,6 @@
 import { inject, TestBed } from '@angular/core/testing';
 import { filter, switchMap, take } from 'rxjs/operators';
-import { NB_TRANS_DEFAULT_LANG, NB_TRANS_LOADER, NB_TRANS_MAX_RETRY, NbTransLang } from '../../constants';
+import { NB_TRANS_DEFAULT_LANG, NB_TRANS_LOADER, NB_TRANS_MAX_RETRY_TOKEN, NbTransLangEnum } from '../../constants';
 import { translationSyncTestData, transLoader, NbTransTestingModule } from '../../testing';
 import { NbTransService } from '../nb-trans.service';
 
@@ -28,7 +28,7 @@ describe('Service: NbTrans', () => {
           TestBed.configureTestingModule({
             imports: [NbTransTestingModule],
             providers: [
-              { provide: NB_TRANS_DEFAULT_LANG, useValue: NbTransLang.ZH_CN, },
+              { provide: NB_TRANS_DEFAULT_LANG, useValue: NbTransLangEnum.ZH_CN, },
               { provide: NB_TRANS_LOADER, useValue: loaderMethodItem.loader },
             ]
           });
@@ -47,9 +47,9 @@ describe('Service: NbTrans', () => {
         });
 
         [
-          { lang: NbTransLang.ZH_CN, expect: { changeResult: { curLang: NbTransLang.ZH_CN, result: true }, transResult: '标题  ' } },
-          { lang: NbTransLang.EN, expect: { changeResult: { curLang: NbTransLang.EN, result: true }, transResult: 'title  ' } },
-          { lang: NbTransLang.AR_EG, expect: { changeResult: { curLang: NbTransLang.ZH_CN, result: false }, transResult: '标题  ' } },
+          { lang: NbTransLangEnum.ZH_CN, expect: { changeResult: { curLang: NbTransLangEnum.ZH_CN, result: true }, transResult: '标题  ' } },
+          { lang: NbTransLangEnum.EN, expect: { changeResult: { curLang: NbTransLangEnum.EN, result: true }, transResult: 'title  ' } },
+          { lang: NbTransLangEnum.AR_EG, expect: { changeResult: { curLang: NbTransLangEnum.ZH_CN, result: false }, transResult: '标题  ' } },
         ].forEach(item => {
           it(`change lang as ${item.lang}`, (done) => {
             service.subscribeLoadDefaultOver().pipe(
@@ -67,9 +67,9 @@ describe('Service: NbTrans', () => {
 
         describe('#subscribeLangChange()', () => {
           [
-            { lang: NbTransLang.ZH_CN, expect: NbTransLang.ZH_CN },
-            { lang: NbTransLang.EN, expect: NbTransLang.EN },
-            { lang: NbTransLang.AR_EG, expect: NbTransLang.ZH_CN },
+            { lang: NbTransLangEnum.ZH_CN, expect: NbTransLangEnum.ZH_CN },
+            { lang: NbTransLangEnum.EN, expect: NbTransLangEnum.EN },
+            { lang: NbTransLangEnum.AR_EG, expect: NbTransLangEnum.ZH_CN },
           ].forEach(item => {
             it(`change lang as ${item.lang}`, (done) => {
               service.subscribeLoadDefaultOver().pipe(
@@ -92,7 +92,7 @@ describe('Service: NbTrans', () => {
 
   it('#changeLangSync()', inject([NbTransService], (service: NbTransService) => {
     spyOn(service, 'changeLang').and.callThrough();
-    service.changeLangSync(NbTransLang.BG_BG);
+    service.changeLangSync(NbTransLangEnum.BG_BG);
     expect(service.changeLang).toHaveBeenCalledTimes(1);
   }));
 
@@ -102,7 +102,7 @@ describe('Service: NbTrans', () => {
       TestBed.configureTestingModule({
         imports: [NbTransTestingModule],
         providers: [
-          { provide: NB_TRANS_DEFAULT_LANG, useValue: NbTransLang.ZH_CN },
+          { provide: NB_TRANS_DEFAULT_LANG, useValue: NbTransLangEnum.ZH_CN },
           { provide: NB_TRANS_LOADER, useValue: transLoader.staticLoader },
         ]
       });
@@ -131,7 +131,7 @@ describe('Service: NbTrans', () => {
       TestBed.configureTestingModule({
         imports: [NbTransTestingModule],
         providers: [
-          { provide: NB_TRANS_DEFAULT_LANG, useValue: NbTransLang.ZH_CN },
+          { provide: NB_TRANS_DEFAULT_LANG, useValue: NbTransLangEnum.ZH_CN },
           { provide: NB_TRANS_LOADER, useValue: transLoader.dynamicLoader },
         ]
       });
@@ -151,7 +151,7 @@ describe('Service: NbTrans', () => {
     it('change lang as en', (done) => {
       service.subscribeLoadDefaultOver().pipe(
         filter(result => result),
-        switchMap(() => service.changeLang(NbTransLang.EN)),
+        switchMap(() => service.changeLang(NbTransLangEnum.EN)),
         switchMap(() => service.translationAsync('title')),
       ).pipe(take(1)).subscribe(transContent => {
         expect(transContent).toEqual('title  ');
@@ -163,22 +163,22 @@ describe('Service: NbTrans', () => {
   it('when failure to load default lang', (done) => {
     const langLoader = () => Promise.reject();
     const transLoader = {
-      [NbTransLang.EN_US]: langLoader
+      [NbTransLangEnum.EN_US]: langLoader
     };
     TestBed.configureTestingModule({
       imports: [NbTransTestingModule],
       providers: [
-        { provide: NB_TRANS_DEFAULT_LANG, useValue: NbTransLang.EN_US },
+        { provide: NB_TRANS_DEFAULT_LANG, useValue: NbTransLangEnum.EN_US },
         { provide: NB_TRANS_LOADER, useValue: transLoader },
-        { provide: NB_TRANS_MAX_RETRY, useValue: 3 },
+        { provide: NB_TRANS_MAX_RETRY_TOKEN, useValue: 3 },
       ]
     });
-    spyOn(transLoader, NbTransLang.EN_US).and.callThrough();
+    spyOn(transLoader, NbTransLangEnum.EN_US).and.callThrough();
     const service = TestBed.inject(NbTransService);
     service.subscribeLoadDefaultOver().pipe(
       take(1),
     ).subscribe(_ => {
-      expect(transLoader[NbTransLang.EN_US]).toHaveBeenCalledTimes(4);
+      expect(transLoader[NbTransLangEnum.EN_US]).toHaveBeenCalledTimes(4);
       done();
     });
   });

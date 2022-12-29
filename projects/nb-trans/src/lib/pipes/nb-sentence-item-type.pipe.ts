@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { NbValueTypeService } from '@bigbear713/nb-common';
-import { NbTransSentenceItem } from '../constants';
+import { NbTransSentenceItemEnum } from '../constants';
 import { INbTransSentencePart } from '../models';
 
 @Pipe({ name: 'nbSentenceItemType' })
@@ -12,11 +12,11 @@ export class NbSentenceItemTypePipe implements PipeTransform {
     let type: number | undefined;
 
     if (this.valueType.isString(value)) {
-      type = NbTransSentenceItem.STR;
+      type = NbTransSentenceItemEnum.STR;
     } else if (this.valueType.isNumber((value?.index))) {
       type = (Array.isArray(value.list) && value.list.length)
-        ? NbTransSentenceItem.MULTI_COMP
-        : NbTransSentenceItem.COMP;
+        ? NbTransSentenceItemEnum.MULTI_COMP
+        : NbTransSentenceItemEnum.COMP;
     }
 
     return type;

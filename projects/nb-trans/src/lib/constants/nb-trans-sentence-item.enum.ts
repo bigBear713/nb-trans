@@ -1,9 +1,5 @@
-export enum NbTransSentenceItem {
+export enum NbTransSentenceItemEnum {
   STR,
   COMP,
   MULTI_COMP,
 };
-/**
- * @deprecated use "NbTransSentenceItem" please
- */
-export const NbTransSentenceItemEnum = NbTransSentenceItem;

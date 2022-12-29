@@ -27,7 +27,6 @@ Angular translation lib by bigBear713.
 - Support there are some params in translation sentence;
 - Support there are some components in the translation sentence;
 - Support the changeDetection of components as `ChangeDetectionStrategy.OnPush`;
-- Support to used in `standalone component`;
 
 <br>
 
@@ -36,7 +35,6 @@ Angular translation lib by bigBear713.
 - "@bigbear713/nb-trans":"^12.0.0" - "@angular/core": "^12.0.0"
 - "@bigbear713/nb-trans":"^13.0.0" - "@angular/core": "^13.0.0"
 - "@bigbear713/nb-trans":"^14.0.0" - "@angular/core": "^14.0.0"
-- "@bigbear713/nb-trans":"^15.0.0" - "@angular/core": "^15.0.0"
 
 <br>
 
@@ -56,11 +54,6 @@ npm i
 - Build the nb-trans lib
 ```bash
 npm run build:lib
-```
-
-- Run ng-common unit test
-```bash
-npm run test:lib
 ```
 
 - Start the demo

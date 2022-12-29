@@ -131,8 +131,7 @@
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.ssr.ts"
                 }
-              ],
-              "vendorChunk": true
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -206,8 +205,5 @@
         }
       }
     }
-  },
-  "cli": {
-    "analytics": "f3744501-af0d-4e3e-90c6-ffa8cc3e1bcf"
   }
 }
