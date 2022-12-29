@@ -58,7 +58,7 @@ npm i
 npm run build:lib
 ```
 
-- 运行ng-trans单元测试
+- 运行nb-trans单元测试
 ```bash
 npm run test:lib
 ```
