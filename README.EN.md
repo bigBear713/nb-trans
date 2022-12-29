@@ -58,7 +58,7 @@ npm i
 npm run build:lib
 ```
 
-- Run ng-common unit test
+- Run the nb-trans unit test
 ```bash
 npm run test:lib
 ```
