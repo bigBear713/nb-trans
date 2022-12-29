@@ -1,27 +1,42 @@
 # v15.0.0
 ## 破坏性更新
-- feat: `angular`升级到`v15`; 
-- feat: `@bigbear713/nb-common`升级到`v15.0.0`; 
-- feat: `uuid`升级到`v9.0.0`;
-- refactor: 优化nb-trans service和nb-trans pipe;
+- feat: `angular`升级到`^15.0.0`; 
+- feat: `@bigbear713/nb-common`升级到`^15.0.0`; 
+
+## 依赖
+- feat: `uuid`升级到`^9.0.0`;
+
+## [Tokens](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#Tokens "Tokens")
+- feat: 增加[NB_TRANS_MAX_RETRY](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#nb_trans_max_retry)，`NB_TRANS_MAX_RETRY_TOKEN`标记为`deprecated`；
+
+## [Enums](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#Enums "Enums")
+- feat: 增加[NbTransLang](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#nbtranslang)，`NbTransLangEnum`标记为`deprecated`；
+- feat: 增加[NbTransSentenceItem](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#nbtranssentenceitem)，`NbTransSentenceItemEnum`标记为`deprecated`；
+
+## [Services](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#Services "Services")
+- refactor: 优化[NbTransService](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.EN.md#nbtransservice "NbTransService")；
+
+## [Pipes](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#Pipes "Pipes")
+- refactor: 优化[nbTrans](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#nbtrans-transformkey-string-options-inbtransoptions-string)；
 
 <br/>
 
 # v14.0.0
 ## 破坏性更新
-- feat: `angular`升级到`v14`;
+- feat: `angular`升级到`^14.0.0`;
+- feat: `@bigbear713/nb-common`升级到`^14.0.0`; 
 
 <br/>
 
 # v13.0.1
-## 依赖
+## 破坏性更新
 - fix: `nb-common`版本调整为`^13.0.0`;
 
 <br/>
 
 # v13.0.0
 ## 破坏性更新
-- feat: `angular`升级到`v13`;
+- feat: `angular`升级到`^13.0.0`;
 
 <br/>
 

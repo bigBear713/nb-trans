@@ -31,6 +31,7 @@ Angular translation lib by bigBear713.
 - 支持翻译文本中带有参数；
 - 支持翻译文本中带有组件的复杂场景；
 - 支持组件的更新策略为`ChangeDetectionStrategy.OnPush`;
+- 支持在`standalone component`中使用；
 
 <br>
 

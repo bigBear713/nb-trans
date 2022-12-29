@@ -27,6 +27,7 @@ Angular translation lib by bigBear713.
 - Support there are some params in translation sentence;
 - Support there are some components in the translation sentence;
 - Support the changeDetection of components as `ChangeDetectionStrategy.OnPush`;
+- Support to used in `standalone component`;
 
 <br>
 
