@@ -305,7 +305,7 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
 ##### `v15.0.0`
 #### NB_TRANS_MAX_RETRY_TOKEN
 ##### number
-##### `v12.0.0`, `@deprecated` from `v15.0.0`
+##### `v12.0.0`, 从`v15.0.0`开始为`@deprecated`
 ###### 翻译文本加载失败时的最大重试次数，默认为5次。一般只在AppModule设置一次
 
 ##### Usage
@@ -384,7 +384,7 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
 #### NbTransLang
 ##### `v15.0.0`
 #### NbTransLangEnum
-##### `v12.0.0`, `@deprecated` from `v15.0.0`
+##### `v12.0.0`, 从`v15.0.0`开始为`@deprecated`
 ###### 常用语言枚举。除了默认语言未设置时的默认值外，组件以及服务中均未直接使用该枚举中的值，所以不强制要求使用该枚举。
 
 <br>
@@ -392,7 +392,7 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
 #### NbTransSentenceItem
 ##### `v15.0.0`
 #### NbTransSentenceItemEnum
-##### `v12.0.0`, `@deprecated` from `v15.0.0`
+##### `v12.0.0`, 从`v15.0.0`开始为`@deprecated`
 ###### 句子项类型枚举。在对句子内容进行解析时，会将句子分为`STR`,`COMP`和`MULTI_COMP`这3种类型
 
 <br>
