@@ -12,7 +12,7 @@ import {
 } from '@angular/core';
 import { INbTransOptions, INbTransParams, INbTransSentencePart } from '../../models';
 import { NbTransService, NbTransToolsService } from '../../services';
-import { NbTransSentenceItemEnum } from '../../constants';
+import { NbTransSentenceItem } from '../../constants';
 
 @Component({
   selector: 'nb-trans',
@@ -31,7 +31,7 @@ export class NbTransComponent implements OnChanges, OnDestroy {
 
   sentenceList: INbTransSentencePart[] = [];
 
-  SentenceItemEnum = NbTransSentenceItemEnum;
+  SentenceItemEnum = NbTransSentenceItem;
 
   private destroy$ = new Subject<void>();
 

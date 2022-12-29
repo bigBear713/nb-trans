@@ -24,7 +24,8 @@ export class NbTransPipe implements PipeTransform, OnDestroy {
   }
 
   transform(key: string, options?: INbTransOptions): string {
-    if (!this.latestValue || key !== this.key || !isEqual(options, this.options)) {
+    const shouldUpdate = !this.latestValue || key !== this.key || !isEqual(options, this.options);
+    if (shouldUpdate) {
       this.latestValue = this.transService.translationSync(key, options);
 
       this.key = key;

@@ -31,6 +31,7 @@ Angular translation lib by bigBear713.
 - Support there are some params in translated sentence;
 - Support there are some components in the translated sentence;
 - Support the changeDetection of components as `ChangeDetectionStrategy.OnPush`;
+- Support to used in `standalone component`;
 
 <br>
 
@@ -39,6 +40,7 @@ Angular translation lib by bigBear713.
 - "@bigbear713/nb-trans":"^12.0.0" - "@angular/core": "^12.0.0"
 - "@bigbear713/nb-trans":"^13.0.0" - "@angular/core": "^13.0.0"
 - "@bigbear713/nb-trans":"^14.0.0" - "@angular/core": "^14.0.0"
+- "@bigbear713/nb-trans":"^15.0.0" - "@angular/core": "^15.0.0"
 
 <br>
 
@@ -221,7 +223,7 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
 #### NB_TRANS_DEFAULT_LANG
 ##### string
 ##### `v12.0.0`
-###### The default lang. When initial the instance of `NbTransService`, it will auto to load the default lang's translated content. The value is `NbTransLangEnum.ZH_CN` when you do not set it in AppModule. It will be set in AppModule in common
+###### The default lang. When initial the instance of `NbTransService`, it will auto to load the default lang's translated content. The value is `NbTransLang.ZH_CN` when you do not set it in AppModule. It will be set in AppModule in common
 
 ##### Usage
 ```ts
@@ -229,7 +231,7 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
     // ...
     {
       provide: NB_TRANS_DEFAULT_LANG,
-      useValue: NbTransLangEnum.ZH_CN,
+      useValue: NbTransLang.ZH_CN,
     },
     // ...
   ]
@@ -252,8 +254,8 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
     {
       provide: NB_TRANS_LOADER,
       useValue: {
-        [NbTransLangEnum.ZH_CN]: zhCNTrans,
-        [NbTransLangEnum.EN]: enTrans,
+        [NbTransLang.ZH_CN]: zhCNTrans,
+        [NbTransLang.EN]: enTrans,
       }
     }
     // ...
@@ -269,10 +271,10 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
       useFactory: (http: HttpClient) => ({
         // dyn load and the content is a json file
         // the loader fn return value can be Observable<Object>/Promise<Object> type
-        // [NbTransLangEnum.EN]: () => http.get('./assets/localization/en/translations.json').toPromise(),
-        [NbTransLangEnum.EN]: () => http.get('./assets/localization/en/translations.json'),
-        // [NbTransLangEnum.ZH_CN]: () => http.get('./assets/localization/zh-CN/translations.json').toPromise(),
-        [NbTransLangEnum.ZH_CN]: () => http.get('./assets/localization/zh-CN/translations.json'),
+        // [NbTransLang.EN]: () => http.get('./assets/localization/en/translations.json').toPromise(),
+        [NbTransLang.EN]: () => http.get('./assets/localization/en/translations.json'),
+        // [NbTransLang.ZH_CN]: () => http.get('./assets/localization/zh-CN/translations.json').toPromise(),
+        [NbTransLang.ZH_CN]: () => http.get('./assets/localization/zh-CN/translations.json'),
       }),
       deps: [HttpClient]
     }
@@ -286,8 +288,8 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
     {
       provide: NB_TRANS_LOADER,
       useValue: {
-        [NbTransLangEnum.EN]: () => import('./localization/en/translations').then(data => data.trans),
-        [NbTransLangEnum.ZH_CN]: () => import('./localization/zh-CN/translations').then(data => data.trans),
+        [NbTransLang.EN]: () => import('./localization/en/translations').then(data => data.trans),
+        [NbTransLang.ZH_CN]: () => import('./localization/zh-CN/translations').then(data => data.trans),
       }
     }
     // ...
@@ -296,16 +298,19 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
 
 <br>
 
+#### NB_TRANS_MAX_RETRY
+##### number
+##### `v15.0.0`
 #### NB_TRANS_MAX_RETRY_TOKEN
 ##### number
-##### `v12.0.0`
+##### `v12.0.0`, `@deprecated` from `v15.0.0`
 ###### The max retry time when failure to load translated file. The default is 5. It will be set in AppModule in common.
 ##### Usage
 ```ts
   providers: [
 	// ...
     {
-      provide: NB_TRANS_MAX_RETRY_TOKEN,
+      provide: NB_TRANS_MAX_RETRY,
       useValue: 3
     },
 	// ...
@@ -373,14 +378,18 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
 <br>
 
 ### Enums
+#### NbTransLang
+##### `v15.0.0`
 #### NbTransLangEnum
-##### `v12.0.0`
+##### `v12.0.0`, `@deprecated` from `v15.0.0`
 ###### The enum of common language. You can not use it if you don't like, because only use it to set the default lang in lib (you can overwrite it), it is not used anywhere.
 
 <br>
 
+#### NbTransSentenceItem
+##### `v15.0.0`
 #### NbTransSentenceItemEnum
-##### `v12.0.0`
+##### `v12.0.0`, `@deprecated` from `v15.0.0`
 ###### The enum of sentence item. When parsing the translated sentence, it will be as the type:`STR`, `COMP` or `MULTI_COMP`.
 
 <br>

@@ -1,18 +1,42 @@
+# v15.0.0
+## Breaking Changes
+- feat: Upgrade `angular` to `^15.0.0`;
+- feat: Upgrade `@bigbear713/nb-common` to `^15.0.0`;
+
+## Dependencies
+- feat: Upgrade `uuid` to `^9.0.0`;
+
+## [Tokens](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.EN.md#Tokens "Tokens")
+- feat: Add [NB_TRANS_MAX_RETRY](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.EN.md#nb_trans_max_retry), mark `NB_TRANS_MAX_RETRY_TOKEN` as `deprecated`;
+
+## [Enums](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.EN.md#Enums "Enums")
+- feat: Add [NbTransLang](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.EN.md#nbtranslang), mark `NbTransLangEnum` as `deprecated`;
+- feat: Add [NbTransSentenceItem](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.EN.md#nbtranssentenceitem), mark `NbTransSentenceItemEnum` as `deprecated`;
+
+## [Services](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.EN.md#Services "Services")
+- refactor: optimize [NbTransService](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.EN.md#nbtransservice "NbTransService");
+
+## [Pipes](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.EN.md#Pipes "Pipes")
+- refactor: optimize [nbTrans](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.EN.md#nbtrans-transformkey-string-options-inbtransoptions-string);
+
+<br/>
+
 # v14.0.0
 ## Breaking Changes
-- feat: Upgrade `angular` to `v14`;
+- feat: Upgrade `angular` to `^14.0.0`;
+- feat: Upgrade `@bigbear713/nb-common` to `^14.0.0`;
 
 <br/>
 
 # v13.0.1
-## Dependencies
+## Breaking Changes
 - fix: Update the version of `nb-common` as `^13.0.0`;
 
 <br/>
 
 # v13.0.0
 ## Breaking Changes
-- feat: Upgrade `angular` to `v13`;
+- feat: Upgrade `angular` to `^13.0.0`;
 
 <br/>
 
@@ -44,7 +68,7 @@
 ## [Tokens](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.EN.md#Tokens "Tokens")
 - feat: [NB_TRANS_DEFAULT_LANG](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.EN.md#nb_trans_default_lang) - set the default langs
 - feat: [NB_TRANS_LOADER](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.EN.md#nb_trans_loader) - the loader of translated text
-- feat: [NB_TRANS_MAX_RETRY_TOKEN](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.EN.md#nb_trans_max_retry_token) - the max retry time when failure to load translated file
+- feat: [NB_TRANS_MAX_RETRY](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.EN.md#nb_trans_max_retry) - the max retry time when failure to load translated file
 
 ## [Interfaces](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.EN.md#Interfaces "Interfaces")
 - feat: [INbTransLoader](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.EN.md#inbtransloader) - the translated file loader
@@ -55,5 +79,5 @@
 - feat: [INbTransSentenceCompPart](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.EN.md#inbtranssentencecomppart) - the part which include component in sentence
 
 ## [Enums](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.EN.md#Enums "Enums")
-- feat: [NbTransLangEnum](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.EN.md#nbtranslangenum) - the enum of common language
-- feat: [NbTransSentenceItemEnum](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.EN.md#nbtranssentenceitemenum) - the enum of sentence item
+- feat: [NbTransLang](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.EN.md#nbtranslang) - the enum of common language
+- feat: [NbTransSentenceItem](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.EN.md#nbtranssentenceitem) - the enum of sentence item

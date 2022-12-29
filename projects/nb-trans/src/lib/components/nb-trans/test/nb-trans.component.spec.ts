@@ -1,11 +1,11 @@
 import { Component, SimpleChange, TemplateRef, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { take } from 'rxjs/operators';
-import { NB_TRANS_LOADER } from '../../constants';
-import { NbTransLangEnum } from '../../constants';
-import { NbTransService, NbTransToolsService } from '../../services';
-import { transLoader, NbTransTestingModule } from '../../testing';
-import { NbTransComponent } from './nb-trans.component';
+import { NB_TRANS_LOADER } from '../../../constants';
+import { NbTransLang } from '../../../constants';
+import { NbTransService, NbTransToolsService } from '../../../services';
+import { transLoader, NbTransTestingModule } from '../../../testing';
+import { NbTransComponent } from '../nb-trans.component';
 
 @Component({
   selector: 'comp1',
@@ -108,7 +108,7 @@ describe('Component: NbTrans', () => {
     component.key = 'title';
     component.options = {};
 
-    transService.changeLang(NbTransLangEnum.EN).pipe(take(1)).subscribe(() => {
+    transService.changeLang(NbTransLang.EN).pipe(take(1)).subscribe(() => {
       expect(transToolsService.handleTrans).toHaveBeenCalledTimes(1);
       done();
     });
