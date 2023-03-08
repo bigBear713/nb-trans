@@ -2,7 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { INbTransParams } from '../models';
 import { NbTransToolsService } from '../services';
 
-@Pipe({ name: 'nbTransContent' })
+@Pipe({ standalone: true, name: 'nbTransContent' })
 export class NbTransContentPipe implements PipeTransform {
 
   constructor(private transToolsService: NbTransToolsService) { }

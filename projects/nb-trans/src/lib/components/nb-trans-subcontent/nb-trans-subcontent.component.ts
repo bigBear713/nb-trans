@@ -1,12 +1,19 @@
+import { NgSwitch, NgSwitchCase, NgSwitchDefault, NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
   Input,
   TemplateRef
 } from '@angular/core';
+import { NbIsStringPipe, NbTplContentPipe } from '@bigbear713/nb-common';
 import { INbTransSentencePart } from '../../models';
 
+const importsFromNgCommon = [NgSwitch, NgSwitchCase, NgSwitchDefault, NgTemplateOutlet];
+const importsFromNbCommon = [NbIsStringPipe, NbTplContentPipe];
+
 @Component({
+  standalone: true,
+  imports: [...importsFromNgCommon, ...importsFromNbCommon],
   selector: '[nb-trans-subcontent]',
   template: `
     <ng-container [ngSwitch]="content | nbIsString">
@@ -19,7 +26,6 @@ import { INbTransSentencePart } from '../../models';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NbTransSubcontentComponent {
-
   @Input('nb-trans-subcontent') content: string | TemplateRef<any> = '';
 
   @Input() subcontentList: INbTransSentencePart[] = [];

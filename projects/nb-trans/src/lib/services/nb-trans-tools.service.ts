@@ -5,9 +5,7 @@ import { NbValueTypeService } from '@bigbear713/nb-common';
 
 type StrKeyObject = { [key: string]: string };
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class NbTransToolsService {
 
   static checkNavigator(): boolean {
@@ -87,7 +85,12 @@ export class NbTransToolsService {
     );
   }
 
-  private handleCompStr(content: string) {
+  private handleCompStr(content: string): {
+    index: number;
+    content: string;
+    list: INbTransSentencePart[];
+    otherContent: string;
+  } | string {
     const startFlagIndex = content.search(/<\d+>/);
     if (startFlagIndex === -1) {
       return content;
@@ -117,9 +120,9 @@ export class NbTransToolsService {
 
   private replaceParamsKeysAsUuidKey(
     trans: string,
-    paramsArg: { keys: string[], keysUUID: StrKeyObject }
+    paramsArgs: { keys: string[], keysUUID: StrKeyObject }
   ): string {
-    const { keys, keysUUID } = paramsArg;
+    const { keys, keysUUID } = paramsArgs;
     keys.forEach(key => {
       trans = this.handleSentence(trans, `{{${key}}}`, keysUUID[key]);
     });
@@ -128,9 +131,9 @@ export class NbTransToolsService {
 
   private replaceUuidKeyAsParamsValue(
     trans: string,
-    paramsArg: { params: INbTransParams, keys: string[], keysUUID: StrKeyObject }
+    paramsArgs: { params: INbTransParams, keys: string[], keysUUID: StrKeyObject }
   ): string {
-    const { params, keys, keysUUID } = paramsArg;
+    const { params, keys, keysUUID } = paramsArgs;
     keys.forEach(key => {
       trans = this.handleSentence(trans, keysUUID[key], params[key]);
     });
