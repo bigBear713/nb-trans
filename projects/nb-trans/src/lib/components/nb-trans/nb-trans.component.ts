@@ -13,11 +13,11 @@ import {
 import { INbTransOptions, INbTransParams, INbTransSentencePart } from '../../models';
 import { NbTransService, NbTransToolsService } from '../../services';
 import { NbTransSentenceItem } from '../../constants';
-import {  NgFor, NgForOf, NgSwitch, NgSwitchCase, NgTemplateOutlet } from '@angular/common';
+import {  NgFor, NgSwitch, NgSwitchCase, NgTemplateOutlet } from '@angular/common';
 import { NbSentenceItemTypePipe, NbTransContentPipe } from '../../pipes';
 import { NbTplContentPipe } from '@bigbear713/nb-common';
 
-const importsFromNgCommon = [NgTemplateOutlet, NgFor, NgForOf, NgSwitch, NgSwitchCase];
+const importsFromNgCommon = [NgTemplateOutlet, NgFor, NgSwitch, NgSwitchCase];
 const importsFromNbCommon = [NbTplContentPipe];
 const importsFromSelf = [NbSentenceItemTypePipe, NbTransContentPipe];
 
