@@ -5,7 +5,7 @@ import { INbTransOptions } from '../models';
 import { NbTransService } from '../services';
 import { isEqual } from 'lodash-es';
 
-@Pipe({ name: 'nbTrans', pure: false })
+@Pipe({ standalone: true, name: 'nbTrans', pure: false })
 export class NbTransPipe implements PipeTransform, OnDestroy {
 
   private latestValue: string = '';

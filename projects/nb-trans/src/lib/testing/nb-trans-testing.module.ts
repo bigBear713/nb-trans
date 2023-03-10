@@ -3,6 +3,7 @@ import { NbTransModule } from "../nb-trans.module";
 import { NbTransService, NbTransToolsService } from "../services";
 
 @NgModule({
+  imports: [NbTransModule],
   providers: [
     NbTransService,
     NbTransToolsService

@@ -21,19 +21,19 @@ Angular translation lib by bigBear713.
 - [English](https://github.com/bigBear713/nb-trans/blob/master/CHANGELOG.md "Changelog - English")
 
 ## Feature
-- Support to direct/lazing loading translation file;
-- Support to update translation content in page directly and no need to reload page;
-- Support to reset the max retry time when failure to load the translation file;
-- Support there are some params in translation sentence;
-- Support there are some components in the translation sentence;
-- Support the changeDetection of components as `ChangeDetectionStrategy.OnPush`;
-- Support to used in `standalone component`;
-- Support to be imported as a `standalone component`;
+- 支持翻译文本懒加载，或者急性加载；
+- 支持切换语言时，不刷新页面自动更新翻译文本；
+- 支持设置翻译文本加载失败时的重试次数；
+- 支持翻译文本中带有参数；
+- 支持翻译文本中带有组件的复杂场景；
+- 支持组件的更新策略为`ChangeDetectionStrategy.OnPush`；
+- 支持在`standalone component`中使用；
+- 支持以`standalone component`的方式引入；
 
 <br>
 
 ## Version
-###### The nb-trans's major version will keep up with the Angular's major version
+###### nb-trans的大版本和Angular的大版本保持对应关系
 | @bigbear713/nb-trans  | @angular/core |
 | ---                   | ---           |
 | ^12.0.0               | ^12.0.0       |
@@ -50,45 +50,45 @@ $ npm i @bigbear713/nb-trans
 $ yarn add @bigbear713/nb-trans
 ```
 
-## Start the demo project
-- Install the dependencies:
+## 启动demo项目
+- 安装依赖：
 ```bash
 npm i
 ```
 
-- Build the nb-trans lib
+- 编译nb-trans库
 ```bash
 npm run build:lib
 ```
 
-- Run the nb-trans unit test
+- 运行nb-trans单元测试
 ```bash
 npm run test:lib
 ```
 
-- Start the demo
+- 启动demo项目
 ```bash
 npm start
 ```
 
-- build the demo
+- 部署demo
 ```bash
 npm run build
 ```
 
-- Start the demo with SSR
+- 启动带有SSR的demo项目
 ```bash
 npm run dev:ssr
 ```
 
-- Build the demo with SSR
+- 部署带有SSR的demo项目
 ```bash
 npm run build:ssr
 
 npm run serve:ssr
 ```
-## Contribution
-> Feature and PR are welcome to make this project better together
+## 贡献者
+> 欢迎提feature和PR，一起使该项目更好
 
 <a href="https://github.com/bigBear713" target="_blank"><img src="https://avatars.githubusercontent.com/u/12368900?v=4" alt="bigBear713" width="30px" height="30px"></a>
 

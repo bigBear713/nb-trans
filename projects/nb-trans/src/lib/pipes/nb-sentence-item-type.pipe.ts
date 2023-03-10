@@ -3,7 +3,7 @@ import { NbValueTypeService } from '@bigbear713/nb-common';
 import { NbTransSentenceItem } from '../constants';
 import { INbTransSentencePart } from '../models';
 
-@Pipe({ name: 'nbSentenceItemType' })
+@Pipe({ standalone: true, name: 'nbSentenceItemType' })
 export class NbSentenceItemTypePipe implements PipeTransform {
 
   constructor(private valueType: NbValueTypeService) { }
