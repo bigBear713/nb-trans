@@ -20,6 +20,10 @@ Angular translation lib by bigBear713.
 - [中文](https://github.com/bigBear713/nb-trans/blob/master/CHANGELOG.CN.md "更新日志 - 中文")
 - [English](https://github.com/bigBear713/nb-trans/blob/master/CHANGELOG.md "Changelog - English")
 
+## Readme
+- [中文](https://github.com/bigBear713/nb-trans/blob/master/README.CN.md "文档 - 中文")
+- [English](https://github.com/bigBear713/nb-trans/blob/master/README.md "Document - English")
+
 ## Feature
 - Support to direct/lazing loading translation file;
 - Support to update translation content in page directly and no need to reload page;

@@ -164,6 +164,23 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
   <ng-container *ngTemplateOutlet="compContent,context:{list}"></ng-container>
 </ng-template>
 ```
+```ts
+// New in the v15.1.0
+// imported in NgModule
+@NgModule({
+  imports:[NbTransComponent],
+  // ...
+})
+export class XXXModule{}
+
+// imported in standalone component
+@Component({
+  standalone:true,
+  imports:[NbTransComponent],
+  // ...
+})
+export class XXXComponent{}
+```
 
 <br>
 
@@ -193,6 +210,23 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
   <b>{{comContent}}</b>
 </ng-template>
 ```
+```ts
+// New in the v15.1.0
+// imported in NgModule
+@NgModule({
+  imports:[NbTransSubcontentComponent],
+  // ...
+})
+export class XXXModule{}
+
+// imported in standalone component
+@Component({
+  standalone:true,
+  imports:[NbTransSubcontentComponent],
+  // ...
+})
+export class XXXComponent{}
+```
 
 <br>
 
@@ -221,6 +255,23 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
 <!-- key and options params -->
 <div>{{'title'|nbTrans:options}}</div>
 <div>{{'helloWorld'|nbTrans:({prefix:'content'})}}</div>
+```
+```ts
+// New in the v15.1.0
+// imported in NgModule
+@NgModule({
+  imports:[NbTransPipe],
+  // ...
+})
+export class XXXModule{}
+
+// imported in standalone component
+@Component({
+  standalone:true,
+  imports:[NbTransPipe],
+  // ...
+})
+export class XXXComponent{}
 ```
 
 <br>

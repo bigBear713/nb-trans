@@ -165,6 +165,23 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
   <ng-container *ngTemplateOutlet="compContent,context:{list}"></ng-container>
 </ng-template>
 ```
+```ts
+// v15.1.0新增
+// 在NgModule中引入
+@NgModule({
+  imports:[NbTransComponent],
+  // ...
+})
+export class XXXModule{}
+
+// 在standalone component中引入
+@Component({
+  standalone:true,
+  imports:[NbTransComponent],
+  // ...
+})
+export class XXXComponent{}
+```
 
 <br>
 
@@ -193,6 +210,23 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
 <ng-template #comp3 let-comContent="content">
   <b>{{comContent}}</b>
 </ng-template>
+```
+```ts
+// v15.1.0新增
+// 在NgModule中引入
+@NgModule({
+  imports:[NbTransSubcontentComponent],
+  // ...
+})
+export class XXXModule{}
+
+// 在standalone component中引入
+@Component({
+  standalone:true,
+  imports:[NbTransSubcontentComponent],
+  // ...
+})
+export class XXXComponent{}
 ```
 
 <br>
@@ -223,6 +257,23 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
 <!-- key and options params -->
 <div>{{'title'|nbTrans:options}}</div>
 <div>{{'helloWorld'|nbTrans:({prefix:'content'})}}</div>
+```
+```ts
+// v15.1.0新增
+// 在NgModule中引入
+@NgModule({
+  imports:[NbTransPipe],
+  // ...
+})
+export class XXXModule{}
+
+// 在standalone component中引入
+@Component({
+  standalone:true,
+  imports:[NbTransPipe],
+  // ...
+})
+export class XXXComponent{}
 ```
 
 <br>
