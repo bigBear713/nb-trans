@@ -20,6 +20,10 @@ Angular translation lib by bigBear713.
 - [中文](https://github.com/bigBear713/nb-trans/blob/master/CHANGELOG.CN.md "更新日志 - 中文")
 - [English](https://github.com/bigBear713/nb-trans/blob/master/CHANGELOG.md "Changelog - English")
 
+## Readme
+- [中文](https://github.com/bigBear713/nb-trans/blob/master/README.CN.md "文档 - 中文")
+- [English](https://github.com/bigBear713/nb-trans/blob/master/README.md "Document - English")
+
 ## Feature
 - 支持翻译文本懒加载，或者急性加载；
 - 支持切换语言时，不刷新页面自动更新翻译文本；
