@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { NbTransLang, NbTransModule, NB_TRANS_DEFAULT_LANG, NB_TRANS_LOADER } from 'nb-trans';
+import { NbTransLang, NbTransModule, NB_TRANS_DEFAULT_LANG, NB_TRANS_LOADER, NB_TRANS_MAX_RETRY } from 'nb-trans';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,23 +19,23 @@ import { environment } from '../environments/environment';
   ],
   providers: [
     // {
-    //   provide: NB_TRANS_MAX_RETRY_TOKEN,
+    //   provide: NB_TRANS_MAX_RETRY,
     //   useValue: 0
     // },
     {
       provide: NB_TRANS_DEFAULT_LANG,
       useValue: NbTransLang.ZH_CN,
     },
-    {
-      provide: NB_TRANS_LOADER,
-      useValue: {
-        // dyn load and the content is a ts file
-        [NbTransLang.EN]: () => import('./localization/en/translations').then(data => data.trans),
-        [NbTransLang.ZH_CN]: () => import('./localization/zh-CN/translations').then(data => data.trans),
-        // direct load
-        // [NbTransLang.ZH_CN]: trans,
-      },
-    },
+    // {
+    //   provide: NB_TRANS_LOADER,
+    //   useValue: {
+    //     // dyn load and the content is a ts file
+    //     [NbTransLang.EN]: () => import('./localization/en/translations').then(data => data.trans),
+    //     [NbTransLang.ZH_CN]: () => import('./localization/zh-CN/translations').then(data => data.trans),
+    //     // direct load
+    //     // [NbTransLang.ZH_CN]: trans,
+    //   },
+    // },
     {
       provide: NB_TRANS_LOADER,
       useFactory: (http: HttpClient) => ({
