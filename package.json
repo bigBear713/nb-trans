@@ -34,7 +34,7 @@
     "@angular/platform-browser-dynamic": "^15.0.4",
     "@angular/platform-server": "^15.0.4",
     "@angular/router": "^15.0.4",
-    "@bigbear713/nb-common": "^15.0.0",
+    "@bigbear713/nb-common": "^15.1.0",
     "@nguniversal/express-engine": "^15.0.0",
     "express": "^4.15.2",
     "lodash-es": "^4.17.21",
