@@ -1,21 +1,19 @@
-import { Subject } from 'rxjs';
-import { switchMap, takeUntil } from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   Input,
   OnChanges,
-  OnDestroy,
   SimpleChanges,
   TemplateRef,
 } from '@angular/core';
 import { INbTransOptions, INbTransParams, INbTransSentencePart } from '../../models';
 import { NbTransService, NbTransToolsService } from '../../services';
 import { NbTransSentenceItem } from '../../constants';
-import {  NgFor, NgSwitch, NgSwitchCase, NgTemplateOutlet } from '@angular/common';
+import { NgFor, NgSwitch, NgSwitchCase, NgTemplateOutlet } from '@angular/common';
 import { NbSentenceItemTypePipe, NbTransContentPipe } from '../../pipes';
-import { NbTplContentPipe } from '@bigbear713/nb-common';
+import { NbTplContentPipe, UnsubscribeService } from '@bigbear713/nb-common';
 
 const importsFromNgCommon = [NgTemplateOutlet, NgFor, NgSwitch, NgSwitchCase];
 const importsFromNbCommon = [NbTplContentPipe];
@@ -27,8 +25,9 @@ const importsFromSelf = [NbSentenceItemTypePipe, NbTransContentPipe];
   selector: 'nb-trans',
   templateUrl: './nb-trans.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [UnsubscribeService]
 })
-export class NbTransComponent implements OnChanges, OnDestroy {
+export class NbTransComponent implements OnChanges {
 
   @Input() components: TemplateRef<{ content: string | TemplateRef<any>; list?: INbTransSentencePart[] }>[] = [];
 
@@ -42,14 +41,13 @@ export class NbTransComponent implements OnChanges, OnDestroy {
 
   SentenceItemEnum = NbTransSentenceItem;
 
-  private destroy$ = new Subject<void>();
-
   private originTrans: string = '';
 
   constructor(
     private changeDR: ChangeDetectorRef,
     private transToolsService: NbTransToolsService,
     private transService: NbTransService,
+    private unsubscribeService: UnsubscribeService,
   ) {
     this.subscribeLangChange();
   }
@@ -62,11 +60,6 @@ export class NbTransComponent implements OnChanges, OnDestroy {
     }
   }
 
-  ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
-  }
-
   private reRender(): void {
     this.params = this.options?.params;
 
@@ -77,12 +70,13 @@ export class NbTransComponent implements OnChanges, OnDestroy {
   }
 
   private subscribeLangChange(): void {
-    this.transService.subscribeLangChange().pipe(
+    const langChange$ = this.transService.subscribeLangChange().pipe(
       switchMap(_ => this.transService.translationAsync(this.key, this.options)),
-      takeUntil(this.destroy$)
-    ).subscribe(latestValue => {
-      this.originTrans = latestValue;
-      this.reRender();
-    });
+    );
+    this.unsubscribeService.addUnsubscribeOperator(langChange$)
+      .subscribe(latestValue => {
+        this.originTrans = latestValue;
+        this.reRender();
+      });
   }
 }

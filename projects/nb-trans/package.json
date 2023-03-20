@@ -30,7 +30,7 @@
     "@angular/core": "^15.0.0"
   },
   "dependencies": {
-    "@bigbear713/nb-common": "^15.1.0",
+    "@bigbear713/nb-common": "^15.2.0",
     "lodash-es": "^4.17.21",
     "tslib": "^2.3.0",
     "uuid": "^9.0.0"

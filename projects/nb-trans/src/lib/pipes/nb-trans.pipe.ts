@@ -1,25 +1,26 @@
-import { Subject } from 'rxjs';
-import { switchMap, takeUntil } from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
 import { ChangeDetectorRef, OnDestroy, Pipe, PipeTransform } from '@angular/core';
 import { INbTransOptions } from '../models';
 import { NbTransService } from '../services';
 import { isEqual } from 'lodash-es';
+import { UnsubscribeService } from '@bigbear713/nb-common';
 
 @Pipe({ standalone: true, name: 'nbTrans', pure: false })
 export class NbTransPipe implements PipeTransform, OnDestroy {
 
   private latestValue: string = '';
 
-  private destroy$ = new Subject<void>();
-
   private key: string = '';
 
   private options: INbTransOptions | undefined;
+
+  private unsubscribeService: UnsubscribeService;
 
   constructor(
     private changeDR: ChangeDetectorRef,
     private transService: NbTransService,
   ) {
+    this.unsubscribeService = new UnsubscribeService();
     this.subscribeLangChange();
   }
 
@@ -36,15 +37,15 @@ export class NbTransPipe implements PipeTransform, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
+    this.unsubscribeService.ngOnDestroy();
   }
 
   private subscribeLangChange(): void {
-    this.transService.subscribeLangChange().pipe(
+    const langChange$ = this.transService.subscribeLangChange().pipe(
       switchMap(_ => this.transService.translationAsync(this.key, this.options)),
-      takeUntil(this.destroy$)
-    ).subscribe(latestValue => this.updateLatestValue(latestValue));
+    );
+    this.unsubscribeService.addUnsubscribeOperator(langChange$)
+      .subscribe(latestValue => this.updateLatestValue(latestValue));
   }
 
   private updateLatestValue(latestValue: string): void {
