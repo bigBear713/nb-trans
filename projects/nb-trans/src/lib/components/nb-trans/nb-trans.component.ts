@@ -80,3 +80,22 @@ export class NbTransComponent implements OnChanges {
       });
   }
 }
+
+
+@Component({
+  standalone: true,
+  imports: [...importsFromNgCommon, ...importsFromNbCommon, ...importsFromSelf],
+  selector: '[nb-trans]',
+  templateUrl: './nb-trans.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [UnsubscribeService]
+})
+export class NbTrans2Component extends NbTransComponent {
+
+  @Input('nb-trans-components') components: TemplateRef<{ content: string | TemplateRef<any>; list?: INbTransSentencePart[] }>[] = [];
+
+  @Input('nb-trans-key') key: string = '';
+
+  @Input('nb-trans-options') options: INbTransOptions = {};
+
+}

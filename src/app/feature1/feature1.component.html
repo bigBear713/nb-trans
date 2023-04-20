@@ -24,9 +24,7 @@
 <h5>动态调整options,options is {{options|json}}</h5>
 <button (click)="changeOptions()">change options</button>
 <p>{{'contentWithParams'| nbTrans:options}}</p>
-<p>
-  <nb-trans key="contentWithParams" [options]="options"></nb-trans>
-</p>
+
 <hr>
 
 <div>
@@ -34,6 +32,7 @@
   {{"get title(){return this.transService.translationSync('title');}:"}}
   {{title}}
 </div>
+
 <hr>
 
 <div>
@@ -42,9 +41,18 @@
   {{"{{title$ | async}}:"}}
   {{title$|async}}
 </div>
+
 <hr>
 
-<h5>使用nb-trans组件，带有components参数和options参数。设置key值前缀和翻译文本中的参数,params参数为：{{params|json}}</h5>
+<h3>use {{'\<nb-trans>\</nb-trans>'}}</h3>
+
+<div>
+  <nb-trans key="contentWithParams" [options]="options"></nb-trans>
+</div>
+
+<hr>
+
+<h5>使用{{'\<nb-trans />'}}组件，带有components参数和options参数。设置key值前缀和翻译文本中的参数,params参数为：{{params|json}}</h5>
 <p>
   翻译文本原文：{{'complexContent'| nbTrans:({prefix:'content'})}}
 </p>
@@ -57,6 +65,34 @@
   <nb-trans key="complexContent" [components]="[com0,com1,com2]" [options]="{params,prefix:'content'}"> </nb-trans>
 </div>
 
+<hr>
+
+<h3>use {{'\<div nb-trans>\</div>'}}</h3>
+
+<div nb-trans nb-trans-key="contentWithParams" [nb-trans-options]="options"></div>
+<hr>
+
+<h5>使用{{'\<div nb-trans>\</div>'}}组件，带有components参数和options参数。设置key值前缀和翻译文本中的参数,params参数为：{{params|json}}</h5>
+<p>
+  翻译文本原文：{{'complexContent'| nbTrans:({prefix:'content'})}}
+</p>
+
+<div>
+  <pre><code>{{compStr2}}</code></pre>
+</div>
+
+<div>
+  <div nb-trans nb-trans-key="complexContent" [nb-trans-components]="[com0,com1,com2]"
+    [nb-trans-options]="{params,prefix:'content'}"></div>
+</div>
+
+<hr>
+
+<h5>{{'currBrowserLang' | nbTrans}}</h5>
+<p>{{browserLang}}</p>
+<p>{{browserLangs|json}}</p>
+
+
 <ng-template #com0 let-comContent="content" let-list="list">
   <b [nb-trans-subcontent]="comContent" [subcontentList]="list"></b>
 </ng-template>
@@ -68,9 +104,3 @@
 <ng-template #com2 let-comContent="content">
   <b>{{comContent}}</b>
 </ng-template>
-
-<hr>
-
-<h5>{{'currBrowserLang' | nbTrans}}</h5>
-<p>{{browserLang}}</p>
-<p>{{browserLangs|json}}</p>

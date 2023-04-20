@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
-import { NbTransComponent, NbTransSubcontentComponent } from './components';
+import { NbTrans2Component, NbTransComponent, NbTransSubcontentComponent } from './components';
 import { NbTransPipe } from './pipes';
 
 const COMPONENTS = [
   NbTransComponent,
+  NbTrans2Component,
   NbTransSubcontentComponent,
 ];
 
