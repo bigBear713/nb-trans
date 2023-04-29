@@ -97,5 +97,4 @@ export class NbTrans2Component extends NbTransComponent {
   @Input('nb-trans-key') key: string = '';
 
   @Input('nb-trans-options') options: INbTransOptions = {};
-
 }
