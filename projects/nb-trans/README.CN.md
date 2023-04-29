@@ -185,6 +185,43 @@ export class XXXComponent{}
 
 <br>
 
+#### `[nb-trans]`
+##### `v15.2.0`
+###### 当翻译文本中含有组件等复杂场景时使用的组件。当不想使用"<nb-trans />"标签元素，而是自己选择原生html标签时使用，比如"<div />","<span />"。当语言被切换时，组件渲染的内容将自动更新。
+
+##### Input
+| Name  | Type  | Default  | Description  | Version |
+| ------------ | ------------ | ------------ | ------------ | ------------ |
+| nb-trans-components  | `TemplateRef<{ content: string ｜ TemplateRef<any>; list?: INbTransSentencePart[] }>[]`  | []  | 翻译文本中的对应的组件。  | `v15.2.0` |
+| nb-trans-key  | `string`  | `''`  | 获取翻译文本的key值  | `v15.2.0` |
+| nb-trans-options  | `INbTransOptions`  | {}  | 翻译的配置信息。具体配置见下方的[`INbTransOptions`](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#inbtransoptions)定义。  | `v15.2.0` |
+
+##### Usage
+```html
+<!-- only trans key -->
+<div nb-trans nb-trans-key="title"></div>
+<div nb-trans [nb-trans-key]="transKey"></div>
+<!-- other native html tags -->
+<span nb-trans [nb-trans-key]="transKey"></span>
+<p nb-trans [nb-trans-key]="transKey"></p>
+<h2 nb-trans [nb-trans-key]="transKey"></h2>
+
+<!-- trans key and options -->
+<div nb-trans nb-transkey="title" [nb-transoptions]="options"></div>
+<div nb-trans nb-trans-key="helloWorld" [nb-trans-options]="({prefix:'content'})"></div>
+
+<!-- trans key, options and components -->
+<div nb-trans [nb-trans-key]="complexContent" [nb-trans-options]="options" [nb-trans-components]="[com1,com2]"></div>
+<ng-template #comp1 let-compContent="content">
+  <span>{{compContent}}</span>
+</ng-template>
+<ng-template #comp2 let-compContent="content" let-compList="list">
+  <ng-container *ngTemplateOutlet="compContent,context:{list}"></ng-container>
+</ng-template>
+```
+
+<br>
+
 #### `[nb-trans-subcontent]`
 ##### `v12.0.0`
 ##### 从`v15.1.0`开始为`standalone component`

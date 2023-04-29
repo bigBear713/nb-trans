@@ -1,3 +1,13 @@
+# v15.2.0
+## [Components](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#Components "Components")
+- feat: [`[nb-trans]`](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#nb-trans) - Add the component which the selector is `[nb-trans]`
+- perf: [`<nb-trans></nb-trans>`](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#nb-transnb-trans) - Use the UnsubscribeService to manage the rxjs subscription
+
+## [Pipes](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#Pipes "Pipes")
+- feat: [nbTrans](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#nbtrans-transformkey-string-options-inbtransoptions-string) - Use the UnsubscribeService to manage the rxjs subscription
+
+<br>
+
 # v15.1.0
 ## [Components](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#Components "Components")
 - feat: [`<nb-trans></nb-trans>`](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#nb-transnb-trans) - Support to be imported as a `standalone component`
@@ -6,7 +16,7 @@
 ## [Pipes](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#Pipes "Pipes")
 - feat: [nbTrans](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#nbtrans-transformkey-string-options-inbtransoptions-string) - Support to be imported as a `standalone component`
 
-<br/>
+<br>
 
 # v15.0.0
 ## Breaking Changes
@@ -29,26 +39,26 @@
 ## [Pipes](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#Pipes "Pipes")
 - refactor: optimize [nbTrans](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#nbtrans-transformkey-string-options-inbtransoptions-string);
 
-<br/>
+<br>
 
 # v14.0.0
 ## Breaking Changes
 - feat: Upgrade `angular` to `^14.0.0`;
 - feat: Upgrade `@bigbear713/nb-common` to `^14.0.0`;
 
-<br/>
+<br>
 
 # v13.0.1
 ## Breaking Changes
 - fix: Update the version of `nb-common` as `^13.0.0`;
 
-<br/>
+<br>
 
 # v13.0.0
 ## Breaking Changes
 - feat: Upgrade `angular` to `^13.0.0`;
 
-<br/>
+<br>
 
 # v12.1.0
 ## [Services](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#Services "Services")
@@ -58,7 +68,7 @@
 - feat: `NbTransService.getBrowserLangs()` can a language array known directly
 - depr: `getBrowserLangs()` has been marked as `deprecated`;
 
-<br/>
+<br>
 
 # v12.0.0
 ## [Module](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#Module "Module")
