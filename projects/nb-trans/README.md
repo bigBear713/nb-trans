@@ -184,6 +184,42 @@ export class XXXComponent{}
 
 <br>
 
+#### `[nb-trans]`
+##### `v15.2.0`
+###### When you need to translate the sentence which include components. When you don't want to use "<nb-trans />" tag, and want to use the native html tag, such as "<div />", "<span />". When the lang has been switched, the content will auto be updated.
+##### Input
+| Name  | Type  | Default  | Description  | Version |
+| ------------ | ------------ | ------------ | ------------ | ------------ |
+| nb-trans-components  | `TemplateRef<{ content: string ｜ TemplateRef<any>; list?: INbTransSentencePart[] }>[]`  | []  |  The corresponding component in the translated text.  | `v15.2.0` |
+| nb-trans-key  | `string`  | `''`  | The key to get translated text  | `v15.2.0` |
+| nb-trans-options  | `INbTransOptions`  | {}  | The options of translation. The detail config follow the below definition of [`INbTransOptions`](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#inbtransoptions) | `v15.2.0` |
+
+##### Usage
+```html
+<!-- only trans key -->
+<div nb-trans nb-trans-key="title"></div>
+<div nb-trans [nb-trans-key]="transKey"></div>
+<!-- other native html tags -->
+<span nb-trans [nb-trans-key]="transKey"></span>
+<p nb-trans [nb-trans-key]="transKey"></p>
+<h2 nb-trans [nb-trans-key]="transKey"></h2>
+
+<!-- trans key and options -->
+<div nb-trans nb-transkey="title" [nb-transoptions]="options"></div>
+<div nb-trans nb-trans-key="helloWorld" [nb-trans-options]="({prefix:'content'})"></div>
+
+<!-- trans key, options and components -->
+<div nb-trans [nb-trans-key]="complexContent" [nb-trans-options]="options" [nb-trans-components]="[com1,com2]"></div>
+<ng-template #comp1 let-compContent="content">
+  <span>{{compContent}}</span>
+</ng-template>
+<ng-template #comp2 let-compContent="content" let-compList="list">
+  <ng-container *ngTemplateOutlet="compContent,context:{list}"></ng-container>
+</ng-template>
+```
+
+<br>
+
 #### `[nb-trans-subcontent]`
 ##### `v12.0.0`
 ##### Be a `standalone component` from `v15.1.0`
