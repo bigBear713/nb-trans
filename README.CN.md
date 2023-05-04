@@ -16,13 +16,19 @@ Angular translation lib by bigBear713.
 - [中文](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md "文档 - 中文")
 - [English](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md "Document - English")
 
+---
+
 ## Changelog
 - [中文](https://github.com/bigBear713/nb-trans/blob/master/CHANGELOG.CN.md "更新日志 - 中文")
 - [English](https://github.com/bigBear713/nb-trans/blob/master/CHANGELOG.md "Changelog - English")
 
+---
+
 ## Readme
 - [中文](https://github.com/bigBear713/nb-trans/blob/master/README.CN.md "文档 - 中文")
 - [English](https://github.com/bigBear713/nb-trans/blob/master/README.md "Document - English")
+
+---
 
 ## Feature
 - 支持翻译文本懒加载，或者急性加载；
@@ -34,7 +40,7 @@ Angular translation lib by bigBear713.
 - 支持在`standalone component`中使用；
 - 支持以`standalone component`的方式引入；
 
-<br>
+---
 
 ## Version
 ###### nb-trans的大版本和Angular的大版本保持对应关系
@@ -44,8 +50,9 @@ Angular translation lib by bigBear713.
 | ^13.0.0               | ^13.0.0       |
 | ^14.0.0               | ^14.0.0       |
 | ^15.0.0               | ^15.0.0       |
+| ^16.0.0               | ^16.0.0       |
 
-<br>
+---
 
 ## Installation
 ```bash
@@ -53,6 +60,8 @@ $ npm i @bigbear713/nb-trans
 // or
 $ yarn add @bigbear713/nb-trans
 ```
+
+---
 
 ## 启动demo项目
 - 安装依赖：
@@ -91,10 +100,15 @@ npm run build:ssr
 
 npm run serve:ssr
 ```
+
+---
+
 ## 贡献者
 > 欢迎提feature和PR，一起使该项目更好
 
 <a href="https://github.com/bigBear713" target="_blank"><img src="https://avatars.githubusercontent.com/u/12368900?v=4" alt="bigBear713" width="30px" height="30px"></a>
+
+---
 
 ## License
 MIT

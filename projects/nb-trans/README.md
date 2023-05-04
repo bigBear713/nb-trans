@@ -18,11 +18,15 @@ Angular translation lib by bigBear713.
 
 <br>
 
+---
+
 ## Changelog
 - [中文](https://github.com/bigBear713/nb-trans/blob/master/CHANGELOG.CN.md "更新日志 - 中文")
 - [English](https://github.com/bigBear713/nb-trans/blob/master/CHANGELOG.md "Changelog - English")
 
 <br>
+
+---
 
 ## Feature
 - Support to direct/lazing loading translated file;
@@ -36,6 +40,8 @@ Angular translation lib by bigBear713.
 
 <br>
 
+---
+
 ## Version
 ###### The nb-trans's major version will keep up with the Angular's major version
 | @bigbear713/nb-trans  | @angular/core |
@@ -44,8 +50,11 @@ Angular translation lib by bigBear713.
 | ^13.0.0               | ^13.0.0       |
 | ^14.0.0               | ^14.0.0       |
 | ^15.0.0               | ^15.0.0       |
+| ^16.0.0               | ^16.0.0       |
 
 <br>
+
+---
 
 ## Installation
 ```bash
@@ -55,6 +64,8 @@ $ yarn add @bigbear713/nb-trans
 ```
 
 <br>
+
+---
 
 ## API
 ### Module
@@ -66,6 +77,8 @@ $ yarn add @bigbear713/nb-trans
 ###### Translation test module, it is for Unit Test.
 
 <br>
+
+---
 
 ### Services
 
@@ -132,6 +145,8 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
 
 <br>
 
+---
+
 ### Components
 
 #### `<nb-trans></nb-trans>`
@@ -185,14 +200,14 @@ export class XXXComponent{}
 <br>
 
 #### `[nb-trans]`
-##### `v15.2.0`
+##### `v16.0.0`
 ###### When you need to translate the sentence which include components. When you don't want to use "<nb-trans />" tag, and want to use the native html tag, such as "<div />", "<span />". When the lang has been switched, the content will auto be updated.
 ##### Input
 | Name  | Type  | Default  | Description  | Version |
 | ------------ | ------------ | ------------ | ------------ | ------------ |
-| nb-trans-components  | `TemplateRef<{ content: string ｜ TemplateRef<any>; list?: INbTransSentencePart[] }>[]`  | []  |  The corresponding component in the translated text.  | `v15.2.0` |
-| nb-trans-key  | `string`  | `''`  | The key to get translated text  | `v15.2.0` |
-| nb-trans-options  | `INbTransOptions`  | {}  | The options of translation. The detail config follow the below definition of [`INbTransOptions`](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#inbtransoptions) | `v15.2.0` |
+| nb-trans-components  | `TemplateRef<{ content: string ｜ TemplateRef<any>; list?: INbTransSentencePart[] }>[]`  | []  |  The corresponding component in the translated text.  | `v16.0.0` |
+| nb-trans-key  | `string`  | `''`  | The key to get translated text  | `v16.0.0` |
+| nb-trans-options  | `INbTransOptions`  | {}  | The options of translation. The detail config follow the below definition of [`INbTransOptions`](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#inbtransoptions) | `v16.0.0` |
 
 ##### Usage
 ```html
@@ -216,6 +231,22 @@ export class XXXComponent{}
 <ng-template #comp2 let-compContent="content" let-compList="list">
   <ng-container *ngTemplateOutlet="compContent,context:{list}"></ng-container>
 </ng-template>
+```
+```ts
+// imported in NgModule
+@NgModule({
+  imports:[NbTrans2Component],
+  // ...
+})
+export class XXXModule{}
+
+// imported in standalone component
+@Component({
+  standalone:true,
+  imports:[NbTrans2Component],
+  // ...
+})
+export class XXXComponent{}
 ```
 
 <br>
@@ -266,6 +297,8 @@ export class XXXComponent{}
 
 <br>
 
+---
+
 ### Pipes
 
 #### nbTrans: `transform(key: string, options?: INbTransOptions): string`
@@ -311,6 +344,8 @@ export class XXXComponent{}
 ```
 
 <br>
+
+---
 
 ### Tokens
 
@@ -413,6 +448,8 @@ export class XXXComponent{}
 
 <br>
 
+---
+
 ### Interfaces
 
 #### INbTransLoader
@@ -471,6 +508,8 @@ export class XXXComponent{}
 
 <br>
 
+---
+
 ### Enums
 #### NbTransLang
 ##### `v15.0.0`
@@ -488,12 +527,16 @@ export class XXXComponent{}
 
 <br>
 
+---
+
 ### Contribution
 > Feature and PR are welcome to make this project better together
 
 <a href="https://github.com/bigBear713" target="_blank"><img src="https://avatars.githubusercontent.com/u/12368900?v=4" alt="bigBear713" width="30px" height="30px"></a>
 
 <br>
+
+---
 
 ### License
 MIT
