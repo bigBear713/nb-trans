@@ -1,12 +1,12 @@
 import { NbTransService } from 'nb-trans';
 
 import { Injectable } from '@angular/core';
-import { Resolve } from '@angular/router';
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class AppService implements Resolve<Boolean> {
+export class AppService  {
 
   constructor(
     private transService: NbTransService
