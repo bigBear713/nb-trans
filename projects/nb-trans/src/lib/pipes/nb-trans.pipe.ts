@@ -3,7 +3,7 @@ import { ChangeDetectorRef, OnDestroy, Pipe, PipeTransform } from '@angular/core
 import { INbTransOptions } from '../models';
 import { NbTransService } from '../services';
 import { isEqual } from 'lodash-es';
-import { UnsubscribeService } from '@bigbear713/nb-common';
+import { NbUnsubscribeService } from '@bigbear713/nb-common';
 
 @Pipe({ standalone: true, name: 'nbTrans', pure: false })
 export class NbTransPipe implements PipeTransform, OnDestroy {
@@ -14,13 +14,13 @@ export class NbTransPipe implements PipeTransform, OnDestroy {
 
   private options: INbTransOptions | undefined;
 
-  private unsubscribeService: UnsubscribeService;
+  private unsubscribeService: NbUnsubscribeService;
 
   constructor(
     private changeDR: ChangeDetectorRef,
     private transService: NbTransService,
   ) {
-    this.unsubscribeService = new UnsubscribeService();
+    this.unsubscribeService = new NbUnsubscribeService();
     this.subscribeLangChange();
   }
 
