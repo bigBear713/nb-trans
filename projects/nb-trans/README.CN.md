@@ -18,11 +18,15 @@ Angular translation lib by bigBear713.
 
 <br>
 
+---
+
 ## Changelog
 - [中文](https://github.com/bigBear713/nb-trans/blob/master/CHANGELOG.CN.md "更新日志 - 中文")
 - [English](https://github.com/bigBear713/nb-trans/blob/master/CHANGELOG.md "Changelog - English")
 
 <br>
+
+---
 
 ## Feature
 - 支持翻译文本懒加载，或者急性加载；
@@ -36,6 +40,8 @@ Angular translation lib by bigBear713.
 
 <br>
 
+---
+
 ## Version
 ###### nb-trans的大版本和Angular的大版本保持对应关系
 | @bigbear713/nb-trans  | @angular/core |
@@ -44,8 +50,11 @@ Angular translation lib by bigBear713.
 | ^13.0.0               | ^13.0.0       |
 | ^14.0.0               | ^14.0.0       |
 | ^15.0.0               | ^15.0.0       |
+| ^16.0.0               | ^16.0.0       |
 
 <br>
+
+---
 
 ## Installation
 ```bash
@@ -55,6 +64,8 @@ $ yarn add @bigbear713/nb-trans
 ```
 
 <br>
+
+---
 
 ## API
 ### Module
@@ -66,6 +77,8 @@ $ yarn add @bigbear713/nb-trans
 ###### 多语言测试模块。用于Unit Test。
 
 <br>
+
+---
 
 ### Services
 
@@ -131,6 +144,7 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
 
 <br>
 
+---
 
 ### Components
 
@@ -186,15 +200,15 @@ export class XXXComponent{}
 <br>
 
 #### `[nb-trans]`
-##### `v15.2.0`
+##### `v16.0.0`
 ###### 当翻译文本中含有组件等复杂场景时使用的组件。当不想使用"<nb-trans />"标签元素，而是自己选择原生html标签时使用，比如"<div />","<span />"。当语言被切换时，组件渲染的内容将自动更新。
 
 ##### Input
 | Name  | Type  | Default  | Description  | Version |
 | ------------ | ------------ | ------------ | ------------ | ------------ |
-| nb-trans-components  | `TemplateRef<{ content: string ｜ TemplateRef<any>; list?: INbTransSentencePart[] }>[]`  | []  | 翻译文本中的对应的组件。  | `v15.2.0` |
-| nb-trans-key  | `string`  | `''`  | 获取翻译文本的key值  | `v15.2.0` |
-| nb-trans-options  | `INbTransOptions`  | {}  | 翻译的配置信息。具体配置见下方的[`INbTransOptions`](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#inbtransoptions)定义。  | `v15.2.0` |
+| nb-trans-components  | `TemplateRef<{ content: string ｜ TemplateRef<any>; list?: INbTransSentencePart[] }>[]`  | []  | 翻译文本中的对应的组件。  | `v16.0.0` |
+| nb-trans-key  | `string`  | `''`  | 获取翻译文本的key值  | `v16.0.0` |
+| nb-trans-options  | `INbTransOptions`  | {}  | 翻译的配置信息。具体配置见下方的[`INbTransOptions`](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#inbtransoptions)定义。  | `v16.0.0` |
 
 ##### Usage
 ```html
@@ -218,6 +232,22 @@ export class XXXComponent{}
 <ng-template #comp2 let-compContent="content" let-compList="list">
   <ng-container *ngTemplateOutlet="compContent,context:{list}"></ng-container>
 </ng-template>
+```
+```ts
+// imported in NgModule
+@NgModule({
+  imports:[NbTrans2Component],
+  // ...
+})
+export class XXXModule{}
+
+// imported in standalone component
+@Component({
+  standalone:true,
+  imports:[NbTrans2Component],
+  // ...
+})
+export class XXXComponent{}
 ```
 
 <br>
@@ -268,6 +298,8 @@ export class XXXComponent{}
 
 <br>
 
+---
+
 ### Pipes
 
 #### nbTrans: `transform(key: string, options?: INbTransOptions): string`
@@ -314,6 +346,8 @@ export class XXXComponent{}
 ```
 
 <br>
+
+---
 
 ### Tokens
 
@@ -417,6 +451,8 @@ export class XXXComponent{}
 
 <br>
 
+---
+
 ### Interfaces
 
 #### INbTransLoader
@@ -475,6 +511,8 @@ export class XXXComponent{}
 
 <br>
 
+---
+
 ### Enums
 #### NbTransLang
 ##### `v15.0.0`
@@ -492,12 +530,16 @@ export class XXXComponent{}
 
 <br>
 
+---
+
 ### 贡献
 > 欢迎提feature和PR，一起使该项目更好
 
 <a href="https://github.com/bigBear713" target="_blank"><img src="https://avatars.githubusercontent.com/u/12368900?v=4" alt="bigBear713" width="30px" height="30px"></a>
 
 <br>
+
+---
 
 ### License
 MIT

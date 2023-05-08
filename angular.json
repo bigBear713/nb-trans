@@ -132,7 +132,8 @@
                   "with": "src/environments/environment.ssr.ts"
                 }
               ],
-              "vendorChunk": true
+              "vendorChunk": true,
+              "buildOptimizer": false
             }
           },
           "defaultConfiguration": "production"

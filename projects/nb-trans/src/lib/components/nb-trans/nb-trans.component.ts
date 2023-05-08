@@ -13,7 +13,7 @@ import { NbTransService, NbTransToolsService } from '../../services';
 import { NbTransSentenceItem } from '../../constants';
 import { NgFor, NgSwitch, NgSwitchCase, NgTemplateOutlet } from '@angular/common';
 import { NbSentenceItemTypePipe, NbTransContentPipe } from '../../pipes';
-import { NbTplContentPipe, UnsubscribeService } from '@bigbear713/nb-common';
+import { NbTplContentPipe, NbUnsubscribeService } from '@bigbear713/nb-common';
 
 const importsFromNgCommon = [NgTemplateOutlet, NgFor, NgSwitch, NgSwitchCase];
 const importsFromNbCommon = [NbTplContentPipe];
@@ -25,7 +25,7 @@ const importsFromSelf = [NbSentenceItemTypePipe, NbTransContentPipe];
   selector: 'nb-trans',
   templateUrl: './nb-trans.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [UnsubscribeService]
+  providers: [NbUnsubscribeService]
 })
 export class NbTransComponent implements OnChanges {
 
@@ -47,7 +47,7 @@ export class NbTransComponent implements OnChanges {
     private changeDR: ChangeDetectorRef,
     private transToolsService: NbTransToolsService,
     private transService: NbTransService,
-    private unsubscribeService: UnsubscribeService,
+    private unsubscribeService: NbUnsubscribeService,
   ) {
     this.subscribeLangChange();
   }
@@ -88,7 +88,7 @@ export class NbTransComponent implements OnChanges {
   selector: '[nb-trans]',
   templateUrl: './nb-trans.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [UnsubscribeService]
+  providers: [NbUnsubscribeService]
 })
 export class NbTrans2Component extends NbTransComponent {
 

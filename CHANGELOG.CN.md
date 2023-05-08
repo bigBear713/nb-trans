@@ -1,12 +1,16 @@
-# v15.2.0
+# v16.0.0
+## 破坏性更新
+- feat: `angular`升级到`^16.0.0`;
+- feat: `@bigbear713/nb-common`升级到`^16.0.0`;
+
 ## [Components](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#Components "Components")
 - feat: [`[nb-trans]`](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#nb-trans) - 新增选择器为`[nb-trans]`的组件
-- perf: [`<nb-trans></nb-trans>`](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#nb-transnb-trans) - 使用 UnsubscribeService 来管理rxjs的订阅事件
+- perf: [`<nb-trans />`](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#nb-transnb-trans) - 使用 UnsubscribeService 管理rxjs的订阅事件
 
 ## [Pipes](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#Pipes "Pipes")
 - feat: [nbTrans](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#nbtrans-transformkey-string-options-inbtransoptions-string) - 使用 UnsubscribeService 来管理rxjs的订阅事件
 
-<br>
+---
 
 # v15.1.0
 ## [Components](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#Components "Components")
@@ -16,7 +20,7 @@
 ## [Pipes](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#Pipes "Pipes")
 - feat: [nbTrans](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#nbtrans-transformkey-string-options-inbtransoptions-string) - 支持以`standalone component`的方式引入
 
-<br>
+---
 
 # v15.0.0
 ## 破坏性更新
@@ -39,26 +43,26 @@
 ## [Pipes](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#Pipes "Pipes")
 - refactor: 优化[nbTrans](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#nbtrans-transformkey-string-options-inbtransoptions-string)；
 
-<br>
+---
 
 # v14.0.0
 ## 破坏性更新
 - feat: `angular`升级到`^14.0.0`;
 - feat: `@bigbear713/nb-common`升级到`^14.0.0`; 
 
-<br>
+---
 
 # v13.0.1
 ## 破坏性更新
 - fix: `nb-common`版本调整为`^13.0.0`;
 
-<br>
+---
 
 # v13.0.0
 ## 破坏性更新
 - feat: `angular`升级到`^13.0.0`;
 
-<br>
+---
 
 # v12.1.0
 ## [Services](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#Services "Services")
@@ -68,7 +72,7 @@
 - feat: `NbTransService.getBrowserLangs()`可以直接获取一个用户已知语言的数组;
 - depr: `getBrowserLangs()`被标志为`deprecated`;
 
-<br>
+---
 
 # v12.0.0
 ## [Module](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#Module "Module")
