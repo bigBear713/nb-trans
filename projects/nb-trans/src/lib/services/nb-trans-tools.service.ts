@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
 import { INbTransSentencePart, INbTransParams } from '../models';
-import { v4 as uuidv4 } from 'uuid';
 import { NbValueTypeService } from '@bigbear713/nb-common';
-
-type StrKeyObject = { [key: string]: string };
 
 @Injectable({ providedIn: 'root' })
 export class NbTransToolsService {
@@ -36,18 +33,15 @@ export class NbTransToolsService {
       return trans;
     }
 
-    const paramsKeysUUID = this.getParamsKeyUuid(paramsKeys);
-    // first, replace the param keys as uuid keys
-    // then, replace the uuid keys as params value,
-    // so the value will not be wrong when the params value is same with other param value
-    const transWithUUIDKey = this.replaceParamsKeysAsUuidKey(
-      trans,
-      { keys: paramsKeys, keysUUID: paramsKeysUUID }
-    );
-    return this.replaceUuidKeyAsParamsValue(
-      transWithUUIDKey,
-      { params, keys: paramsKeys, keysUUID: paramsKeysUUID }
-    );
+    // First, split the trans string to string array via params key,
+    // like this: 'This is {{p1}} and {{p2}} and {{p1}}.' -> 
+    // ['This is ','{{p1}}',' and ','{{p2}}',' and ','{{p1}}','.'] 
+    // Then replace the params key as params value, like this:
+    // ['This is ','param1',' and ','param2',' and ','param1','.'] 
+    // Last, make array join as string, like this: 'This is param1 and param2 and param1.'
+    const { specialKeys, specialParams } = this.converParams2SpecialKey(params, paramsKeys)
+    const splitStrArr = this.splitTrans(trans, specialKeys);
+    return this.replaceAsParamsValueInSplitArr(splitStrArr, specialParams).join('');
   }
 
   handleTrans(trans: string): INbTransSentencePart[] {
@@ -73,16 +67,6 @@ export class NbTransToolsService {
       }
     }
     return sentenceList;
-  }
-
-  private getParamsKeyUuid(paramsKey: string[]): StrKeyObject {
-    return paramsKey.reduce(
-      (pre: StrKeyObject, key) => {
-        pre[key] = uuidv4();
-        return pre;
-      },
-      {}
-    );
   }
 
   private handleCompStr(content: string): {
@@ -118,25 +102,37 @@ export class NbTransToolsService {
     };
   }
 
-  private replaceParamsKeysAsUuidKey(
-    trans: string,
-    paramsArgs: { keys: string[], keysUUID: StrKeyObject }
-  ): string {
-    const { keys, keysUUID } = paramsArgs;
-    keys.forEach(key => {
-      trans = this.handleSentence(trans, `{{${key}}}`, keysUUID[key]);
-    });
-    return trans;
+  private converParams2SpecialKey(params: INbTransParams, paramsKeys: string[]) {
+    const defaultValue: {
+      specialKeys: string[],
+      specialParams: INbTransParams,
+    } = {
+      specialKeys: [],
+      specialParams: {}
+    };
+    return paramsKeys.reduce((prev, key) => {
+      const specialKey = `{{${key}}}`;
+      prev.specialKeys.push(specialKey);
+      prev.specialParams[specialKey] = params[key];
+      return prev;
+    }, defaultValue);
   }
 
-  private replaceUuidKeyAsParamsValue(
-    trans: string,
-    paramsArgs: { params: INbTransParams, keys: string[], keysUUID: StrKeyObject }
-  ): string {
-    const { params, keys, keysUUID } = paramsArgs;
-    keys.forEach(key => {
-      trans = this.handleSentence(trans, keysUUID[key], params[key]);
+  private replaceAsParamsValueInSplitArr(transSplitArr: string[], params: INbTransParams): string[] {
+    transSplitArr.forEach((item, index) => {
+      const paramValue = params[item];
+      if (paramValue) {
+        transSplitArr[index] = paramValue;
+      }
     });
-    return trans;
+    return transSplitArr;
+  }
+
+  private splitTrans(trans: string, specialKeys: string[]): string[] {
+    // splitter like this: /({{p1}}|{{p2}})/g
+    const splitter = new RegExp(`(${specialKeys.join('|')})`, 'g');
+    // origin string: 'This is {{p1}} and {{p2}} and {{p1}}.'
+    // expected result: ['This is ','{{p1}}',' and ','{{p2}}',' and ','{{p1}}','.']
+    return trans.split(splitter);
   }
 }
