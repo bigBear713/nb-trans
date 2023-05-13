@@ -2,13 +2,17 @@
 ## Breaking Changes
 - feat: Upgrade `angular` to `^16.0.0`;
 - feat: Upgrade `@bigbear713/nb-common` to `^16.0.0`;
+- feat: [NbTransService](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#nbtransservice "NbTransService") - Limit the naming rules about params's key: Consists of `letters, numbers, _, and $`, and the number can't be the first character;
+
+## [Services](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#Services "Services")
+- refactor: [NbTransService](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#nbtransservice "NbTransService") - Refactor the function for handling the dynamic params in translated string;
 
 ## [Components](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#Components "Components")
-- feat: [`[nb-trans]`](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#nb-trans) - Add the component which the selector is `[nb-trans]`
-- perf: [`<nb-trans />`](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#nb-transnb-trans) - Use the UnsubscribeService to manage the rxjs subscription
+- feat: [`[nb-trans]`](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#nb-trans) - Add the component which the selector is `[nb-trans]`;
+- perf: [`<nb-trans />`](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#nb-transnb-trans) - Use the UnsubscribeService to manage the rxjs subscription;
 
 ## [Pipes](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#Pipes "Pipes")
-- feat: [nbTrans](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#nbtrans-transformkey-string-options-inbtransoptions-string) - Use the UnsubscribeService to manage the rxjs subscription
+- feat: [nbTrans](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#nbtrans-transformkey-string-options-inbtransoptions-string) - Use the UnsubscribeService to manage the rxjs subscription;
 
 ---
 

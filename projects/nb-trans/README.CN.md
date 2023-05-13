@@ -477,10 +477,14 @@ export class XXXComponent{}
 
 #### INbTransParams
 ##### `v12.0.0`
+#### 注意：param `key` 的命名规则
+- 自`v16.0.0`起：
+1. 由 `字母，数字，_和$`组成；
+2. `数字`不能是第一个字符；
 ###### 翻译文本中的参数
 | Property  | Type  | Mandatory  | Description  | Version |
 | ------------ | ------------ | ------------ | ------------ | ------------ |
-| [key: string]  | `string`  | false  | key值为字符串类型，value值为字符串类型  | `v12.0.0` |
+| [key: string]  | `string`  | false | key值为字符串类型，value值为字符串类型  | `v12.0.0` |
 
 <br>
 

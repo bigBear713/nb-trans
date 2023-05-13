@@ -35,22 +35,6 @@ describe('Service: NbTransTools', () => {
     });
   });
 
-  describe('#handleSentence()', () => {
-    [
-      { params: { str: ' sentence ', searchStr: '{{p1}}', replaceStr: 'v1' }, expect: ' sentence ' },
-      { params: { str: ' sentence {{p1}} ', searchStr: '{{p1}}', replaceStr: 'v1' }, expect: ' sentence v1 ' },
-      { params: { str: '{{p1}} test {{p1}} test {{p1}}', searchStr: '{{p1}}', replaceStr: 'v1' }, expect: 'v1 test v1 test v1' },
-      { params: { str: 'sentence {{p1}}', searchStr: '{{p1}}', replaceStr: '' }, expect: 'sentence ' },
-      { params: { str: 'sentence {{p1}}', searchStr: '{{p1}}', replaceStr: '{{p1}}' }, expect: 'sentence {{p1}}' },
-    ].forEach(item => {
-      it(`the params is ${JSON.stringify(item.params)}`, () => {
-        const { str, searchStr, replaceStr } = item.params;
-        const finalKey = service.handleSentence(str, searchStr, replaceStr);
-        expect(finalKey).toEqual(item.expect);
-      });
-    });
-  });
-
   describe('#handleSentenceWithParams()', () => {
     handleSentenceWithParamsTestData.forEach(item => {
       it(item.title, () => {

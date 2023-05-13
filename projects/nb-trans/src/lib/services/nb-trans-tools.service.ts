@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { INbTransSentencePart, INbTransParams } from '../models';
-import { v4 as uuidv4 } from 'uuid';
 import { NbValueTypeService } from '@bigbear713/nb-common';
-
-type StrKeyObject = { [key: string]: string };
+import { nbParamKeyRegExp2Split, paramKeyRegExpRule } from '../constants/nb-param-key-regexp';
 
 @Injectable({ providedIn: 'root' })
 export class NbTransToolsService {
@@ -22,10 +20,6 @@ export class NbTransToolsService {
     return prefix ? `${prefix}.${key}` : key;
   }
 
-  handleSentence(str: string, searchStr: string, replaceStr: string): string {
-    return str.replace(new RegExp(searchStr, 'g'), replaceStr);
-  };
-
   handleSentenceWithParams(trans: string, params?: INbTransParams): string {
     if (!params) {
       return trans;
@@ -36,18 +30,15 @@ export class NbTransToolsService {
       return trans;
     }
 
-    const paramsKeysUUID = this.getParamsKeyUuid(paramsKeys);
-    // first, replace the param keys as uuid keys
-    // then, replace the uuid keys as params value,
-    // so the value will not be wrong when the params value is same with other param value
-    const transWithUUIDKey = this.replaceParamsKeysAsUuidKey(
-      trans,
-      { keys: paramsKeys, keysUUID: paramsKeysUUID }
-    );
-    return this.replaceUuidKeyAsParamsValue(
-      transWithUUIDKey,
-      { params, keys: paramsKeys, keysUUID: paramsKeysUUID }
-    );
+    // First, split the trans string to string array via params key,
+    // like this: 'This is {{p1}} and {{p2}} and {{p1}}.' --> 
+    // ['This is ','{{p1}}',' and ','{{p2}}',' and ','{{p1}}','.'].
+    // Then replace the params key as params value, like this:
+    // ['This is ','param1',' and ','param2',' and ','param1','.'] 
+    // Last, make array join as string, like this: 'This is param1 and param2 and param1.'
+    const cleanedParams = this.cleanParams(params, paramsKeys);
+    const splitStrArr = trans.split(nbParamKeyRegExp2Split);
+    return this.replaceAsParamsValueInSplitArr(splitStrArr, cleanedParams).join('');
   }
 
   handleTrans(trans: string): INbTransSentencePart[] {
@@ -75,22 +66,21 @@ export class NbTransToolsService {
     return sentenceList;
   }
 
-  private getParamsKeyUuid(paramsKey: string[]): StrKeyObject {
-    return paramsKey.reduce(
-      (pre: StrKeyObject, key) => {
-        pre[key] = uuidv4();
-        return pre;
-      },
-      {}
-    );
+  private cleanParams(params: INbTransParams, paramsKeys: string[]) {
+    // because after calling RegExp's test function, the lastIndex value will be changed, so have to set it as 0.
+    // so create a new value every time to make sure the regexp will not affect anywhere
+    const nbParamKeyRegExp = new RegExp(paramKeyRegExpRule, 'g');
+    return paramsKeys.filter(key => {
+      const isValid = nbParamKeyRegExp.test(key);
+      nbParamKeyRegExp.lastIndex = 0;
+      return isValid;
+    }).reduce((prev, key) => {
+      prev[`{{${key}}}`] = params[key];
+      return prev;
+    }, {} as INbTransParams);
   }
 
-  private handleCompStr(content: string): {
-    index: number;
-    content: string;
-    list: INbTransSentencePart[];
-    otherContent: string;
-  } | string {
+  private handleCompStr(content: string) {
     const startFlagIndex = content.search(/<\d+>/);
     if (startFlagIndex === -1) {
       return content;
@@ -118,25 +108,14 @@ export class NbTransToolsService {
     };
   }
 
-  private replaceParamsKeysAsUuidKey(
-    trans: string,
-    paramsArgs: { keys: string[], keysUUID: StrKeyObject }
-  ): string {
-    const { keys, keysUUID } = paramsArgs;
-    keys.forEach(key => {
-      trans = this.handleSentence(trans, `{{${key}}}`, keysUUID[key]);
+  private replaceAsParamsValueInSplitArr(transSplitArr: string[], params: INbTransParams) {
+    transSplitArr.forEach((item, index) => {
+      const paramValue = params[item];
+      if (paramValue) {
+        transSplitArr[index] = paramValue;
+      }
     });
-    return trans;
+    return transSplitArr;
   }
 
-  private replaceUuidKeyAsParamsValue(
-    trans: string,
-    paramsArgs: { params: INbTransParams, keys: string[], keysUUID: StrKeyObject }
-  ): string {
-    const { params, keys, keysUUID } = paramsArgs;
-    keys.forEach(key => {
-      trans = this.handleSentence(trans, keysUUID[key], params[key]);
-    });
-    return trans;
-  }
 }
