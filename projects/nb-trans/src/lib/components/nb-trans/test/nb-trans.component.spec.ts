@@ -82,6 +82,7 @@ describe('Component: NbTrans', () => {
         component.options = undefined as any;
         const changes = {
           key: new SimpleChange(undefined, component.key, true),
+          options: new SimpleChange(undefined, component.options, true)
         };
         component.ngOnChanges(changes);
 
@@ -199,7 +200,7 @@ describe('Component: NbTrans', () => {
       const transService = TestBed.inject(NbTransService);
       await transService.subscribeLoadDefaultOver().toPromise();
     });
-    
+
     [
       {
         title: 'imported by standalone component',
