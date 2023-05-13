@@ -8,11 +8,12 @@
 - refactor: [NbTransService](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#nbtransservice "NbTransService") - 重构翻译文本中动态参数的处理方式；
 
 ## [Components](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#Components "Components")
-- feat: [`[nb-trans]`](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#nb-trans) - 新增选择器为`[nb-trans]`的组件
-- perf: [`<nb-trans />`](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#nb-transnb-trans) - 使用 UnsubscribeService 管理rxjs的订阅事件
+- feat: [`[nb-trans]`](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#nb-trans) - 新增选择器为`[nb-trans]`的组件；
+- perf: [`<nb-trans />`](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#nb-transnb-trans) - 使用 UnsubscribeService 管理rxjs的订阅事件；
+- fix: [`<nb-trans />`](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#nb-transnb-trans) - 修复在一些情况下，翻译结果错误的问题：[issue/28](https://github.com/bigBear713/nb-trans/issues/28)；
 
 ## [Pipes](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#Pipes "Pipes")
-- feat: [nbTrans](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#nbtrans-transformkey-string-options-inbtransoptions-string) - 使用 UnsubscribeService 来管理rxjs的订阅事件
+- feat: [nbTrans](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#nbtrans-transformkey-string-options-inbtransoptions-string) - 使用 UnsubscribeService 来管理rxjs的订阅事件；
 
 ---
 
