@@ -2,6 +2,10 @@
 ## 破坏性更新
 - feat: `angular`升级到`^16.0.0`;
 - feat: `@bigbear713/nb-common`升级到`^16.0.0`;
+- feat: [NbTransService](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#nbtransservice "NbTransService") - 限制 params 中的 `key` 的命名规则：由**字母**、**数字**、**_** 和 **$** 组成，且 **数字** 不能为第一个字符
+
+## [Services](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#Services "Services")
+- refactor: [NbTransService](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#nbtransservice "NbTransService") - 重构翻译文本中动态参数的处理方式；
 
 ## [Components](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#Components "Components")
 - feat: [`[nb-trans]`](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#nb-trans) - 新增选择器为`[nb-trans]`的组件

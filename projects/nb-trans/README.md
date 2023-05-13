@@ -474,6 +474,10 @@ export class XXXComponent{}
 
 #### INbTransParams
 ##### `v12.0.0`
+#### Attention: the naming rules about param key:
+- start from `v16.0.0`:
+1. Consists of `letters, numbers, _, and $`
+2. The `number` can't be the first character
 ###### The params in the translated text
 | Property  | Type  | Mandatory  | Description  | Version |
 | ------------ | ------------ | ------------ | ------------ | ------------ |
