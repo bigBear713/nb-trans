@@ -2,6 +2,7 @@ import { INbTransOptions, NbTransService } from 'nb-trans';
 import { Observable } from 'rxjs';
 
 import {
+  ChangeDetectionStrategy,
   Component,
   OnInit
 } from '@angular/core';
@@ -10,7 +11,8 @@ import {
 @Component({
   selector: 'app-feature1',
   templateUrl: './feature1.component.html',
-  styleUrls: ['./feature1.component.scss']
+  styleUrls: ['./feature1.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Feature1Component implements OnInit {
 
@@ -85,7 +87,6 @@ export class Feature1Component implements OnInit {
     this.titleWithParams$ = this.transService.translationAsync('content.contentWithParams', { params: this.params });
     this.browserLang = NbTransService.getBrowserLang();
     this.browserLangs = NbTransService.getBrowserLangs();
-
   }
 
   changeOptions() {
