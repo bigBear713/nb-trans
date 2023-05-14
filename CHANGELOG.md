@@ -10,6 +10,7 @@
 ## [Components](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#Components "Components")
 - feat: [`[nb-trans]`](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#nb-trans) - Add the component which the selector is `[nb-trans]`;
 - perf: [`<nb-trans />`](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#nb-transnb-trans) - Use the UnsubscribeService to manage the rxjs subscription;
+- fix: [`<nb-trans />`](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#nb-transnb-trans) - Fix the bug about the trans result is wrong in some case: [issue/28](https://github.com/bigBear713/nb-trans/issues/28)；
 
 ## [Pipes](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#Pipes "Pipes")
 - feat: [nbTrans](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#nbtrans-transformkey-string-options-inbtransoptions-string) - Use the UnsubscribeService to manage the rxjs subscription;

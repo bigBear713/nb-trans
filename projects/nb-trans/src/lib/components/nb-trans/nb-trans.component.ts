@@ -41,6 +41,8 @@ export class NbTransComponent implements OnChanges {
 
   SentenceItemEnum = NbTransSentenceItem;
 
+  private optionsWithoutParams: INbTransOptions = {};
+
   private originTrans: string = '';
 
   constructor(
@@ -54,8 +56,11 @@ export class NbTransComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     const { key, options } = changes;
+    if (options) {
+      this.updateOptionsWithoutParams();
+    }
     if (key || options) {
-      this.originTrans = this.transService.translationSync(this.key, this.options);
+      this.originTrans = this.transService.translationSync(this.key, this.optionsWithoutParams);
       this.reRender();
     }
   }
@@ -71,7 +76,7 @@ export class NbTransComponent implements OnChanges {
 
   private subscribeLangChange(): void {
     const langChange$ = this.transService.subscribeLangChange().pipe(
-      switchMap(_ => this.transService.translationAsync(this.key, this.options)),
+      switchMap(_ => this.transService.translationAsync(this.key, this.optionsWithoutParams)),
     );
     this.unsubscribeService.addUnsubscribeOperator(langChange$)
       .subscribe(latestValue => {
@@ -79,6 +84,16 @@ export class NbTransComponent implements OnChanges {
         this.reRender();
       });
   }
+
+  private updateOptionsWithoutParams() {
+    // or origin trans string, the dynamic params don't need to be translated, because they will be translated in sentence item,
+    // so here remove the options' params
+    this.optionsWithoutParams = {
+      ...(this.options || {}),
+      params: undefined
+    };
+  }
+
 }
 
 
