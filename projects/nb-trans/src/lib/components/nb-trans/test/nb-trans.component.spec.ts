@@ -185,6 +185,25 @@ describe('Component: NbTrans', () => {
         expect(comp1Instance?.textContent?.trim()).toEqual('组件1');
       });
 
+      it('verify the sentence with dynamic params', () => {
+        const params = {
+          params1: '{{params2}}',
+          params2: '1111',
+          params3: '2222',
+        };
+        uiComp.options = { params };
+        uiComp.key = 'withParams';
+        uiComp.components = tpls;
+        const changes = {
+          key: new SimpleChange(undefined, uiComp.key, true),
+          options: new SimpleChange(undefined, uiComp.options, true),
+        };
+        uiComp.ngOnChanges(changes);
+        uiFixture.detectChanges();
+
+        expect(hostEle.textContent?.trim()).toEqual('这是一个带有参数的句子。参数:  {{params2}} - 1111 - 2222 - 1111');
+      });
+
     });
   });
 
