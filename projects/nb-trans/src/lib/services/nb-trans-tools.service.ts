@@ -66,6 +66,17 @@ export class NbTransToolsService {
     return sentenceList;
   }
 
+  /**
+   * verify the trans is valid. 
+   * If it is undefined, empty string('') or the value is not a string type, 
+   * will return false
+   * @param trans 
+   * @returns 
+   */
+  isTranslatedStringValid(trans: any): boolean {
+    return !!(trans && this.valueType.isString(trans));
+  }
+
   private cleanParams(params: INbTransParams, paramsKeys: string[]) {
     // because after calling RegExp's test function, the lastIndex value will be changed, so have to set it as 0.
     // so create a new value every time to make sure the regexp will not affect anywhere
