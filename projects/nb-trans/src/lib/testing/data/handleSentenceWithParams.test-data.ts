@@ -15,7 +15,7 @@ export const handleSentenceWithParamsTestData: {
     { title: 'params value is same with param key', test: { trans: '{{p1}}{{p2}}', params: { p1: '{{p2}}', p2: '{{p2}}' } }, expect: { result: '{{p2}}{{p2}}' }, },
     { title: 'err params format:{}', test: { trans: 'test {p1}', params: { p1: '123' } }, expect: { result: 'test {p1}' } },
     { title: 'err params format:{ {}}', test: { trans: 'test { {p1}}', params: { p1: '123' } }, expect: { result: 'test { {p1}}' } },
-    { title: 'err params format:{{   }}', test: { trans: 'test {{ p1 }}', params: { p1: '123' } }, expect: { result: 'test {{ p1 }}' } },
+    { title: 'valid params format:{{   }}', test: { trans: 'test {{ p1 }} and {{p1}} and {{    p1  }}', params: { p1: '123' } }, expect: { result: 'test 123 and 123 and 123' } },
     { title: 'err params format:{{{}}}', test: { trans: 'test {{{p1}}}', params: { p1: '123' } }, expect: { result: 'test {123}' } },
     { title: 'err params format:[]', test: { trans: 'test [p1]', params: { p1: '123' } }, expect: { result: 'test [p1]' } },
     { title: 'err params format:[[]]', test: { trans: 'test [[p2]]', params: { p2: '123' } }, expect: { result: 'test [[p2]]' } },
@@ -32,5 +32,5 @@ export const handleSentenceWithParamsTestData: {
         result: 'This is {{p!}}, {{p@}}, {{p#}}, {{p%}}, {{p^}}, {{p……}}, {{p&}}, {{p*}}, {{p(}}, {{p)}}, {{p-}}, {{p+}}, {{p=}},{{p;}}, {{p:}}, {{p\'}},{{p"}}, {{p<}}, {{p>}}, {{p,}},{{p.}}, {{p\\}},{{p|}},{{p/}},{{p?}},{{p[}},{{p]}}'
       }
     },
-    { title: 'param key contain with whitespace', test: { trans: 'This is {{ p1}} and {{p2 }}', params: { ' p1': '123', 'p2 ': 'abc' } }, expect: { result: 'This is {{ p1}} and {{p2 }}' } },
+    { title: 'param key contain with whitespace', test: { trans: 'This is {{ p1}} and {{p2 }}', params: { 'p1': '123', 'p2': 'abc' } }, expect: { result: 'This is 123 and abc' } },
   ];
