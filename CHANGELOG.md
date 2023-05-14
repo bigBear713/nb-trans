@@ -10,6 +10,7 @@
 ## [Services](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#Services "Services")
 - refactor: [NbTransService](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#nbtransservice "NbTransService") - Refactor the function for handling the dynamic params in translated string;
 - fix: [NbTransService](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#nbtransservice "NbTransService") - Fix the bug abouf will get object data when the trans key is incomplete: [issue/27](https://github.com/bigBear713/nb-trans/issues/27);
+- feat: [NbTransService](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#nbtransservice "NbTransService") - Support for spaces between `dynamic params` and `{{}}` in translated string: [issue/34](https://github.com/bigBear713/nb-trans/issues/34);
 
 ## [Components](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#Components "Components")
 - feat: [`[nb-trans]`](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#nb-trans) - Add the component which the selector is `[nb-trans]`;

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { INbTransSentencePart, INbTransParams } from '../models';
 import { NbValueTypeService } from '@bigbear713/nb-common';
-import { nbParamKeyRegExp2Split, paramKeyRegExpRule } from '../constants/nb-param-key-regexp';
+import { nbParamKeyRegExp, nbParamKeyRegExp2Split } from '../constants/nb-param-key-regexp';
 
 @Injectable({ providedIn: 'root' })
 export class NbTransToolsService {
@@ -80,13 +80,13 @@ export class NbTransToolsService {
   private cleanParams(params: INbTransParams, paramsKeys: string[]) {
     // because after calling RegExp's test function, the lastIndex value will be changed, so have to set it as 0.
     // so create a new value every time to make sure the regexp will not affect anywhere
-    const nbParamKeyRegExp = new RegExp(paramKeyRegExpRule, 'g');
+    const paramKeyRegExp = new RegExp(nbParamKeyRegExp);
     return paramsKeys.filter(key => {
-      const isValid = nbParamKeyRegExp.test(key);
-      nbParamKeyRegExp.lastIndex = 0;
+      const isValid = paramKeyRegExp.test(key);
+      paramKeyRegExp.lastIndex = 0;
       return isValid;
     }).reduce((prev, key) => {
-      prev[`{{${key}}}`] = params[key];
+      prev[key] = params[key];
       return prev;
     }, {} as INbTransParams);
   }
@@ -120,8 +120,18 @@ export class NbTransToolsService {
   }
 
   private replaceAsParamsValueInSplitArr(transSplitArr: string[], params: INbTransParams) {
+    const isParamKeyRegExp = new RegExp(nbParamKeyRegExp2Split);
+    const verifyIsParamKey = (data: string): boolean => {
+      const isParamsKey = isParamKeyRegExp.test(data);
+      isParamKeyRegExp.lastIndex = 0;
+      return isParamsKey;
+    };
+
     transSplitArr.forEach((item, index) => {
-      const paramValue = params[item];
+      if (!verifyIsParamKey(item)) return;
+
+      const key = item.match(nbParamKeyRegExp)![0];
+      const paramValue = params[key];
       if (paramValue) {
         transSplitArr[index] = paramValue;
       }
