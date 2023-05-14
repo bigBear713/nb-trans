@@ -10,6 +10,7 @@
 ## [Services](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#Services "Services")
 - refactor: [NbTransService](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#nbtransservice "NbTransService") - 重构翻译文本中动态参数的处理方式；
 - fix: [NbTransService](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#nbtransservice "NbTransService") - 修复当 params 的 key 值不完整时会得到object类型的数据的问题：[issue/27](https://github.com/bigBear713/nb-trans/issues/27)；
+- feat: [NbTransService](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#nbtransservice "NbTransService") - 支持在翻译文本中，`动态参数`和`{{}}`之间存在空格：[issue/34](https://github.com/bigBear713/nb-trans/issues/34);
 
 ## [Components](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#Components "Components")
 - feat: [`[nb-trans]`](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#nb-trans) - 新增选择器为`[nb-trans]`的组件；
