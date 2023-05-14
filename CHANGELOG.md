@@ -2,7 +2,7 @@
 ## Breaking Changes
 - feat: Upgrade `angular` to `^16.0.0`;
 - feat: Upgrade `@bigbear713/nb-common` to `^16.0.0`;
-- feat: [NbTransService](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#nbtransservice "NbTransService") - Limit the naming rules about params's key: Consists of `letters, numbers, _, and $`, and the number can't be the first character;
+- feat: [INbTransParams](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#inbtransparams) - Limit the naming rules about params's key: Consists of `letters, numbers, _, and $`, and the number can't be the first character;
 
 ## Dependencies
 - chore: Remove `uuid` lib;

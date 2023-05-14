@@ -2,7 +2,7 @@
 ## 破坏性更新
 - feat: `angular`升级到`^16.0.0`;
 - feat: `@bigbear713/nb-common`升级到`^16.0.0`;
-- feat: [NbTransService](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#nbtransservice "NbTransService") - 限制 params 中的 `key` 的命名规则：由**字母**、**数字**、**_** 和 **$** 组成，且 **数字** 不能为第一个字符;
+- feat: [INbTransParams](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#inbtransparams) - 限制 params 中的 `key` 的命名规则：由**字母**、**数字**、**_** 和 **$** 组成，且 **数字** 不能为第一个字符;
 
 ## 依赖
 - chore: 移除 `uuid` 库;

@@ -163,20 +163,20 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
 ##### Usage
 ```html
 <!-- only trans key -->
-<nb-trans key="title"></nb-trans>
-<nb-trans [key]="transKey"></nb-trans>
+<nb-trans key="title" />
+<nb-trans [key]="transKey" />
 
 <!-- trans key and options -->
-<nb-trans key="title" [options]="options"></nb-trans>
-<nb-trans key="helloWorld" [options]="({prefix:'content'})"></nb-trans>
+<nb-trans key="title" [options]="options" />
+<nb-trans key="helloWorld" [options]="({prefix:'content'})" />
 
 <!-- trans key, options and components -->
-<nb-trans [key]="complexContent" [options]="options" [components]="[com1,com2]"></nb-trans>
+<nb-trans [key]="complexContent" [options]="options" [components]="[com1,com2]" />
 <ng-template #comp1 let-compContent="content">
   <span>{{compContent}}</span>
 </ng-template>
 <ng-template #comp2 let-compContent="content" let-compList="list">
-  <ng-container *ngTemplateOutlet="compContent,context:{list}"></ng-container>
+  <ng-container *ngTemplateOutlet="compContent,context:{list}" />
 </ng-template>
 ```
 ```ts
@@ -201,13 +201,13 @@ export class XXXComponent{}
 
 #### `[nb-trans]`
 ##### `v16.0.0`
-###### When you need to translate the sentence which include components. When you don't want to use "<nb-trans />" tag, and want to use the native html tag, such as "<div />", "<span />". When the lang has been switched, the content will auto be updated.
+###### When you need to translate the sentence which include components. When you don't want to use "\<nb-trans \/\>" tag, and want to use the native html tag, such as "\<div \/\>", "\<span \/\>". When the lang has been switched, the content will auto be updated.
 ##### Input
 | Name  | Type  | Default  | Description  | Version |
 | ------------ | ------------ | ------------ | ------------ | ------------ |
 | nb-trans-components  | `TemplateRef<{ content: string ｜ TemplateRef<any>; list?: INbTransSentencePart[] }>[]`  | []  |  The corresponding component in the translated text.  | `v16.0.0` |
 | nb-trans-key  | `string`  | `''`  | The key to get translated text  | `v16.0.0` |
-| nb-trans-options  | `INbTransOptions`  | {}  | The options of translation. The detail config follow the below definition of [`INbTransOptions`](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#inbtransoptions) | `v16.0.0` |
+| nb-trans-options  | `INbTransOptions`  | {} | The options of translation. The detail config follow the below definition of [`INbTransOptions`](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#inbtransoptions) | `v16.0.0` |
 
 ##### Usage
 ```html
@@ -229,7 +229,7 @@ export class XXXComponent{}
   <span>{{compContent}}</span>
 </ng-template>
 <ng-template #comp2 let-compContent="content" let-compList="list">
-  <ng-container *ngTemplateOutlet="compContent,context:{list}"></ng-container>
+  <ng-container *ngTemplateOutlet="compContent,context:{list}" />
 </ng-template>
 ```
 ```ts
@@ -266,12 +266,12 @@ export class XXXComponent{}
 ```html
 <!-- used with <nb-trans></nb-trans> component -->
 <!-- demo: This is a sentence: <0>component1</0>.<1> <0>component1 of component2</0> other part of component2 </1>.<2>component3</2> -->
-<nb-trans [key]="complexContent" [components]="[comp1,comp2,comp3]"></nb-trans>
+<nb-trans [key]="complexContent" [components]="[comp1,comp2,comp3]" />
 <ng-template #comp1 let-comContent="content" let-list="list">
   <b [nb-trans-subcontent]="comContent" [subcontentList]="list"></b>
 </ng-template>
 <ng-template #comp2 let-comContent="content" let-list="list">
-  <app-widget [comContent]="comContent" [list]="list"></app-widget>
+  <app-widget [comContent]="comContent" [list]="list" />
 </ng-template>
 <ng-template #comp3 let-comContent="content">
   <b>{{comContent}}</b>
