@@ -26,7 +26,7 @@ describe('Service: NbTrans', () => {
         let service: NbTransService;
 
         beforeEach(async () => {
-          TestBed.configureTestingModule({
+          await TestBed.configureTestingModule({
             imports: [NbTransTestingModule],
             providers: [
               { provide: NB_TRANS_DEFAULT_LANG, useValue: NbTransLang.ZH_CN, },
@@ -101,7 +101,7 @@ describe('Service: NbTrans', () => {
     let service: NbTransService;
     let toolService: NbTransToolsService;
     beforeEach(async () => {
-      TestBed.configureTestingModule({
+      await TestBed.configureTestingModule({
         imports: [NbTransTestingModule],
         providers: [
           { provide: NB_TRANS_DEFAULT_LANG, useValue: NbTransLang.ZH_CN },
@@ -134,7 +134,7 @@ describe('Service: NbTrans', () => {
   describe('#translationAsync()', () => {
     let service: NbTransService;
     beforeEach(async () => {
-      TestBed.configureTestingModule({
+      await TestBed.configureTestingModule({
         imports: [NbTransTestingModule],
         providers: [
           { provide: NB_TRANS_DEFAULT_LANG, useValue: NbTransLang.ZH_CN },

@@ -1,7 +1,10 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, Optional, isDevMode } from '@angular/core';
 import { INbTransSentencePart, INbTransParams } from '../models';
 import { NbValueTypeService } from '@bigbear713/nb-common';
-import { nbParamKeyRegExp, nbParamKeyRegExp2Split } from '../constants/nb-param-key-regexp';
+import { nbParamKeyRegExp, nbParamKeyRegExp2Split, nbParamKeyRegExpRules } from '../constants/nb-param-key-regexp';
+import { NB_TRANS_PARAM_KEY_INVALID_WARNING } from '../constants';
+
+const isInDevMode = isDevMode();
 
 @Injectable({ providedIn: 'root' })
 export class NbTransToolsService {
@@ -14,7 +17,12 @@ export class NbTransToolsService {
     return typeof window !== 'undefined';
   }
 
-  constructor(private valueType: NbValueTypeService) { }
+  constructor(
+    @Optional() @Inject(NB_TRANS_PARAM_KEY_INVALID_WARNING) private warnParamKeyInvalid: boolean,
+    private valueType: NbValueTypeService
+  ) {
+    this.setWarnParamKeyInvalidDefault();
+  }
 
   getFinalKey(key: string, prefix?: string): string {
     return prefix ? `${prefix}.${key}` : key;
@@ -30,13 +38,18 @@ export class NbTransToolsService {
       return trans;
     }
 
+    // if the cleanedParams is empty, no need to split the trans string,
+    // return trans string directly, and the performance is improved
+    const cleanedParams = this.cleanParams(params, paramsKeys);
+    if (!Object.keys(cleanedParams).length) {
+      return trans;
+    }
     // First, split the trans string to string array via params key,
     // like this: 'This is {{p1}} and {{p2}} and {{p1}}.' --> 
     // ['This is ','{{p1}}',' and ','{{p2}}',' and ','{{p1}}','.'].
     // Then replace the params key as params value, like this:
     // ['This is ','param1',' and ','param2',' and ','param1','.'] 
     // Last, make array join as string, like this: 'This is param1 and param2 and param1.'
-    const cleanedParams = this.cleanParams(params, paramsKeys);
     const splitStrArr = trans.split(nbParamKeyRegExp2Split);
     return this.replaceAsParamsValueInSplitArr(splitStrArr, cleanedParams).join('');
   }
@@ -80,10 +93,12 @@ export class NbTransToolsService {
   private cleanParams(params: INbTransParams, paramsKeys: string[]) {
     // because after calling RegExp's test function, the lastIndex value will be changed, so have to set it as 0.
     // so create a new value every time to make sure the regexp will not affect anywhere
-    const paramKeyRegExp = new RegExp(nbParamKeyRegExp);
+    const paramKeyRegExp = new RegExp(`{{${nbParamKeyRegExpRules}}}`);
     return paramsKeys.filter(key => {
-      const isValid = paramKeyRegExp.test(key);
+      const isValid = paramKeyRegExp.test(`{{${key}}}`);
       paramKeyRegExp.lastIndex = 0;
+
+      if (!isValid) this.logParamKeyIsInvalid(key);
       return isValid;
     }).reduce((prev, key) => {
       prev[key] = params[key];
@@ -119,6 +134,17 @@ export class NbTransToolsService {
     };
   }
 
+  private logParamKeyIsInvalid(paramKey: string) {
+    if (!isInDevMode || !this.warnParamKeyInvalid) return;
+
+    console.warn(
+      `The param key: "${paramKey}" is invalid! 
+       It should consist of "letter", "number", "_" or "$", 
+       and the "number" can't be the first character.
+       See this changelog: https://github.com/bigBear713/nb-trans/blob/master/CHANGELOG.md#v1600`
+    );
+  }
+
   private replaceAsParamsValueInSplitArr(transSplitArr: string[], params: INbTransParams) {
     const isParamKeyRegExp = new RegExp(nbParamKeyRegExp2Split);
     const verifyIsParamKey = (data: string): boolean => {
@@ -137,6 +163,12 @@ export class NbTransToolsService {
       }
     });
     return transSplitArr;
+  }
+
+  private setWarnParamKeyInvalidDefault() {
+    if (this.warnParamKeyInvalid !== false) {
+      this.warnParamKeyInvalid = true;
+    }
   }
 
 }
