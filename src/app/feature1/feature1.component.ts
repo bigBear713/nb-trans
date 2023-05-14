@@ -54,6 +54,25 @@ export class Feature1Component implements OnInit {
     </ng-template>
   `;
 
+  compStr2 = `
+    <div>
+      <div nb-trans nb-trans-key="complexContent" [nb-trans-components]="[com0,com1,com2]" [nb-trans-options]="{params,prefix:'content'}"> </div>
+    </div>
+
+    <ng-template #com0 let-comContent="content" let-list="list">
+      <b [nb-trans-subcontent]="comContent" [subcontentList]="list"></b>
+    </ng-template>
+
+    <ng-template #com1 let-comContent="content" let-list="list">
+      <app-widget [comContent]="comContent" [list]="list"></app-widget>
+    </ng-template>
+
+    <ng-template #com2 let-comContent="content">
+      <b>{{comContent}}</b>
+    </ng-template>
+  `;
+
+
   browserLang: string | undefined = '';
   browserLangs: readonly string[] | undefined = [];
 

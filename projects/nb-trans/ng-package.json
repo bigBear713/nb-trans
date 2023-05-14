@@ -4,7 +4,6 @@
   "allowedNonPeerDependencies": [
     "@bigbear713/nb-common",
     "lodash-es",
-    "uuid",
     "tslib"
   ],
   "lib": {

@@ -1,4 +1,4 @@
-import { Component, SimpleChange, TemplateRef, ViewChild, ElementRef } from '@angular/core';
+import { Component, SimpleChange, TemplateRef, ElementRef } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { take } from 'rxjs/operators';
 import { NB_TRANS_DEFAULT_LANG, NB_TRANS_LOADER } from '../../../constants';
@@ -6,35 +6,13 @@ import { NbTransLang } from '../../../constants';
 import { INbTransOptions } from '../../../models';
 import { NbTransService, NbTransToolsService } from '../../../services';
 import { transLoader, NbTransTestingModule } from '../../../testing';
-import { NbTransComponent } from '../nb-trans.component';
+import { NbTrans2Component } from '../nb-trans.component';
+import { MockComp1Component, MockTplRefComponent } from './nb-trans.component.spec';
 
-@Component({
-  selector: 'comp1',
-  template: `
-    <ng-content></ng-content>
-  `,
-})
-export class MockComp1Component {
-}
-
-@Component({
-  selector: 'mock-tpl-ref',
-  template: `
-    <ng-template #tpl1 let-content="content" let-list="list">
-      <div class="has-subcontent" [nb-trans-subcontent]="content" [subcontentList]="list"></div>
-    </ng-template>
-    <ng-template #tpl2 let-content="content"><comp1>{{content}}</comp1></ng-template>
-  `,
-})
-export class MockTplRefComponent {
-  @ViewChild('tpl1') tpl1!: TemplateRef<any>;
-  @ViewChild('tpl2') tpl2!: TemplateRef<any>;
-}
-
-describe('Component: NbTrans', () => {
+describe('Component: NbTrans2', () => {
   describe('used in normal component', () => {
-    let component: NbTransComponent;
-    let fixture: ComponentFixture<NbTransComponent>;
+    let component: NbTrans2Component;
+    let fixture: ComponentFixture<NbTrans2Component>;
     let transToolsService: NbTransToolsService;
 
     beforeEach(async () => {
@@ -51,7 +29,7 @@ describe('Component: NbTrans', () => {
     beforeEach(() => {
       transToolsService = TestBed.inject(NbTransToolsService);
 
-      fixture = TestBed.createComponent(NbTransComponent);
+      fixture = TestBed.createComponent(NbTrans2Component);
       component = fixture.componentInstance;
       fixture.detectChanges();
     });
@@ -82,7 +60,6 @@ describe('Component: NbTrans', () => {
         component.options = undefined as any;
         const changes = {
           key: new SimpleChange(undefined, component.key, true),
-          options: new SimpleChange(undefined, component.options, true)
         };
         component.ngOnChanges(changes);
 
@@ -120,8 +97,8 @@ describe('Component: NbTrans', () => {
 
     describe('verify the UI', () => {
       let tpls: TemplateRef<any>[] = [];
-      let uiComp: NbTransComponent;
-      let uiFixture: ComponentFixture<NbTransComponent>;
+      let uiComp: NbTrans2Component;
+      let uiFixture: ComponentFixture<NbTrans2Component>;
       let hostEle: HTMLElement;
 
       beforeEach(() => {
@@ -130,7 +107,7 @@ describe('Component: NbTrans', () => {
         tplFixture.detectChanges();
         tpls = [tplComp.tpl1, tplComp.tpl2];
 
-        uiFixture = TestBed.createComponent(NbTransComponent);
+        uiFixture = TestBed.createComponent(NbTrans2Component);
         uiComp = uiFixture.componentInstance;
         uiFixture.detectChanges();
         hostEle = uiFixture.debugElement.nativeElement;
@@ -219,7 +196,7 @@ describe('Component: NbTrans', () => {
       const transService = TestBed.inject(NbTransService);
       await transService.subscribeLoadDefaultOver().toPromise();
     });
-
+    
     [
       {
         title: 'imported by standalone component',
@@ -244,8 +221,8 @@ describe('Component: NbTrans', () => {
 
 const StandaloneCompConfig = {
   standalone: true,
-  imports: [NbTransComponent],
-  template: `<nb-trans [key]="key" [options]="options"></nb-trans>`,
+  imports: [NbTrans2Component],
+  template: `<div nb-trans [nb-trans-key]="key" [nb-trans-options]="options"></div>`,
 };
 
 @Component(StandaloneCompConfig)

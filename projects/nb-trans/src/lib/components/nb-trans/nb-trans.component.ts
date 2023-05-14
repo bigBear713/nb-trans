@@ -1,21 +1,19 @@
-import { Subject } from 'rxjs';
-import { switchMap, takeUntil } from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   Input,
   OnChanges,
-  OnDestroy,
   SimpleChanges,
   TemplateRef,
 } from '@angular/core';
 import { INbTransOptions, INbTransParams, INbTransSentencePart } from '../../models';
 import { NbTransService, NbTransToolsService } from '../../services';
 import { NbTransSentenceItem } from '../../constants';
-import {  NgFor, NgSwitch, NgSwitchCase, NgTemplateOutlet } from '@angular/common';
+import { NgFor, NgSwitch, NgSwitchCase, NgTemplateOutlet } from '@angular/common';
 import { NbSentenceItemTypePipe, NbTransContentPipe } from '../../pipes';
-import { NbTplContentPipe } from '@bigbear713/nb-common';
+import { NbTplContentPipe, NbUnsubscribeService } from '@bigbear713/nb-common';
 
 const importsFromNgCommon = [NgTemplateOutlet, NgFor, NgSwitch, NgSwitchCase];
 const importsFromNbCommon = [NbTplContentPipe];
@@ -27,8 +25,9 @@ const importsFromSelf = [NbSentenceItemTypePipe, NbTransContentPipe];
   selector: 'nb-trans',
   templateUrl: './nb-trans.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [NbUnsubscribeService]
 })
-export class NbTransComponent implements OnChanges, OnDestroy {
+export class NbTransComponent implements OnChanges {
 
   @Input() components: TemplateRef<{ content: string | TemplateRef<any>; list?: INbTransSentencePart[] }>[] = [];
 
@@ -42,7 +41,7 @@ export class NbTransComponent implements OnChanges, OnDestroy {
 
   SentenceItemEnum = NbTransSentenceItem;
 
-  private destroy$ = new Subject<void>();
+  private optionsWithoutParams: INbTransOptions = {};
 
   private originTrans: string = '';
 
@@ -50,21 +49,20 @@ export class NbTransComponent implements OnChanges, OnDestroy {
     private changeDR: ChangeDetectorRef,
     private transToolsService: NbTransToolsService,
     private transService: NbTransService,
+    private unsubscribeService: NbUnsubscribeService,
   ) {
     this.subscribeLangChange();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     const { key, options } = changes;
+    if (options) {
+      this.updateOptionsWithoutParams();
+    }
     if (key || options) {
-      this.originTrans = this.transService.translationSync(this.key, this.options);
+      this.originTrans = this.transService.translationSync(this.key, this.optionsWithoutParams);
       this.reRender();
     }
-  }
-
-  ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
   }
 
   private reRender(): void {
@@ -77,12 +75,41 @@ export class NbTransComponent implements OnChanges, OnDestroy {
   }
 
   private subscribeLangChange(): void {
-    this.transService.subscribeLangChange().pipe(
-      switchMap(_ => this.transService.translationAsync(this.key, this.options)),
-      takeUntil(this.destroy$)
-    ).subscribe(latestValue => {
-      this.originTrans = latestValue;
-      this.reRender();
-    });
+    const langChange$ = this.transService.subscribeLangChange().pipe(
+      switchMap(_ => this.transService.translationAsync(this.key, this.optionsWithoutParams)),
+    );
+    this.unsubscribeService.addUnsubscribeOperator(langChange$)
+      .subscribe(latestValue => {
+        this.originTrans = latestValue;
+        this.reRender();
+      });
   }
+
+  private updateOptionsWithoutParams() {
+    // or origin trans string, the dynamic params don't need to be translated, because they will be translated in sentence item,
+    // so here remove the options' params
+    this.optionsWithoutParams = {
+      ...(this.options || {}),
+      params: undefined
+    };
+  }
+
+}
+
+
+@Component({
+  standalone: true,
+  imports: [...importsFromNgCommon, ...importsFromNbCommon, ...importsFromSelf],
+  selector: '[nb-trans]',
+  templateUrl: './nb-trans.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [NbUnsubscribeService]
+})
+export class NbTrans2Component extends NbTransComponent {
+
+  @Input('nb-trans-components') components: TemplateRef<{ content: string | TemplateRef<any>; list?: INbTransSentencePart[] }>[] = [];
+
+  @Input('nb-trans-key') key: string = '';
+
+  @Input('nb-trans-options') options: INbTransOptions = {};
 }

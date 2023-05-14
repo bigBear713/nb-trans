@@ -20,12 +20,13 @@ const importsFromNbCommon = [NbIsStringPipe, NbTplContentPipe];
       <ng-container *ngSwitchCase="true">{{content}}</ng-container>
       <ng-container *ngSwitchDefault
                     [ngTemplateOutlet]="content | nbTplContent" 
-                    [ngTemplateOutletContext]="{ list: subcontentList }"></ng-container>
+                    [ngTemplateOutletContext]="{ list: subcontentList }" />
     </ng-container>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NbTransSubcontentComponent {
+
   @Input('nb-trans-subcontent') content: string | TemplateRef<any> = '';
 
   @Input() subcontentList: INbTransSentencePart[] = [];
