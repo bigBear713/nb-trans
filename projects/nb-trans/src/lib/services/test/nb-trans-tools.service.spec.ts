@@ -99,4 +99,23 @@ describe('Service: NbTransTools', () => {
   it('#NbTransToolsService.checkNavigator()', () => {
     expect(NbTransToolsService.checkNavigator()).toEqual(true);
   });
+
+  describe('#isTranslatedStringValid()', () => {
+    [
+      { title: 'value is undefined', trans: undefined, expect: false },
+      { title: 'value is string', trans: 'abc', expect: true },
+      { title: 'value is empty string', trans: '', expect: false },
+      { title: 'value only include some whitespace', trans: ' ', expect: true },
+      { title: 'value is number', trans: 123, expect: false },
+      { title: 'value is boolean', trans: true, expect: false },
+      { title: 'value is array', trans: [], expect: false },
+      { title: 'value is symbol', trans: Symbol(), expect: false },
+      { title: 'value is object', trans: { p1: 'abc' }, expect: false },
+      { title: 'value is function', trans: () => true, expect: false },
+    ].forEach(item => {
+      it(item.title, () => {
+        expect(service.isTranslatedStringValid(item.trans)).toEqual(item.expect);
+      });
+    });
+  })
 });

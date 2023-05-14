@@ -3,6 +3,7 @@ import { filter, switchMap, take } from 'rxjs/operators';
 import { NB_TRANS_DEFAULT_LANG, NB_TRANS_LOADER, NB_TRANS_MAX_RETRY, NbTransLang } from '../../constants';
 import { translationSyncTestData, transLoader, NbTransTestingModule } from '../../testing';
 import { NbTransService } from '../nb-trans.service';
+import { NbTransToolsService } from '../nb-trans-tools.service';
 
 describe('Service: NbTrans', () => {
 
@@ -98,6 +99,7 @@ describe('Service: NbTrans', () => {
 
   describe('#translationSync()', () => {
     let service: NbTransService;
+    let toolService: NbTransToolsService;
     beforeEach(async () => {
       TestBed.configureTestingModule({
         imports: [NbTransTestingModule],
@@ -107,22 +109,26 @@ describe('Service: NbTrans', () => {
         ]
       });
       service = TestBed.inject(NbTransService);
+      toolService = TestBed.inject(NbTransToolsService);
     });
 
     translationSyncTestData.forEach(item => {
       it(item.title, (done) => {
         service.subscribeLoadDefaultOver().pipe(
-          filter(result => result),
+          filter(isLoadOver => isLoadOver),
           take(1),
         ).subscribe(
           () => {
+            spyOn(toolService, 'isTranslatedStringValid').and.callThrough();
             const result = service.translationSync(item.test.key, item.test.options);
             expect(result).toEqual(item.expect.result);
+            expect(toolService.isTranslatedStringValid).toHaveBeenCalled();
             done();
           }
         );
       });
     });
+
   });
 
   describe('#translationAsync()', () => {

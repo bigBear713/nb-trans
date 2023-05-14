@@ -7,4 +7,6 @@ export const translationSyncTestData = [
   { title: 'prefix is "prefix."', test: { key: 'trans.key', options: { prefix: 'prefix.' }, }, expect: { result: 'prefix..trans.key' }, },
   { title: 'prefix is " prefix "', test: { key: 'trans.key', options: { prefix: ' prefix ' }, }, expect: { result: ' prefix .trans.key' }, },
   { title: 'prefix is "content"', test: { key: 'helloWorld', options: { prefix: 'content' }, }, expect: { result: '你好，世界' }, },
+  { title: 'key is "content", but options is undefined', test: { key: 'content', options: undefined, }, expect: { result: 'content' }, },
+  { title: 'key is "content", prefix is undefined and returnKeyWhenEmpty is false', test: { key: 'content', options: { returnKeyWhenEmpty: false }, }, expect: { result: '' }, },
 ];

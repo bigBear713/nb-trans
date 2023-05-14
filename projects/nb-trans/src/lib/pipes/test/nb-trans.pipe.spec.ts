@@ -7,6 +7,7 @@ import { INbTransOptions } from '../../models';
 import { NbTransService } from '../../services';
 import { translationSyncTestData, transLoader, NbTransTestingModule } from '../../testing';
 import { NbTransPipe } from '../nb-trans.pipe';
+import { isEqual } from 'lodash-es';
 
 describe('Pipe: NbTrans', () => {
   describe('used in normal component', () => {
@@ -46,7 +47,8 @@ describe('Pipe: NbTrans', () => {
           resultZHCN: item.expect.result,
           resultEN: item.expect.result,
         };
-        if (index + 1 === translationSyncTestData.length) {
+        // This test data can get right result, so the result has to be handled with Chinese and English
+        if (isEqual({ key: 'helloWorld', options: { prefix: 'content' }, }, item.test)) {
           expect.resultEN = 'hello world';
           expect.resultZHCN = '你好，世界';
         }

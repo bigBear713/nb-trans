@@ -161,18 +161,20 @@ export class NbTransService {
     const emptyTrans = options?.returnKeyWhenEmpty === false ? '' : finalKey;
     let trans = get(this.translations[this.lang], finalKey);
 
-    if (!trans) {
+    // if the trans is boolean/number or other types, it is invalid.
+    // Although boolean and number can be implicitly converted to string types,  
+    // it would be more expected and better when let the developer provide the value of the string type directly
+    // if the trans only include some whitespace, like ' ', it is valid
+    if (!this.transToolsService.isTranslatedStringValid(trans)) {
       trans = get(this.translations[this.transDefaultLang], finalKey);
     }
 
-    if (!trans) {
+    if (!this.transToolsService.isTranslatedStringValid(trans)) {
       return emptyTrans;
     }
 
     const params = options?.params;
-    trans = this.transToolsService.handleSentenceWithParams(trans, params);
-
-    return trans || emptyTrans;
+    return this.transToolsService.handleSentenceWithParams(trans, params);
   }
 
   /**
