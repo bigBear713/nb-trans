@@ -451,6 +451,25 @@ export class XXXComponent{}
 
 <br>
 
+#### NB_TRANS_PARAM_KEY_INVALID_WARNING
+##### boolean
+##### `v16.0.0`
+###### 当 param key 不符合规则时，是否在 console 中打印警告信息。默认为 true。在生产环境下，将自动关闭答应警告信息的设置。
+
+##### Usage
+```ts
+  providers: [
+    // ...
+    {
+      provide: NB_TRANS_PARAM_KEY_INVALID_WARNING,
+      useValue: false
+    },
+    // ...
+  ]
+```
+
+<br>
+
 ---
 
 ### Interfaces

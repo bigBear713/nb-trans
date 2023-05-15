@@ -18,7 +18,10 @@
 - fix: [`<nb-trans />`](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#nb-transnb-trans) - 修复在一些情况下，翻译结果错误的问题：[issue/28](https://github.com/bigBear713/nb-trans/issues/28)；
 
 ## [Pipes](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#Pipes "Pipes")
-- feat: [nbTrans](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#nbtrans-transformkey-string-options-inbtransoptions-string) - 使用 UnsubscribeService 来管理rxjs的订阅事件；
+- feat: [nbTrans](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#nbtrans-transformkey-string-options-inbtransoptions-string) - 使用 UnsubscribeService 管理rxjs的订阅事件；
+ 
+## [Tokens](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#Tokens "Tokens")
+- feat: [NB_TRANS_PARAM_KEY_INVALID_WARNING](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#nb_trans_param_key_invalid_warning) - 当 param key 不符合规则时，是否在 console 中打印警告信息；
 
 ---
 
