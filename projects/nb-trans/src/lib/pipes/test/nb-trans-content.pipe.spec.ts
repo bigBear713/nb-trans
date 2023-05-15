@@ -3,6 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { NbTransToolsService } from '../../services';
 import { handleSentenceWithParamsTestData, NbTransTestingModule } from '../../testing';
 import { NbTransContentPipe } from '../nb-trans-content.pipe';
+import { NB_TRANS_PARAM_KEY_INVALID_WARNING } from '../../constants';
 
 describe('Pipe: NbTransContente', () => {
   describe('used in normal case', () => {
@@ -11,6 +12,9 @@ describe('Pipe: NbTransContente', () => {
     beforeEach(async () => {
       await TestBed.configureTestingModule({
         imports: [NbTransTestingModule],
+        providers: [
+          { provide: NB_TRANS_PARAM_KEY_INVALID_WARNING, useValue: false }
+        ],
         declarations: []
       })
         .compileComponents();

@@ -448,6 +448,25 @@ export class XXXComponent{}
 
 <br>
 
+#### NB_TRANS_PARAM_KEY_INVALID_WARNING
+##### boolean
+##### `v16.0.0`
+###### Whether to print a warning info in the console, when a param key is invalid. The default is true. The print of the warning info will auto be turned off in prod env (It is in prod env when calling `enableProdMode()`).
+
+##### Usage
+```ts
+  providers: [
+    // ...
+    {
+      provide: NB_TRANS_PARAM_KEY_INVALID_WARNING,
+      useValue: false
+    },
+    // ...
+  ]
+```
+
+<br>
+
 ---
 
 ### Interfaces

@@ -23,6 +23,7 @@ export class Feature1Component implements OnInit {
     params1: '{{params2}}',
     params2: '1111',
     params3: '2222',
+    '#p^':'test',
   };
 
   options: INbTransOptions = {
