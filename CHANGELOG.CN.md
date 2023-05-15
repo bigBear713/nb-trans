@@ -2,7 +2,7 @@
 ## 破坏性更新
 - feat: `angular`升级到`^16.0.0`;
 - feat: `@bigbear713/nb-common`升级到`^16.0.0`;
-- feat: [NbTransService](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#nbtransservice "NbTransService") - 限制 params 中的 `key` 的命名规则：由**字母**、**数字**、**_** 和 **$** 组成，且 **数字** 不能为第一个字符;
+- feat: [INbTransParams](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#inbtransparams) - 限制 params 中的 `key` 的命名规则：由**字母**、**数字**、**_** 和 **$** 组成，且 **数字** 不能为第一个字符;
 
 ## 依赖
 - chore: 移除 `uuid` 库;
@@ -18,7 +18,10 @@
 - fix: [`<nb-trans />`](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#nb-transnb-trans) - 修复在一些情况下，翻译结果错误的问题：[issue/28](https://github.com/bigBear713/nb-trans/issues/28)；
 
 ## [Pipes](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#Pipes "Pipes")
-- feat: [nbTrans](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#nbtrans-transformkey-string-options-inbtransoptions-string) - 使用 UnsubscribeService 来管理rxjs的订阅事件；
+- feat: [nbTrans](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#nbtrans-transformkey-string-options-inbtransoptions-string) - 使用 UnsubscribeService 管理rxjs的订阅事件；
+ 
+## [Tokens](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#Tokens "Tokens")
+- feat: [NB_TRANS_PARAM_KEY_INVALID_WARNING](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#nb_trans_param_key_invalid_warning) - 当 param key 不符合规则时，是否在 console 中打印警告信息；
 
 ---
 

@@ -163,20 +163,20 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
 ##### Usage
 ```html
 <!-- only trans key -->
-<nb-trans key="title"></nb-trans>
-<nb-trans [key]="transKey"></nb-trans>
+<nb-trans key="title" />
+<nb-trans [key]="transKey" />
 
 <!-- trans key and options -->
-<nb-trans key="title" [options]="options"></nb-trans>
-<nb-trans key="helloWorld" [options]="({prefix:'content'})"></nb-trans>
+<nb-trans key="title" [options]="options" />
+<nb-trans key="helloWorld" [options]="({prefix:'content'})" />
 
 <!-- trans key, options and components -->
-<nb-trans [key]="complexContent" [options]="options" [components]="[com1,com2]"></nb-trans>
+<nb-trans [key]="complexContent" [options]="options" [components]="[com1,com2]" />
 <ng-template #comp1 let-compContent="content">
   <span>{{compContent}}</span>
 </ng-template>
 <ng-template #comp2 let-compContent="content" let-compList="list">
-  <ng-container *ngTemplateOutlet="compContent,context:{list}"></ng-container>
+  <ng-container *ngTemplateOutlet="compContent,context:{list}" />
 </ng-template>
 ```
 ```ts
@@ -201,7 +201,7 @@ export class XXXComponent{}
 
 #### `[nb-trans]`
 ##### `v16.0.0`
-###### 当翻译文本中含有组件等复杂场景时使用的组件。当不想使用"<nb-trans />"标签元素，而是自己选择原生html标签时使用，比如"<div />","<span />"。当语言被切换时，组件渲染的内容将自动更新。
+###### 当翻译文本中含有组件等复杂场景时使用的组件。当不想使用"\<nb-trans \/\>"标签元素，而是自己选择原生html标签时使用，比如"\<div \/\>","\<span \/\>"。当语言被切换时，组件渲染的内容将自动更新。
 
 ##### Input
 | Name  | Type  | Default  | Description  | Version |
@@ -230,7 +230,7 @@ export class XXXComponent{}
   <span>{{compContent}}</span>
 </ng-template>
 <ng-template #comp2 let-compContent="content" let-compList="list">
-  <ng-container *ngTemplateOutlet="compContent,context:{list}"></ng-container>
+  <ng-container *ngTemplateOutlet="compContent,context:{list}" />
 </ng-template>
 ```
 ```ts
@@ -267,12 +267,12 @@ export class XXXComponent{}
 ```html
 <!-- 和配合<nb-trans></nb-trans>使用 -->
 <!-- 示例：这是一个句子：<0>组件1</0>.<1> <0>组件2中的组件1</0> 组件2的其他部分 </1>.<2>组件3</2> -->
-<nb-trans [key]="complexContent" [components]="[comp1,comp2,comp3]"></nb-trans>
+<nb-trans [key]="complexContent" [components]="[comp1,comp2,comp3]" />
 <ng-template #comp1 let-comContent="content" let-list="list">
   <b [nb-trans-subcontent]="comContent" [subcontentList]="list"></b>
 </ng-template>
 <ng-template #comp2 let-comContent="content" let-list="list">
-  <app-widget [comContent]="comContent" [list]="list"></app-widget>
+  <app-widget [comContent]="comContent" [list]="list" />
 </ng-template>
 <ng-template #comp3 let-comContent="content">
   <b>{{comContent}}</b>
@@ -444,6 +444,25 @@ export class XXXComponent{}
     {
       provide: NB_TRANS_MAX_RETRY,
       useValue: 3
+    },
+    // ...
+  ]
+```
+
+<br>
+
+#### NB_TRANS_PARAM_KEY_INVALID_WARNING
+##### boolean
+##### `v16.0.0`
+###### 当 param key 不符合规则时，是否在 console 中打印警告信息。默认为 true。在生产环境下（调用`enableProdMode()`时，也将处于生产模式），将自动关闭打印警告信息的设置。
+
+##### Usage
+```ts
+  providers: [
+    // ...
+    {
+      provide: NB_TRANS_PARAM_KEY_INVALID_WARNING,
+      useValue: false
     },
     // ...
   ]

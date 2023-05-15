@@ -6,7 +6,7 @@ import { NbTransService, NbTransToolsService } from "../services";
   imports: [NbTransModule],
   providers: [
     NbTransService,
-    NbTransToolsService
+    NbTransToolsService,
   ],
   exports: [NbTransModule]
 })

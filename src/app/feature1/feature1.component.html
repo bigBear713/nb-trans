@@ -47,7 +47,7 @@
 <h3>use {{'\<nb-trans>\</nb-trans>'}}</h3>
 
 <div>
-  <nb-trans key="contentWithParams" [options]="options"></nb-trans>
+  <nb-trans key="contentWithParams" [options]="options" />
 </div>
 
 <hr>
@@ -62,7 +62,7 @@
 </div>
 
 <div>
-  <nb-trans key="complexContent" [components]="[com0,com1,com2]" [options]="{params,prefix:'content'}"> </nb-trans>
+  <nb-trans key="complexContent" [components]="[com0,com1,com2]" [options]="{params,prefix:'content'}" />
 </div>
 
 <hr>
@@ -98,7 +98,7 @@
 </ng-template>
 
 <ng-template #com1 let-comContent="content" let-list="list">
-  <app-widget [comContent]="comContent" [list]="list"></app-widget>
+  <app-widget [comContent]="comContent" [list]="list" />
 </ng-template>
 
 <ng-template #com2 let-comContent="content">

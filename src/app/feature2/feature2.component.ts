@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Route } from '@angular/router';
 import { NbTransModule } from 'nb-trans';
 
@@ -8,7 +8,8 @@ import { NbTransModule } from 'nb-trans';
   imports: [NbTransModule, CommonModule],
   selector: 'app-feature2',
   templateUrl: './feature2.component.html',
-  styleUrls: ['./feature2.component.css']
+  styleUrls: ['./feature2.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Feature2Component implements OnInit {
 

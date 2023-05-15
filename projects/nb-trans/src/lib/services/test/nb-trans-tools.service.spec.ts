@@ -2,7 +2,8 @@ import { NbTransToolsService } from '../nb-trans-tools.service';
 import { TestBed } from '@angular/core/testing';
 import { INbTransParams } from '../../models';
 import { handleSentenceWithParamsTestData } from '../../testing';
-import { NbCommonTestingModule } from '@bigbear713/nb-common';
+import { NbCommonTestingModule, nbTick } from '@bigbear713/nb-common';
+import { NB_TRANS_PARAM_KEY_INVALID_WARNING } from '../../constants';
 
 describe('Service: NbTransTools', () => {
   let service: NbTransToolsService;
@@ -10,7 +11,10 @@ describe('Service: NbTransTools', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [NbCommonTestingModule],
-      providers: [NbTransToolsService]
+      providers: [
+        NbTransToolsService,
+        { provide: NB_TRANS_PARAM_KEY_INVALID_WARNING, useValue: false }
+      ]
     });
   });
 
@@ -117,5 +121,32 @@ describe('Service: NbTransTools', () => {
         expect(service.isTranslatedStringValid(item.trans)).toEqual(item.expect);
       });
     });
-  })
+  });
+
+  describe('Do not print the warning info about the invalid param key', () => {
+    let service2: NbTransToolsService;
+
+    beforeEach(async () => {
+      TestBed.resetTestingModule();
+      await TestBed.configureTestingModule({
+        imports: [NbCommonTestingModule],
+        providers: [
+          NbTransToolsService,
+          { provide: NB_TRANS_PARAM_KEY_INVALID_WARNING, useValue: true }
+        ]
+      });
+      service2 = TestBed.inject(NbTransToolsService);
+    });
+
+    it('will not print warning info when the param key is invalid', () => {
+      const spyFn = spyOn(console, 'warn').and.callThrough();
+
+      const trans = 'This is {{p!}}';
+      const params = { 'p!': '123', };
+      service2.handleSentenceWithParams(trans, params);
+      expect(spyFn).toHaveBeenCalledTimes(1);
+    });
+
+  });
+
 });
