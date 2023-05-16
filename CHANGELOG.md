@@ -3,6 +3,8 @@
 - feat: Upgrade `angular` to `^16.0.0`;
 - feat: Upgrade `@bigbear713/nb-common` to `^16.0.0`;
 - feat: [INbTransParams](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#inbtransparams) - Limit the naming rules about params's key: Consists of `letters, numbers, _, and $`, and the number can't be the first character;
+- feat: [`<nb-trans />`](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#nb-transnb-trans) - The `key` prop is required: [issue/25](https://github.com/bigBear713/nb-trans/issues/25)；
+- feat: [`[nb-trans-subcontent]`](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#nb-trans-subcontent) - The `nb-trans-subcontent` prop is required: [issue/25](https://github.com/bigBear713/nb-trans/issues/25)；
 
 ## Dependencies
 - chore: Remove `uuid` lib;
