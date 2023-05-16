@@ -154,14 +154,16 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
 ##### Be a `standalone component` from `v15.1.0`
 ###### When you need to translate the sentence which include components. When the lang has been switched, the content will auto be updated.
 ##### Input
-| Name  | Type  | Default  | Description  | Version |
-| ------------ | ------------ | ------------ | ------------ | ------------ |
-| components  | `TemplateRef<{ content: string ｜ TemplateRef<any>; list?: INbTransSentencePart[] }>[]`  | []  |  The corresponding component in the translated text.  | `v12.0.0` |
-| key  | `string`  | `''`  | The key to get translated text  | `v12.0.0` |
-| options  | `INbTransOptions`  | {}  | The options of translation. The detail config follow the below definition of [`INbTransOptions`](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#inbtransoptions) | `v12.0.0` |
+| Name  | Type | Mandatory | Default  | Description  | Version |
+| ------------ | ------------ | ------------ | ------------ | ------------ | ------------ |
+| components  | `TemplateRef<{ content: string ｜ TemplateRef<any>; list?: INbTransSentencePart[] }>[]` | false | [] |  The corresponding component in the translated text.  | `v12.0.0` |
+| key  | `string` | true | `''`  | The key to get translated text. The prop is required start from `v16.0.0`.  | `v12.0.0` |
+| options  | `INbTransOptions` | false | {}  | The options of translation. The detail config follow the below definition of [`INbTransOptions`](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#inbtransoptions) | `v12.0.0` |
 
 ##### Usage
 ```html
+<!-- If the key is missing, an error will be reported -->
+<nb-trans />
 <!-- only trans key -->
 <nb-trans key="title" />
 <nb-trans [key]="transKey" />
@@ -203,14 +205,16 @@ export class XXXComponent{}
 ##### `v16.0.0`
 ###### When you need to translate the sentence which include components. When you don't want to use "\<nb-trans \/\>" tag, and want to use the native html tag, such as "\<div \/\>", "\<span \/\>". When the lang has been switched, the content will auto be updated.
 ##### Input
-| Name  | Type  | Default  | Description  | Version |
-| ------------ | ------------ | ------------ | ------------ | ------------ |
-| nb-trans-components  | `TemplateRef<{ content: string ｜ TemplateRef<any>; list?: INbTransSentencePart[] }>[]`  | []  |  The corresponding component in the translated text.  | `v16.0.0` |
-| nb-trans-key  | `string`  | `''`  | The key to get translated text  | `v16.0.0` |
-| nb-trans-options  | `INbTransOptions`  | {} | The options of translation. The detail config follow the below definition of [`INbTransOptions`](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#inbtransoptions) | `v16.0.0` |
+| Name  | Type | Mandatory | Default  | Description  | Version |
+| ------------ | ------------ | ------------ | ------------ | ------------ | ------------ |
+| nb-trans-components  | `TemplateRef<{ content: string ｜ TemplateRef<any>; list?: INbTransSentencePart[] }>[]` | false | []  |  The corresponding component in the translated text.  | `v16.0.0` |
+| nb-trans-key  | `string` | true | `''`  | The key to get translated text  | `v16.0.0` |
+| nb-trans-options  | `INbTransOptions` | false | {} | The options of translation. The detail config follow the below definition of [`INbTransOptions`](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#inbtransoptions) | `v16.0.0` |
 
 ##### Usage
 ```html
+<!-- If the nb-trans-key is missing, an error will be reported -->
+<div nb-trans ></div>
 <!-- only trans key -->
 <div nb-trans nb-trans-key="title"></div>
 <div nb-trans [nb-trans-key]="transKey"></div>
@@ -257,10 +261,10 @@ export class XXXComponent{}
 ###### It is a common solution when the sentence include some nested componets (you can impletement yourself to meet the requirement). It will render the nested content. The selector is attribute,  and can be used in `<div />`, `<span />`, `<a />`，`<ng-container />` and others. The component is used with `<nb-trans></nb-trans>`, don't use it alone.
 
 ##### Input
-| Name  | Type  | Default  | Description  | Version |
-| ------------ | ------------ | ------------ | ------------ | ------------ |
-| nb-trans-subcontent  | `string ｜ TemplateRef<any>`  | `''`  | The content will be rendered. It accept the `string` or `TemplateRef` type. When the content is `string`, it will be render directly, and the input property: `subcontentList` will be ignored. When the content is `TemplateRef`, the `subcontentList` param will work.  | `v12.0.0` |
-| subcontentList  | `INbTransSentencePart[]`  | []  | Only when the `nb-trans-subcontent` is `TemplateRef`, and the content is the input property of `<nb-trans></nb-trans>`, it will work. The `[nb-trans-subcontent]` component will use it as the template's context.  | `v12.0.0` |
+| Name  | Type | Mandatory | Default  | Description  | Version |
+| ------------ | ------------ | ------------ | ------------ | ------------ | ------------ |
+| nb-trans-subcontent  | `string ｜ TemplateRef<any>` | true | `''`  | The content will be rendered. It accept the `string` or `TemplateRef` type. When the content is `string`, it will be render directly, and the input property: `subcontentList` will be ignored. When the content is `TemplateRef`, the `subcontentList` param will work. The prop is required start from `v16.0.0`.  | `v12.0.0` |
+| subcontentList  | `INbTransSentencePart[]` | false | []  | Only when the `nb-trans-subcontent` is `TemplateRef`, and the content is the input property of `<nb-trans></nb-trans>`, it will work. The `[nb-trans-subcontent]` component will use it as the template's context.  | `v12.0.0` |
 
 ##### Usage
 ```html

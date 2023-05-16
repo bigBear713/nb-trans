@@ -31,7 +31,7 @@ export class NbTransComponent implements OnChanges {
 
   @Input() components: TemplateRef<{ content: string | TemplateRef<any>; list?: INbTransSentencePart[] }>[] = [];
 
-  @Input() key: string = '';
+  @Input({ required: true }) key: string = '';
 
   @Input() options: INbTransOptions = {};
 
@@ -109,7 +109,7 @@ export class NbTrans2Component extends NbTransComponent {
 
   @Input('nb-trans-components') components: TemplateRef<{ content: string | TemplateRef<any>; list?: INbTransSentencePart[] }>[] = [];
 
-  @Input('nb-trans-key') key: string = '';
+  @Input({ alias: 'nb-trans-key', required: true }) key: string = '';
 
   @Input('nb-trans-options') options: INbTransOptions = {};
 }

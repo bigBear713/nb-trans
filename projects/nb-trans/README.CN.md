@@ -154,14 +154,16 @@ this.transService.subscribeLoadDefaultOver().subscribe(over=>{
 ###### 当翻译文本中含有组件等复杂场景时使用的组件。当语言被切换时，组件渲染的内容将自动更新
 
 ##### Input
-| Name  | Type  | Default  | Description  | Version |
-| ------------ | ------------ | ------------ | ------------ | ------------ |
-| components  | `TemplateRef<{ content: string ｜ TemplateRef<any>; list?: INbTransSentencePart[] }>[]`  | []  | 翻译文本中的对应的组件。  | `v12.0.0` |
-| key  | `string`  | `''`  | 获取翻译文本的key值  | `v12.0.0` |
-| options  | `INbTransOptions`  | {}  | 翻译的配置信息。具体配置见下方的[`INbTransOptions`](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#inbtransoptions)定义。  | `v12.0.0` |
+| Name  | Type | Mandatory | Default  | Description  | Version |
+| ------------ | ------------ | ------------ | ------------ | ------------ | ------------ |
+| components  | `TemplateRef<{ content: string ｜ TemplateRef<any>; list?: INbTransSentencePart[] }>[]` | false | []  | 翻译文本中的对应的组件。  | `v12.0.0` |
+| key  | `string` | true | `''`  | 获取翻译文本的key值。自`v16.0.0`起，为必需属性。  | `v12.0.0` |
+| options  | `INbTransOptions` | false | {}  | 翻译的配置信息。具体配置见下方的[`INbTransOptions`](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#inbtransoptions)定义。  | `v12.0.0` |
 
 ##### Usage
 ```html
+<!-- If the key is missing, an error will be reported -->
+<nb-trans />
 <!-- only trans key -->
 <nb-trans key="title" />
 <nb-trans [key]="transKey" />
@@ -204,14 +206,16 @@ export class XXXComponent{}
 ###### 当翻译文本中含有组件等复杂场景时使用的组件。当不想使用"\<nb-trans \/\>"标签元素，而是自己选择原生html标签时使用，比如"\<div \/\>","\<span \/\>"。当语言被切换时，组件渲染的内容将自动更新。
 
 ##### Input
-| Name  | Type  | Default  | Description  | Version |
-| ------------ | ------------ | ------------ | ------------ | ------------ |
-| nb-trans-components  | `TemplateRef<{ content: string ｜ TemplateRef<any>; list?: INbTransSentencePart[] }>[]`  | []  | 翻译文本中的对应的组件。  | `v16.0.0` |
-| nb-trans-key  | `string`  | `''`  | 获取翻译文本的key值  | `v16.0.0` |
-| nb-trans-options  | `INbTransOptions`  | {}  | 翻译的配置信息。具体配置见下方的[`INbTransOptions`](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#inbtransoptions)定义。  | `v16.0.0` |
+| Name  | Type | Mandatory | Default  | Description  | Version |
+| ------------ | ------------ | ------------ | ------------ | ------------ | ------------ |
+| nb-trans-components  | `TemplateRef<{ content: string ｜ TemplateRef<any>; list?: INbTransSentencePart[] }>[]` | false | []  | 翻译文本中的对应的组件。  | `v16.0.0` |
+| nb-trans-key  | `string` | true | `''`  | 获取翻译文本的key值  | `v16.0.0` |
+| nb-trans-options  | `INbTransOptions` | false | {}  | 翻译的配置信息。具体配置见下方的[`INbTransOptions`](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md#inbtransoptions)定义。  | `v16.0.0` |
 
 ##### Usage
 ```html
+<!-- If the nb-trans-key is missing, an error will be reported -->
+<div nb-trans ></div>
 <!-- only trans key -->
 <div nb-trans nb-trans-key="title"></div>
 <div nb-trans [nb-trans-key]="transKey"></div>
@@ -258,10 +262,10 @@ export class XXXComponent{}
 ###### 当翻译文本中含有组件嵌套时使用的一种官方提供的方案(可根据需要有自己的实现方式)，会将嵌套的组件内容渲染出来。selector为attribute，可用于`<div />`, `<span />`, `<a />`，`<ng-container />`等。该组件是搭配`<nb-trans></nb-trans>`使用，请勿单独使用。
 
 ##### Input
-| Name  | Type  | Default  | Description  | Version |
-| ------------ | ------------ | ------------ | ------------ | ------------ |
-| nb-trans-subcontent  | `string ｜ TemplateRef<any>`  | `''`  | 要显示的子内容。接受`string`类型和`TemplateRef`类型。当为`string`类型时，直接渲染出来，`subcontentList`输入参数不起作用。当为`TemplateRef`类型时，`subcontentList`参数将起作用。  | `v12.0.0` |
-| subcontentList  | `INbTransSentencePart[]`  | []  | 仅当`nb-trans-subcontent`为`TemplateRef`类型时，且该内容为`<nb-trans></nb-trans>`的components输入属性的子内容时有效。`[nb-trans-subcontent]`会将该参数的值传到template的context中。详情见下方Usage  | `v12.0.0` |
+| Name  | Type | Mandatory | Default  | Description  | Version |
+| ------------ | ------------ | ------------ | ------------ | ------------ | ------------ |
+| nb-trans-subcontent  | `string ｜ TemplateRef<any>` | true | `''`  | 要显示的子内容。接受`string`类型和`TemplateRef`类型。当为`string`类型时，直接渲染出来，`subcontentList`输入参数不起作用。当为`TemplateRef`类型时，`subcontentList`参数将起作用。自`v16.0.0`起，为必需属性 | `v12.0.0` |
+| subcontentList  | `INbTransSentencePart[]` | false | []  | 仅当`nb-trans-subcontent`为`TemplateRef`类型时，且该内容为`<nb-trans></nb-trans>`的components输入属性的子内容时有效。`[nb-trans-subcontent]`会将该参数的值传到template的context中。详情见下方Usage  | `v12.0.0` |
 
 ##### Usage
 ```html
