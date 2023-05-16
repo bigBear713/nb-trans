@@ -27,7 +27,7 @@ const importsFromNbCommon = [NbIsStringPipe, NbTplContentPipe];
 })
 export class NbTransSubcontentComponent {
 
-  @Input('nb-trans-subcontent') content: string | TemplateRef<any> = '';
+  @Input({ alias: 'nb-trans-subcontent', required: true }) content: string | TemplateRef<any> = '';
 
   @Input() subcontentList: INbTransSentencePart[] = [];
 }
