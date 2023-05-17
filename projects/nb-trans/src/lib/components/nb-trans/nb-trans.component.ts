@@ -109,7 +109,7 @@ export class NbTrans2Component extends NbTransComponent {
 
   @Input('nb-trans-components') components: TemplateRef<{ content: string | TemplateRef<any>; list?: INbTransSentencePart[] }>[] = [];
 
-  @Input({ alias: 'nb-trans-key', required: true }) key: string = '';
+  @Input({ alias: 'nb-trans', required: true }) key: string = '';
 
   @Input('nb-trans-options') options: INbTransOptions = {};
 }

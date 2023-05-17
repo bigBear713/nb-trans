@@ -207,28 +207,26 @@ export class XXXComponent{}
 ##### Input
 | Name  | Type | Mandatory | Default  | Description  | Version |
 | ------------ | ------------ | ------------ | ------------ | ------------ | ------------ |
+| nb-trans | `string` | true | `''`  | The key to get translated text  | `v16.0.0` |
 | nb-trans-components  | `TemplateRef<{ content: string ｜ TemplateRef<any>; list?: INbTransSentencePart[] }>[]` | false | []  |  The corresponding component in the translated text.  | `v16.0.0` |
-| nb-trans-key  | `string` | true | `''`  | The key to get translated text  | `v16.0.0` |
 | nb-trans-options  | `INbTransOptions` | false | {} | The options of translation. The detail config follow the below definition of [`INbTransOptions`](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#inbtransoptions) | `v16.0.0` |
 
 ##### Usage
 ```html
-<!-- If the nb-trans-key is missing, an error will be reported -->
-<div nb-trans ></div>
 <!-- only trans key -->
-<div nb-trans nb-trans-key="title"></div>
-<div nb-trans [nb-trans-key]="transKey"></div>
+<div nb-trans="title"></div>
+<div [nb-trans]="transKey"></div>
 <!-- other native html tags -->
-<span nb-trans [nb-trans-key]="transKey"></span>
-<p nb-trans [nb-trans-key]="transKey"></p>
-<h2 nb-trans [nb-trans-key]="transKey"></h2>
+<span [nb-trans]="transKey"></span>
+<p [nb-trans]="transKey"></p>
+<h2 [nb-trans]="transKey"></h2>
 
 <!-- trans key and options -->
-<div nb-trans nb-transkey="title" [nb-transoptions]="options"></div>
-<div nb-trans nb-trans-key="helloWorld" [nb-trans-options]="({prefix:'content'})"></div>
+<div nb-transkey="title" [nb-transoptions]="options"></div>
+<div nb-trans="helloWorld" [nb-trans-options]="({prefix:'content'})"></div>
 
 <!-- trans key, options and components -->
-<div nb-trans [nb-trans-key]="complexContent" [nb-trans-options]="options" [nb-trans-components]="[com1,com2]"></div>
+<div [nb-trans]="complexContent" [nb-trans-options]="options" [nb-trans-components]="[com1,com2]"></div>
 <ng-template #comp1 let-compContent="content">
   <span>{{compContent}}</span>
 </ng-template>
