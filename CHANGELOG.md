@@ -4,7 +4,6 @@
 - feat: Upgrade `@bigbear713/nb-common` to `^16.0.0`;
 - feat: [INbTransParams](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#inbtransparams) - Limit the naming rules about params's key: Consists of `letters, numbers, _, and $`, and the number can't be the first character;
 - feat: [`<nb-trans />`](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#nb-transnb-trans) - The `key` prop is required: [issue/25](https://github.com/bigBear713/nb-trans/issues/25)；
-- feat: [`[nb-trans-subcontent]`](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#nb-trans-subcontent) - The `nb-trans-subcontent` prop is required: [issue/25](https://github.com/bigBear713/nb-trans/issues/25)；
 
 ## Dependencies
 - chore: Remove `uuid` lib;
@@ -15,7 +14,7 @@
 - feat: [NbTransService](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#nbtransservice "NbTransService") - Support for spaces between `dynamic params` and `{{}}` in translated string: [issue/34](https://github.com/bigBear713/nb-trans/issues/34);
 
 ## [Components](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#Components "Components")
-- feat: [`[nb-trans]`](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#nb-trans) - Add the component which the selector is `[nb-trans]`;
+- feat: [`[nb-trans]`](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#nb-trans) - Add the component which the selector is `[nb-trans]`: [issue/22](https://github.com/bigBear713/nb-trans/issues/22);
 - perf: [`<nb-trans />`](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#nb-transnb-trans) - Use the UnsubscribeService to manage the rxjs subscription;
 - fix: [`<nb-trans />`](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md#nb-transnb-trans) - Fix the bug about the trans result is wrong in some case: [issue/28](https://github.com/bigBear713/nb-trans/issues/28)；
 
