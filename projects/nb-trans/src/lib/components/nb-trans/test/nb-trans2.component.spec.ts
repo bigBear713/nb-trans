@@ -222,7 +222,7 @@ describe('Component: NbTrans2', () => {
 const StandaloneCompConfig = {
   standalone: true,
   imports: [NbTrans2Component],
-  template: `<div nb-trans [nb-trans-key]="key" [nb-trans-options]="options"></div>`,
+  template: `<div [nb-trans]="key" [nb-trans-options]="options"></div>`,
 };
 
 @Component(StandaloneCompConfig)
