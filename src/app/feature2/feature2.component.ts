@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Route } from '@angular/router';
 import { NbTransModule } from 'nb-trans';
+import { GTagService } from '../g-tag.service';
 
 @Component({
   standalone: true,
@@ -21,7 +22,7 @@ export class Feature2Component implements OnInit {
 
   compStr1 = `
     <div>
-      <nb-trans key="complexContent" [components]="[com0,com1,com2]" [options]="{params,prefix:'content'}"> </nb-trans>
+      <nb-trans key="complexContent" [components]="[com0,com1,com2]" [options]="{params,prefix:'content'}" />
     </div>
 
     <ng-template #com0 let-comContent="content" let-list="list">
@@ -29,7 +30,7 @@ export class Feature2Component implements OnInit {
     </ng-template>
 
     <ng-template #com1 let-comContent="content" let-list="list">
-      <app-widget [comContent]="comContent" [list]="list"></app-widget>
+      <a [nb-trans-subcontent]="comContent" [subcontentList]="list"></a>
     </ng-template>
 
     <ng-template #com2 let-comContent="content">
@@ -37,9 +38,19 @@ export class Feature2Component implements OnInit {
     </ng-template>
   `;
 
-  constructor() { }
+  constructor(
+    private gtagService: GTagService,
+  ) {
+    this.trackPage();
+  }
 
   ngOnInit() {
+  }
+
+  private trackPage() {
+    this.gtagService.trackPage({
+      page_name: 'Standalone Component',
+    });
   }
 
 }
