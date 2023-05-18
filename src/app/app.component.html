@@ -1,10 +1,6 @@
 <h2>
-  <a href="https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md" target="_blank">
-    Document
-  </a>
-  <a href="https://github.com/bigBear713/nb-trans/blob/master/CHANGELOG.md" target="_blank">
-    Changelog
-  </a>
+  <a [href]="links.document.link" target="_blank" (click)="go2Link(links.document)"> {{links.document.title}} </a>
+  <a [href]="links.changelog.link" target="_blank" (click)="go2Link(links.changelog)"> {{links.changelog.title}} </a>
 </h2>
 <hr>
 <div class="actions">
