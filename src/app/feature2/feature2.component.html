@@ -1,4 +1,3 @@
-
 <h5>使用ng-trans组件，带有components参数和options参数。设置key值前缀和翻译文本中的参数,params参数为：{{params|json}}</h5>
 <p>
   翻译文本原文：{{'complexContent'| nbTrans:({prefix:'content'})}}
@@ -9,7 +8,7 @@
 </div>
 
 <div>
-  <nb-trans key="complexContent" [components]="[com0,com1,com2]" [options]="{params,prefix:'content'}"> </nb-trans>
+  <nb-trans key="complexContent" [components]="[com0,com1,com2]" [options]="{params,prefix:'content'}" />
 </div>
 
 <ng-template #com0 let-comContent="content" let-list="list">
