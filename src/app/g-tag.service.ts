@@ -8,12 +8,14 @@ dayjs.extend(utc);
 const defaultGtag = () => { };
 const gtag = (window as any).gtag || defaultGtag;
 
+const website_id = '@bigbear713/nb-trans';
+const website_ga_id = (window as any).website_ga_id;
+const libs_ga_id = (window as any).libs_ga_id;
+
 @Injectable({
   providedIn: 'root'
 })
 export class GTagService {
-
-  website_id = '@bigbear713/nb-trans';
 
   constructor(
     private router: Router,
@@ -33,14 +35,20 @@ export class GTagService {
   }
 
   private trackEvent(eventName: string, props: object): void {
-    const trackProps = {
+    const trackCurrProps = {
+      send_to: website_ga_id,
       datetime: dayjs().utc().format(),
-      website_id: this.website_id,
       url: this.router.url,
       language: this.transService.lang,
       ...props,
     };
-    gtag('event', eventName, trackProps);
+    const trackLibsProps = {
+      ...trackCurrProps,
+      send_to: libs_ga_id,
+      website_id: website_id,
+    };
+    gtag('event', eventName, trackCurrProps);
+    gtag('event', eventName, trackLibsProps);
   }
 
 }
