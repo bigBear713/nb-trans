@@ -19,16 +19,16 @@ export class AppComponent {
     params3: '2222',
   };
 
-  links = {
-    changelog: {
+  links = [
+    {
       title: 'Changelog',
-      link: 'https://github.com/bigBear713/nb-trans/blob/master/CHANGELOG.md',
+      link: 'https://github.com/bigBear713/nb-trans/blob/main/CHANGELOG.md',
     },
-    document: {
+    {
       title: 'Document',
-      link: 'https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md',
-    },
-  };
+      link: 'https://github.com/bigBear713/nb-trans/blob/main/projects/nb-trans/README.md',
+    }
+  ];
 
   get title() {
     return this.transService.translationSync('title');
