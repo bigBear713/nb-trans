@@ -1,7 +1,7 @@
 {
   "name": "@bigbear713/nb-trans",
   "version": "16.0.0",
-  "homepage": "https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md",
+  "homepage": "https://github.com/bigBear713/nb-trans/blob/main/projects/nb-trans/README.md",
   "description": "Angular translation lib by bigBear713.",
   "keywords": [
     "ng",

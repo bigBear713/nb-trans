@@ -141,7 +141,7 @@ export class NbTransToolsService {
       `The param key: "${paramKey}" is invalid! 
        It should consist of "letter", "number", "_" or "$", 
        and the "number" can't be the first character.
-       See this changelog: https://github.com/bigBear713/nb-trans/blob/master/CHANGELOG.md#v1600`
+       See this changelog: https://github.com/bigBear713/nb-trans/blob/main/CHANGELOG.md#v1600`
     );
   }
 

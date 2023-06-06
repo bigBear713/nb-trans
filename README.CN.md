@@ -13,20 +13,20 @@ Angular translation lib by bigBear713.
 </div>
 
 ## Document
-- [中文](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.CN.md "文档 - 中文")
-- [English](https://github.com/bigBear713/nb-trans/blob/master/projects/nb-trans/README.md "Document - English")
+- [中文](https://github.com/bigBear713/nb-trans/blob/main/projects/nb-trans/README.CN.md "文档 - 中文")
+- [English](https://github.com/bigBear713/nb-trans/blob/main/projects/nb-trans/README.md "Document - English")
 
 ---
 
 ## Changelog
-- [中文](https://github.com/bigBear713/nb-trans/blob/master/CHANGELOG.CN.md "更新日志 - 中文")
-- [English](https://github.com/bigBear713/nb-trans/blob/master/CHANGELOG.md "Changelog - English")
+- [中文](https://github.com/bigBear713/nb-trans/blob/main/CHANGELOG.CN.md "更新日志 - 中文")
+- [English](https://github.com/bigBear713/nb-trans/blob/main/CHANGELOG.md "Changelog - English")
 
 ---
 
 ## Readme
-- [中文](https://github.com/bigBear713/nb-trans/blob/master/README.CN.md "文档 - 中文")
-- [English](https://github.com/bigBear713/nb-trans/blob/master/README.md "Document - English")
+- [中文](https://github.com/bigBear713/nb-trans/blob/main/README.CN.md "文档 - 中文")
+- [English](https://github.com/bigBear713/nb-trans/blob/main/README.md "Document - English")
 
 ---
 
