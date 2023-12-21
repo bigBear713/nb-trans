@@ -1,23 +1,13 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { NbTransLang, NbTransModule, NB_TRANS_DEFAULT_LANG, NB_TRANS_LOADER, NB_TRANS_MAX_RETRY, NB_TRANS_PARAM_KEY_INVALID_WARNING } from 'nb-trans';
+import { ApplicationConfig, importProvidersFrom } from '@angular/core';
+import { provideRouter } from '@angular/router';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { routes } from './app.routes';
+import { NB_TRANS_DEFAULT_LANG, NB_TRANS_LOADER, NbTransLang } from 'nb-trans';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { environment } from '../environments/environment';
 
-@NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule.withServerTransition({ appId: 'serverApp' }),
-    NbTransModule,
-    HttpClientModule,
-    AppRoutingModule
-  ],
+export const appConfig: ApplicationConfig = {
   providers: [
+    importProvidersFrom(HttpClientModule),
     // {
     //   provide: NB_TRANS_MAX_RETRY,
     //   useValue: 0
@@ -45,14 +35,13 @@ import { environment } from '../environments/environment';
 
         // dyn load and the content is a json file
         // [NbTransLang.EN]: () => http.get('./assets/localization/en/translations.json').toPromise(),
-        [NbTransLang.EN]: () => http.get(environment.domain + 'assets/localization/en/translations.json'),
+        [NbTransLang.EN]: () => http.get('./assets/localization/en/translations.json'),
         // [NbTransLang.ZH_CN]: () => http.get('./assets/localization/zh-CN/translations.json').toPromise(),
-        [NbTransLang.ZH_CN]: () => http.get(environment.domain + 'assets/localization/zh-CN/translations.json'),
+        [NbTransLang.ZH_CN]: () => http.get('./assets/localization/zh-CN/translations.json'),
       }),
       deps: [HttpClient]
     },
     // { provide: NB_TRANS_PARAM_KEY_INVALID_WARNING, useValue: false }
-  ],
-  bootstrap: [AppComponent]
-})
-export class AppModule { }
+    provideRouter(routes)
+  ]
+};

@@ -1,12 +1,16 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { NbTransService } from 'nb-trans';
+import { CommonModule } from '@angular/common';
+import { RouterOutlet } from '@angular/router';
 import { Observable } from 'rxjs';
 import { GTagService } from './g-tag.service';
+import { NbTransModule, NbTransService } from 'nb-trans';
 
 @Component({
   selector: 'app-root',
+  standalone: true,
+  imports: [CommonModule, RouterOutlet, NbTransModule],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  styleUrl: './app.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
@@ -66,5 +70,4 @@ export class AppComponent {
       });
     });
   }
-
 }
