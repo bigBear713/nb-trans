@@ -91,7 +91,7 @@ export class NbTransService {
 
     // there is no any lang loader
     if (!this.transLoader[lang]) {
-      timer().subscribe(_ => this.loadLangTrans$.next(false));
+      timer(1).subscribe(_ => this.loadLangTrans$.next(false));
       return of(failureResult);
     }
 

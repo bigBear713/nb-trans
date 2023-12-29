@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import * as dayjs from 'dayjs';
-import * as utc from 'dayjs/plugin/utc';
+import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
 import { NbTransService } from 'nb-trans';
 dayjs.extend(utc);
 
