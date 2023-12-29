@@ -90,18 +90,6 @@ npm start
 npm run build
 ```
 
-- 启动带有SSR的demo项目
-```bash
-npm run dev:ssr
-```
-
-- 部署带有SSR的demo项目
-```bash
-npm run build:ssr
-
-npm run serve:ssr
-```
-
 ---
 
 ## 贡献者

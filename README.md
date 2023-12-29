@@ -89,18 +89,6 @@ npm start
 npm run build
 ```
 
-- Start the demo with SSR
-```bash
-npm run dev:ssr
-```
-
-- Build the demo with SSR
-```bash
-npm run build:ssr
-
-npm run serve:ssr
-```
-
 ---
 
 ## Contribution
