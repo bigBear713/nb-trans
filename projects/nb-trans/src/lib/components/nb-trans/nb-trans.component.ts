@@ -107,9 +107,9 @@ export class NbTransComponent implements OnChanges {
 })
 export class NbTrans2Component extends NbTransComponent {
 
-  @Input('nb-trans-components') components: TemplateRef<{ content: string | TemplateRef<any>; list?: INbTransSentencePart[] }>[] = [];
+  @Input('nb-trans-components') override components: TemplateRef<{ content: string | TemplateRef<any>; list?: INbTransSentencePart[] }>[] = [];
 
-  @Input({ alias: 'nb-trans', required: true }) key: string = '';
+  @Input({ alias: 'nb-trans', required: true }) override key: string = '';
 
-  @Input('nb-trans-options') options: INbTransOptions = {};
+  @Input('nb-trans-options') override options: INbTransOptions = {};
 }

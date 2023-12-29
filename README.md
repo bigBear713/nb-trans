@@ -44,13 +44,13 @@ Angular translation lib by bigBear713.
 
 ## Version
 ###### The nb-trans's major version will keep up with the Angular's major version
-| @bigbear713/nb-trans  | @angular/core |
-| ---                   | ---           |
-| ^12.0.0               | ^12.0.0       |
-| ^13.0.0               | ^13.0.0       |
-| ^14.0.0               | ^14.0.0       |
-| ^15.0.0               | ^15.0.0       |
-| ^16.0.0               | ^16.0.0       |
+| @bigbear713/nb-trans | @angular/core |
+| -------------------- | ------------- |
+| ^12.0.0              | ^12.0.0       |
+| ^13.0.0              | ^13.0.0       |
+| ^14.0.0              | ^14.0.0       |
+| ^15.0.0              | ^15.0.0       |
+| ^17.0.0              | ^17.0.0       |
 
 ---
 
@@ -87,18 +87,6 @@ npm start
 - build the demo
 ```bash
 npm run build
-```
-
-- Start the demo with SSR
-```bash
-npm run dev:ssr
-```
-
-- Build the demo with SSR
-```bash
-npm run build:ssr
-
-npm run serve:ssr
 ```
 
 ---

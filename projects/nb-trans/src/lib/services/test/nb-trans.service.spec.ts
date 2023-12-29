@@ -192,40 +192,40 @@ describe('Service: NbTrans', () => {
   it('#getBrowserLang()', inject([NbTransService], (service: NbTransService) => {
     expect(service.getBrowserLang()).toEqual(window.navigator.language);
 
-    spyOnProperty(window.navigator, 'language').and.returnValue(undefined);
+    spyOnProperty(window.navigator, 'language').and.returnValue(undefined as any);
     expect(service.getBrowserLang()).toEqual(undefined);
 
-    spyOnProperty(window, 'navigator').and.returnValue(undefined);
+    spyOnProperty(window, 'navigator').and.returnValue(undefined as any);
     expect(service.getBrowserLang()).toEqual(undefined);
   }));
 
   it('#NbTransService.getBrowserLang()', () => {
     expect(NbTransService.getBrowserLang()).toEqual(window.navigator.language);
 
-    spyOnProperty(window.navigator, 'language').and.returnValue(undefined);
+    spyOnProperty(window.navigator, 'language').and.returnValue(undefined as any);
     expect(NbTransService.getBrowserLang()).toEqual(undefined);
 
-    spyOnProperty(window, 'navigator').and.returnValue(undefined);
+    spyOnProperty(window, 'navigator').and.returnValue(undefined as any);
     expect(NbTransService.getBrowserLang()).toEqual(undefined);
   });
 
   it('#getBrowserLangs()', inject([NbTransService], (service: NbTransService) => {
     expect(service.getBrowserLangs()).toEqual(window.navigator.languages);
 
-    spyOnProperty(window.navigator, 'languages').and.returnValue(undefined);
+    spyOnProperty(window.navigator, 'languages').and.returnValue(undefined as any);
     expect(service.getBrowserLangs()).toEqual(undefined);
 
-    spyOnProperty(window, 'navigator').and.returnValue(undefined);
+    spyOnProperty(window, 'navigator').and.returnValue(undefined as any);
     expect(service.getBrowserLangs()).toEqual(undefined);
   }));
 
   it('#NbTransService.getBrowserLangs()', () => {
     expect(NbTransService.getBrowserLangs()).toEqual(window.navigator.languages);
 
-    spyOnProperty(window.navigator, 'languages').and.returnValue(undefined);
+    spyOnProperty(window.navigator, 'languages').and.returnValue(undefined as any);
     expect(NbTransService.getBrowserLangs()).toEqual(undefined);
 
-    spyOnProperty(window, 'navigator').and.returnValue(undefined);
+    spyOnProperty(window, 'navigator').and.returnValue(undefined as any);
     expect(NbTransService.getBrowserLangs()).toEqual(undefined);
   });
 
