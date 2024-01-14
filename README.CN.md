@@ -10,7 +10,7 @@ Angular translation lib by bigBear713.
 
 [Feature Request](https://github.com/bigBear713/nb-trans/issues)
 
-[SSR Demo](https://bigBear713.github.io/nb-trans-ssr/)
+[SSR Demo](https://github.com/bigBear713/nb-trans-ssr/)
 
 </div>
 
