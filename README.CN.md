@@ -4,11 +4,13 @@
 
 Angular translation lib by bigBear713.
 
-[OnlineDemo](https://bigBear713.github.io/nb-trans/)
+[Online Demo](https://bigBear713.github.io/nb-trans/)
 
 [Bug Report](https://github.com/bigBear713/nb-trans/issues)
 
 [Feature Request](https://github.com/bigBear713/nb-trans/issues)
+
+[SSR Demo](https://bigBear713.github.io/nb-trans-ssr/)
 
 </div>
 
