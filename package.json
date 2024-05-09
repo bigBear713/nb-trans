@@ -17,7 +17,8 @@
     "copy:readmeCn": "cp projects/nb-trans/README.CN.md dist/nb-trans/",
     "copy:changelog": "cp CHANGELOG.* dist/nb-trans/",
     "copy:license": "cp LICENSE dist/nb-trans/",
-    "pack:lib": "cd ./dist/nb-trans && npm pack"
+    "pack:lib": "cd ./dist/nb-trans && npm pack",
+    "lint": "ng lint"
   },
   "private": true,
   "dependencies": {
@@ -38,11 +39,19 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^17.0.7",
+    "@angular-eslint/builder": "17.4.0",
+    "@angular-eslint/eslint-plugin": "17.4.0",
+    "@angular-eslint/eslint-plugin-template": "17.4.0",
+    "@angular-eslint/schematics": "17.4.0",
+    "@angular-eslint/template-parser": "17.4.0",
     "@angular/cli": "^17.0.7",
     "@angular/compiler-cli": "^17.0.0",
     "@types/jasmine": "~5.1.0",
     "@types/lodash-es": "^4.17.5",
     "@types/node": "^18.18.0",
+    "@typescript-eslint/eslint-plugin": "7.8.0",
+    "@typescript-eslint/parser": "7.8.0",
+    "eslint": "^8.57.0",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",

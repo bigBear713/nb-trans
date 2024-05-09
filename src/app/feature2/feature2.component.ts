@@ -44,7 +44,9 @@ export class Feature2Component implements OnInit {
     this.trackPage();
   }
 
+  // @angular-eslint/no-empty-lifecycle-method
   ngOnInit() {
+    // console.log('');
   }
 
   private trackPage() {

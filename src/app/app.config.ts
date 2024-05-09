@@ -37,12 +37,13 @@ export const appConfig: ApplicationConfig = {
         // dyn load and the content is a json file
         // [NbTransLang.EN]: () => lastValueFrom(http.get('./assets/localization/en/translations.json')),
         [NbTransLang.EN]: () => http.get('./assets/localization/en/translations.json'),
-        // [NbTransLang.ZH_CN]: () => lastValueFrom(http.get('./assets/localization/zh-CN/translations.json')),
-        [NbTransLang.ZH_CN]: () => http.get('./assets/localization/zh-CN/translations.json'),
+        [NbTransLang.ZH_CN]: () => lastValueFrom(http.get('./assets/localization/zh-CN/translations.json')),
+        // [NbTransLang.ZH_CN]: () => http.get('./assets/localization/zh-CN/translations.json'),
       }),
       deps: [HttpClient]
     },
-    // { provide: NB_TRANS_PARAM_KEY_INVALID_WARNING, useValue: false },
+    // set as false will not display invalid warning info
+    { provide: NB_TRANS_PARAM_KEY_INVALID_WARNING, useValue: false },
     provideRouter(routes)
   ]
 };

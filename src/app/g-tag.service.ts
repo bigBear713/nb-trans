@@ -6,10 +6,13 @@ import { NbTransService } from 'nb-trans';
 dayjs.extend(utc);
 
 const defaultGtag = () => { };
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const gtag = (window as any).gtag || defaultGtag;
 
 const website_id = '@bigbear713/nb-trans';
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const website_ga_id = (window as any).website_ga_id;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const libs_ga_id = (window as any).libs_ga_id;
 
 @Injectable({

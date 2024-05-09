@@ -10,6 +10,7 @@ import { INbTransSentencePart } from 'nb-trans';
 export class WidgetComponent implements OnInit {
 
   @Input()
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   comContent: string | TemplateRef<any> = '';
 
   @Input() list: INbTransSentencePart[] = [];
