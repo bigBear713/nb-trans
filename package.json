@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "start:lib": "ng build --watch nb-trans",
-    "build:lib": "ng build nb-trans && npm run copy:readmeCn && npm run copy:changelog && npm run copy:license",
+    "build:lib": "npm run lint:lib && ng build nb-trans && npm run copy:readmeCn && npm run copy:changelog && npm run copy:license",
     "build:analyze": "npm run build -- --source-map && npm run view:analyze",
     "view:analyze": "node_modules/.bin/source-map-explorer dist/nb-trans-demo/*",
     "test:lib": "ng test nb-trans",
@@ -18,7 +18,8 @@
     "copy:changelog": "cp CHANGELOG.* dist/nb-trans/",
     "copy:license": "cp LICENSE dist/nb-trans/",
     "pack:lib": "cd ./dist/nb-trans && npm pack",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "lint:lib": "ng lint nb-trans"
   },
   "private": true,
   "dependencies": {
