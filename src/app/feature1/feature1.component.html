@@ -1,25 +1,22 @@
 <div>
   <h5>使用 nbTrans 管道，语言切换时自动获取最新的翻译</h5>
-  {{ "{{'title'| nbTrans}}：" }}
-  {{ 'title' | nbTrans }}
+  {{ "{{'title'| nbTrans}}：" }} {{ 'title' | nbTrans }}
 </div>
 <hr />
 
 <div>
   <h5>使用 nbTrans 管道，key值为多层</h5>
-  {{"{{'content.helloWorld'| nbTrans}}:"}}
-  {{ 'content.helloWorld' | nbTrans }}
+  {{"{{'content.helloWorld'| nbTrans}}:"}} {{ 'content.helloWorld' | nbTrans }}
 </div>
 <hr />
 
 <div>
   <h5>
-    使用 nbTrans 管道，带有options参数。设置key值前缀和翻译文本中的参数,params参数为：{{
-      params | json
-    }}
+    使用 nbTrans 管道，带有options参数。设置key值前缀和翻译文本中的参数,params参数为：
+    {{ params | json }}
   </h5>
   <p>翻译文本原文：{{ 'contentWithParams' | nbTrans: { prefix: 'content' } }}</p>
-  {{"{{'contentWithParams'| nbTrans:({prefix:'content',params: params})}}:"}}
+  {{ "{{'contentWithParams'| nbTrans:({prefix:'content',params: params})}}:" }}
   {{ 'contentWithParams' | nbTrans: { prefix: 'content', params: params } }}
 </div>
 
@@ -31,8 +28,7 @@
 
 <div>
   <h5>通过getter，调用translationSync()时时获取最新的翻译</h5>
-  {{ "get title(){return this.transService.translationSync('title');}:" }}
-  {{ title }}
+  {{ "get title(){return this.transService.translationSync('title');}:" }} {{ title }}
 </div>
 
 <hr />
@@ -42,8 +38,7 @@
     调用translationAsync()得到一个Observable,结合 async 管道使用，语言切换时自动获取最新的翻译
   </h5>
   <div>{{ "this.title$ = this.transService.translationAsync('title');// ts" }}</div>
-  {{"{{title$ | async}}:"}}
-  {{ title$ | async }}
+  {{"{{title$ | async}}:"}} {{ title$ | async }}
 </div>
 
 <hr />
@@ -57,11 +52,8 @@
 <hr />
 
 <h5>
-  使用{{
-    '\<nb-trans />'
-  }}组件，带有components参数和options参数。设置key值前缀和翻译文本中的参数,params参数为：{{
-    params | json
-  }}
+  使用{{ '\<nb-trans />' }}组件，带有components参数和options参数。
+  设置key值前缀和翻译文本中的参数,params参数为：{{ params | json }}
 </h5>
 <p>翻译文本原文：{{ 'complexContent' | nbTrans: { prefix: 'content' } }}</p>
 
@@ -84,11 +76,8 @@
 <hr />
 
 <h5>
-  使用{{
-    '\<div nb-trans>\</div>'
-  }}组件，带有components参数和options参数。设置key值前缀和翻译文本中的参数,params参数为：{{
-    params | json
-  }}
+  使用{{ '\<div nb-trans>\</div>' }}组件，带有components参数和options参数。
+  设置key值前缀和翻译文本中的参数,params参数为：{{ params | json }}
 </h5>
 <p>翻译文本原文：{{ 'complexContent' | nbTrans: { prefix: 'content' } }}</p>
 

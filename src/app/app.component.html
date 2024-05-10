@@ -27,9 +27,8 @@
 
 <div>
   <h5>
-    使用 nbTrans 管道，带有options参数。设置key值前缀和翻译文本中的参数,params参数为：{{
-      params | json
-    }}
+    使用 nbTrans 管道，带有options参数。 设置key值前缀和翻译文本中的参数,params参数为：
+    {{ params | json }}
   </h5>
   <p>翻译文本原文：{{ 'contentWithParams' | nbTrans: { prefix: 'content' } }}</p>
   {{"{{'contentWithParams'| nbTrans:({prefix:'content',params: params})}}:"}}
@@ -49,21 +48,18 @@
     调用translationAsync()得到一个Observable,结合 async 管道使用，语言切换时自动获取最新的翻译
   </h5>
   <div>{{ "this.title$ = this.transService.translationAsync('title');// ts" }}</div>
-  {{"{{title$ | async}}:"}}
-  {{ title$ | async }}
+  {{"{{title$ | async}}:"}} {{ title$ | async }}
 </div>
 <hr />
 
 <div>
-  {{"{{'test.test'| nbTrans}}"}}，当key对应的内容不存在, 默认返回key:
-  {{ 'test.test' | nbTrans }}
+  {{"{{'test.test'| nbTrans}}"}}，当key对应的内容不存在, 默认返回key: {{ 'test.test' | nbTrans }}
 </div>
 <hr />
 
 <div>
   {{"{{'test.test'| nbTrans:({returnKeyWhenEmpty:false})}}"}}，当key对应的内容不存在,
-  也可以设置返回空字符串:
-  {{ 'test.test' | nbTrans: { returnKeyWhenEmpty: false } }}
+  也可以设置返回空字符串: {{ 'test.test' | nbTrans: { returnKeyWhenEmpty: false } }}
 </div>
 <hr />
 
