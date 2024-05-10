@@ -49,6 +49,12 @@
             "style": "kebab-case"
           }
         ],
+        "@angular-eslint/pipe-prefix": [
+          "error",
+          {
+            "prefixes": ["nb"]
+          }
+        ],
         "@angular-eslint/no-input-rename": ["off"]
       }
     },
