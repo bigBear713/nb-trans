@@ -1,97 +1,113 @@
 <div>
   <h5>使用 nbTrans 管道，语言切换时自动获取最新的翻译</h5>
   {{ "{{'title'| nbTrans}}：" }}
-  {{'title'| nbTrans}}
+  {{ 'title' | nbTrans }}
 </div>
-<hr>
+<hr />
 
 <div>
   <h5>使用 nbTrans 管道，key值为多层</h5>
   {{"{{'content.helloWorld'| nbTrans}}:"}}
-  {{'content.helloWorld'| nbTrans}}
+  {{ 'content.helloWorld' | nbTrans }}
 </div>
-<hr>
+<hr />
 
 <div>
-  <h5>使用 nbTrans 管道，带有options参数。设置key值前缀和翻译文本中的参数,params参数为：{{params|json}}</h5>
-  <p>
-    翻译文本原文：{{'contentWithParams'| nbTrans:({prefix:'content'})}}
-  </p>
+  <h5>
+    使用 nbTrans 管道，带有options参数。设置key值前缀和翻译文本中的参数,params参数为：{{
+      params | json
+    }}
+  </h5>
+  <p>翻译文本原文：{{ 'contentWithParams' | nbTrans: { prefix: 'content' } }}</p>
   {{"{{'contentWithParams'| nbTrans:({prefix:'content',params: params})}}:"}}
-  {{'contentWithParams'| nbTrans:({prefix:'content',params: params})}}
+  {{ 'contentWithParams' | nbTrans: { prefix: 'content', params: params } }}
 </div>
 
-<h5>动态调整options,options is {{options|json}}</h5>
+<h5>动态调整options,options is {{ options | json }}</h5>
 <button (click)="changeOptions()">change options</button>
-<p>{{'contentWithParams'| nbTrans:options}}</p>
+<p>{{ 'contentWithParams' | nbTrans: options }}</p>
 
-<hr>
+<hr />
 
 <div>
   <h5>通过getter，调用translationSync()时时获取最新的翻译</h5>
-  {{"get title(){return this.transService.translationSync('title');}:"}}
-  {{title}}
+  {{ "get title(){return this.transService.translationSync('title');}:" }}
+  {{ title }}
 </div>
 
-<hr>
+<hr />
 
 <div>
-  <h5>调用translationAsync()得到一个Observable,结合 async 管道使用，语言切换时自动获取最新的翻译</h5>
-  <div>{{"this.title$ = this.transService.translationAsync('title');// ts"}}</div>
+  <h5>
+    调用translationAsync()得到一个Observable,结合 async 管道使用，语言切换时自动获取最新的翻译
+  </h5>
+  <div>{{ "this.title$ = this.transService.translationAsync('title');// ts" }}</div>
   {{"{{title$ | async}}:"}}
-  {{title$|async}}
+  {{ title$ | async }}
 </div>
 
-<hr>
+<hr />
 
-<h3>use {{'\<nb-trans>\</nb-trans>'}}</h3>
+<h3>use {{ '\<nb-trans>\</nb-trans>' }}</h3>
 
 <div>
   <nb-trans key="contentWithParams" [options]="options" />
 </div>
 
-<hr>
+<hr />
 
-<h5>使用{{'\<nb-trans />'}}组件，带有components参数和options参数。设置key值前缀和翻译文本中的参数,params参数为：{{params|json}}</h5>
-<p>
-  翻译文本原文：{{'complexContent'| nbTrans:({prefix:'content'})}}
-</p>
+<h5>
+  使用{{
+    '\<nb-trans />'
+  }}组件，带有components参数和options参数。设置key值前缀和翻译文本中的参数,params参数为：{{
+    params | json
+  }}
+</h5>
+<p>翻译文本原文：{{ 'complexContent' | nbTrans: { prefix: 'content' } }}</p>
 
 <div>
   <pre><code>{{compStr1}}</code></pre>
 </div>
 
 <div>
-  <nb-trans key="complexContent" [components]="[com0,com1,com2]" [options]="{params,prefix:'content'}" />
+  <nb-trans
+    key="complexContent"
+    [components]="[com0, com1, com2]"
+    [options]="{ params, prefix: 'content' }" />
 </div>
 
-<hr>
+<hr />
 
-<h3>use {{'\<div nb-trans>\</div>'}}</h3>
+<h3>use {{ '\<div nb-trans>\</div>' }}</h3>
 
 <div nb-trans="contentWithParams" [nb-trans-options]="options"></div>
-<hr>
+<hr />
 
-<h5>使用{{'\<div nb-trans>\</div>'}}组件，带有components参数和options参数。设置key值前缀和翻译文本中的参数,params参数为：{{params|json}}</h5>
-<p>
-  翻译文本原文：{{'complexContent'| nbTrans:({prefix:'content'})}}
-</p>
+<h5>
+  使用{{
+    '\<div nb-trans>\</div>'
+  }}组件，带有components参数和options参数。设置key值前缀和翻译文本中的参数,params参数为：{{
+    params | json
+  }}
+</h5>
+<p>翻译文本原文：{{ 'complexContent' | nbTrans: { prefix: 'content' } }}</p>
 
 <div>
   <pre><code>{{compStr2}}</code></pre>
 </div>
 
 <div>
-  <div nb-trans="complexContent" [nb-trans-components]="[com0,com1,com2]"
-    [nb-trans-options]="{params,prefix:'content'}"></div>
+  <div
+    nb-trans="complexContent"
+    [nb-trans-components]="[com0, com1, com2]"
+    [nb-trans-options]="{ params, prefix: 'content' }"></div>
 </div>
 
-<hr>
+<hr />
 
-<h5>{{'currBrowserLang' | nbTrans}}</h5>
-<p>{{browserLang}}</p>
-<p>{{browserLangs|json}}</p>
-
+<h5>{{ 'currBrowserLang' | nbTrans }}</h5>
+<p>{{ browserLang }}</p>
+<p>{{ browserLangs | json }}</p>
 
 <ng-template #com0 let-comContent="content" let-list="list">
   <b [nb-trans-subcontent]="comContent" [subcontentList]="list"></b>
@@ -102,5 +118,5 @@
 </ng-template>
 
 <ng-template #com2 let-comContent="content">
-  <b>{{comContent}}</b>
+  <b>{{ comContent }}</b>
 </ng-template>

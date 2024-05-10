@@ -2,13 +2,17 @@ import { get, isFunction } from 'lodash-es';
 import { BehaviorSubject, from, Observable, of, Subject, timer } from 'rxjs';
 import { catchError, map, retry, skipWhile, switchMap, tap } from 'rxjs/operators';
 import { Inject, Injectable, Optional } from '@angular/core';
-import { NB_TRANS_DEFAULT_LANG, NB_TRANS_LOADER, NB_TRANS_MAX_RETRY, NbTransLang } from '../constants';
+import {
+  NB_TRANS_DEFAULT_LANG,
+  NB_TRANS_LOADER,
+  NB_TRANS_MAX_RETRY,
+  NbTransLang,
+} from '../constants';
 import { INbTransChangeLang, INbTransLoader, INbTransOptions } from '../models';
 import { NbTransToolsService } from './nb-trans-tools.service';
 
 @Injectable({ providedIn: 'root' })
 export class NbTransService {
-
   private lang$ = new BehaviorSubject<string>(NbTransLang.ZH_CN);
 
   private loadDefaultOver$ = new BehaviorSubject<boolean>(false);
@@ -57,7 +61,7 @@ export class NbTransService {
     @Inject(NB_TRANS_DEFAULT_LANG) @Optional() private transDefaultLang: string,
     @Inject(NB_TRANS_LOADER) @Optional() private transLoader: INbTransLoader,
     @Inject(NB_TRANS_MAX_RETRY) @Optional() private maxRetry: number,
-    private transToolsService: NbTransToolsService,
+    private transToolsService: NbTransToolsService
   ) {
     // if the maxRetry is undefined/null, use default settings,
     // so can set the retry valus as 0 to cancel retry action.
@@ -122,7 +126,9 @@ export class NbTransService {
    * @deprecated
    */
   getBrowserLang(): string | undefined {
-    console.warn('The function will be deprecated in the future, we recommend using NbTransService.getBrowserLang()!');
+    console.warn(
+      'The function will be deprecated in the future, we recommend using NbTransService.getBrowserLang()!'
+    );
     return NbTransService.getBrowserLang();
   }
 
@@ -131,7 +137,9 @@ export class NbTransService {
    * @deprecated
    */
   getBrowserLangs(): readonly string[] | undefined {
-    console.warn('The function will be deprecated in the future, we recommend using NbTransService.getBrowserLangs()!');
+    console.warn(
+      'The function will be deprecated in the future, we recommend using NbTransService.getBrowserLangs()!'
+    );
     return NbTransService.getBrowserLangs();
   }
 
@@ -162,7 +170,7 @@ export class NbTransService {
     let trans = get(this.translations[this.lang], finalKey);
 
     // if the trans is boolean/number or other types, it is invalid.
-    // Although boolean and number can be implicitly converted to string types,  
+    // Although boolean and number can be implicitly converted to string types,
     // it would be more expected and better when let the developer provide the value of the string type directly
     // if the trans only include some whitespace, like ' ', it is valid
     if (!this.transToolsService.isTranslatedStringValid(trans)) {
@@ -191,21 +199,21 @@ export class NbTransService {
     return this.loadDefaultOver
       ? of(true)
       : this.loadDefaultOver$.asObservable().pipe(
-        // the loadDefaultOver$ is BehaviorSubject, 
-        // so the user will get a value immediately when subscribe it, 
-        // but it doesn't make sense, so here will skip it
-        skipWhile((result, index) => (!result && (index === 0)))
-      );
+          // the loadDefaultOver$ is BehaviorSubject,
+          // so the user will get a value immediately when subscribe it,
+          // but it doesn't make sense, so here will skip it
+          skipWhile((result, index) => !result && index === 0)
+        );
   }
 
   private loadDefaultTrans(): void {
-    this.loadTrans(this.lang).pipe(
-      map(trans => !!trans),
-    ).subscribe(result => {
-      this.loadDefaultOver$.next(result);
-      this.loadDefaultOver$.complete();
-      this.loadLangTrans$.next(result);
-    });
+    this.loadTrans(this.lang)
+      .pipe(map(trans => !!trans))
+      .subscribe(result => {
+        this.loadDefaultOver$.next(result);
+        this.loadDefaultOver$.complete();
+        this.loadLangTrans$.next(result);
+      });
   }
 
   private loadLangTrans(lang: string): Observable<boolean> {
@@ -222,12 +230,12 @@ export class NbTransService {
     }
 
     const loaderFn: Observable<Object> = isFunction(loader)
-      // switch map as load lang observable, 
-      // so it will retry when failure to load the lang content
-      ? of(null).pipe(switchMap(() => (from(loader()) as Observable<Object>)))
+      ? // switch map as load lang observable,
+        // so it will retry when failure to load the lang content
+        of(null).pipe(switchMap(() => from(loader()) as Observable<Object>))
       : of(loader);
     return loaderFn.pipe(
-      tap(trans => this.translations[lang] = trans),
+      tap(trans => (this.translations[lang] = trans)),
       retry(this.retry),
       catchError(_ => of(null))
     );

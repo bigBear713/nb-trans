@@ -10,10 +10,9 @@ import { GTagService } from '../g-tag.service';
   selector: 'app-feature2',
   templateUrl: './feature2.component.html',
   styleUrls: ['./feature2.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Feature2Component implements OnInit {
-
   params = {
     params1: '{{params2}}',
     params2: '1111',
@@ -38,9 +37,7 @@ export class Feature2Component implements OnInit {
     </ng-template>
   `;
 
-  constructor(
-    private gtagService: GTagService,
-  ) {
+  constructor(private gtagService: GTagService) {
     this.trackPage();
   }
 
@@ -54,8 +51,6 @@ export class Feature2Component implements OnInit {
       page_name: 'Standalone Component',
     });
   }
-
 }
-
 
 export const routes: Route[] = [{ path: '', component: Feature2Component }];

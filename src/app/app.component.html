@@ -1,66 +1,71 @@
 <h2>
   <a *ngFor="let item of links" [href]="item.link" target="_blank" (click)="go2Link(item)">
-    {{item.title}}
+    {{ item.title }}
   </a>
 </h2>
-<hr>
+<hr />
 <div class="actions">
   <button (click)="onChangeLang('zh-CN')">切换为中文</button>
   <button (click)="onChangeLang('en')">切换为英文</button>
   <button (click)="onChangeLang('other')">切换为其它不存在的语言</button>
-  <hr>
+  <hr />
 </div>
 
 <div>
   <h5>使用 nbTrans 管道，语言切换时自动获取最新的翻译</h5>
   {{ "{{'title'| nbTrans}}：" }}
-  {{'title'| nbTrans}}
+  {{ 'title' | nbTrans }}
 </div>
-<hr>
+<hr />
 
 <div>
   <h5>使用 nbTrans 管道，key值为多层</h5>
   {{"{{'content.helloWorld'| nbTrans}}:"}}
-  {{'content.helloWorld'| nbTrans}}
+  {{ 'content.helloWorld' | nbTrans }}
 </div>
-<hr>
+<hr />
 
 <div>
-  <h5>使用 nbTrans 管道，带有options参数。设置key值前缀和翻译文本中的参数,params参数为：{{params|json}}</h5>
-  <p>
-    翻译文本原文：{{'contentWithParams'| nbTrans:({prefix:'content'})}}
-  </p>
+  <h5>
+    使用 nbTrans 管道，带有options参数。设置key值前缀和翻译文本中的参数,params参数为：{{
+      params | json
+    }}
+  </h5>
+  <p>翻译文本原文：{{ 'contentWithParams' | nbTrans: { prefix: 'content' } }}</p>
   {{"{{'contentWithParams'| nbTrans:({prefix:'content',params: params})}}:"}}
-  {{'contentWithParams'| nbTrans:({prefix:'content',params: params})}}
+  {{ 'contentWithParams' | nbTrans: { prefix: 'content', params: params } }}
 </div>
-<hr>
+<hr />
 
 <div>
   <h5>通过getter，调用translationSync()时时获取最新的翻译</h5>
-  {{"get title(){return this.transService.translationSync('title');}:"}}
-  {{title}}
+  {{ "get title(){return this.transService.translationSync('title');}:" }}
+  {{ title }}
 </div>
-<hr>
+<hr />
 
 <div>
-  <h5>调用translationAsync()得到一个Observable,结合 async 管道使用，语言切换时自动获取最新的翻译</h5>
-  <div>{{"this.title$ = this.transService.translationAsync('title');// ts"}}</div>
+  <h5>
+    调用translationAsync()得到一个Observable,结合 async 管道使用，语言切换时自动获取最新的翻译
+  </h5>
+  <div>{{ "this.title$ = this.transService.translationAsync('title');// ts" }}</div>
   {{"{{title$ | async}}:"}}
-  {{title$|async}}
+  {{ title$ | async }}
 </div>
-<hr>
+<hr />
 
 <div>
   {{"{{'test.test'| nbTrans}}"}}，当key对应的内容不存在, 默认返回key:
-  {{'test.test'| nbTrans}}
+  {{ 'test.test' | nbTrans }}
 </div>
-<hr>
+<hr />
 
 <div>
-  {{"{{'test.test'| nbTrans:({returnKeyWhenEmpty:false})}}"}}，当key对应的内容不存在, 也可以设置返回空字符串:
-  {{'test.test'| nbTrans:({returnKeyWhenEmpty:false})}}
+  {{"{{'test.test'| nbTrans:({returnKeyWhenEmpty:false})}}"}}，当key对应的内容不存在,
+  也可以设置返回空字符串:
+  {{ 'test.test' | nbTrans: { returnKeyWhenEmpty: false } }}
 </div>
-<hr>
+<hr />
 
 <h3>children component</h3>
 <a routerLink="/">Module Component</a>

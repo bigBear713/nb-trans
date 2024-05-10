@@ -1,5 +1,5 @@
 export interface INbTransSentenceCompPart {
-  // the component index, 
+  // the component index,
   // will be used to get component instance from components properties
   index: number;
   // the content which will be rendered in html
