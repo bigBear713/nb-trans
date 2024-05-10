@@ -1,30 +1,42 @@
-<ng-container *ngTemplateOutlet="sentenceListTpl;context:{list:sentenceList}" />
+<ng-container *ngTemplateOutlet="sentenceListTpl; context: { list: sentenceList }" />
 
 <ng-template #sentenceListTpl let-list="list">
   <ng-container *ngFor="let item of list">
     <ng-container [ngSwitch]="item | nbSentenceItemType">
-      <ng-container *ngSwitchCase="SentenceItemEnum.STR" [ngTemplateOutlet]="strTpl"
-        [ngTemplateOutletContext]="{content:item}" />
-      <ng-container *ngSwitchCase="SentenceItemEnum.COMP" [ngTemplateOutlet]="compTpl"
-        [ngTemplateOutletContext]="{content:item}" />
-      <ng-container *ngSwitchCase="SentenceItemEnum.MULTI_COMP" [ngTemplateOutlet]="multiCompTpl"
-        [ngTemplateOutletContext]="{content:item}" />
+      <ng-container
+        *ngSwitchCase="SentenceItemEnum.STR"
+        [ngTemplateOutlet]="strTpl"
+        [ngTemplateOutletContext]="{ content: item }" />
+      <ng-container
+        *ngSwitchCase="SentenceItemEnum.COMP"
+        [ngTemplateOutlet]="compTpl"
+        [ngTemplateOutletContext]="{ content: item }" />
+      <ng-container
+        *ngSwitchCase="SentenceItemEnum.MULTI_COMP"
+        [ngTemplateOutlet]="multiCompTpl"
+        [ngTemplateOutletContext]="{ content: item }" />
     </ng-container>
   </ng-container>
 </ng-template>
 
-<ng-template #strTpl let-content="content">{{content | nbTransContent:params}}</ng-template>
+<ng-template #strTpl let-content="content">{{ content | nbTransContent: params }}</ng-template>
 
 <!-- because the content may be rendered directly, or input as a component prop, so here should be as a templateRef. -->
 <!-- render the templateRef component of components with content, and the content type in context is string -->
 <ng-template #compTpl let-data="content">
   <ng-container
-    *ngTemplateOutlet="components[data.index] | nbTplContent;context:{content:data.content | nbTransContent:params}" />
+    *ngTemplateOutlet="
+      components[data.index] | nbTplContent;
+      context: { content: data.content | nbTransContent: params }
+    " />
 </ng-template>
 
 <!-- there are multiple components, so should render the templateRef component firstly,  -->
 <!-- then making the sentenceListTpl as content prop, so user can render it more flexible -->
 <ng-template #multiCompTpl let-data="content">
   <ng-container
-    *ngTemplateOutlet="components[data.index] | nbTplContent;context:{content:sentenceListTpl,list:data.list}" />
+    *ngTemplateOutlet="
+      components[data.index] | nbTplContent;
+      context: { content: sentenceListTpl, list: data.list }
+    " />
 </ng-template>

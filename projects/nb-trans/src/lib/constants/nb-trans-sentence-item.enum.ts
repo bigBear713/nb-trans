@@ -2,7 +2,7 @@ export enum NbTransSentenceItem {
   STR,
   COMP,
   MULTI_COMP,
-};
+}
 /**
  * @deprecated use "NbTransSentenceItem" please
  */

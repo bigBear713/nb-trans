@@ -25,11 +25,13 @@ const importsFromSelf = [NbSentenceItemTypePipe, NbTransContentPipe];
   selector: 'nb-trans',
   templateUrl: './nb-trans.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [NbUnsubscribeService]
+  providers: [NbUnsubscribeService],
 })
 export class NbTransComponent implements OnChanges {
-
-  @Input() components: TemplateRef<{ content: string | TemplateRef<any>; list?: INbTransSentencePart[] }>[] = [];
+  @Input() components: TemplateRef<{
+    content: string | TemplateRef<unknown>;
+    list?: INbTransSentencePart[];
+  }>[] = [];
 
   @Input({ required: true }) key: string = '';
 
@@ -49,7 +51,7 @@ export class NbTransComponent implements OnChanges {
     private changeDR: ChangeDetectorRef,
     private transToolsService: NbTransToolsService,
     private transService: NbTransService,
-    private unsubscribeService: NbUnsubscribeService,
+    private unsubscribeService: NbUnsubscribeService
   ) {
     this.subscribeLangChange();
   }
@@ -75,14 +77,15 @@ export class NbTransComponent implements OnChanges {
   }
 
   private subscribeLangChange(): void {
-    const langChange$ = this.transService.subscribeLangChange().pipe(
-      switchMap(_ => this.transService.translationAsync(this.key, this.optionsWithoutParams)),
-    );
-    this.unsubscribeService.addUnsubscribeOperator(langChange$)
-      .subscribe(latestValue => {
-        this.originTrans = latestValue;
-        this.reRender();
-      });
+    const langChange$ = this.transService
+      .subscribeLangChange()
+      .pipe(
+        switchMap(() => this.transService.translationAsync(this.key, this.optionsWithoutParams))
+      );
+    this.unsubscribeService.addUnsubscribeOperator(langChange$).subscribe(latestValue => {
+      this.originTrans = latestValue;
+      this.reRender();
+    });
   }
 
   private updateOptionsWithoutParams() {
@@ -90,24 +93,26 @@ export class NbTransComponent implements OnChanges {
     // so here remove the options' params
     this.optionsWithoutParams = {
       ...(this.options || {}),
-      params: undefined
+      params: undefined,
     };
   }
-
 }
-
 
 @Component({
   standalone: true,
   imports: [...importsFromNgCommon, ...importsFromNbCommon, ...importsFromSelf],
+  // eslint-disable-next-line @angular-eslint/component-selector
   selector: '[nb-trans]',
   templateUrl: './nb-trans.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [NbUnsubscribeService]
+  providers: [NbUnsubscribeService],
 })
 export class NbTrans2Component extends NbTransComponent {
-
-  @Input('nb-trans-components') override components: TemplateRef<{ content: string | TemplateRef<any>; list?: INbTransSentencePart[] }>[] = [];
+  @Input('nb-trans-components')
+  override components: TemplateRef<{
+    content: string | TemplateRef<unknown>;
+    list?: INbTransSentencePart[];
+  }>[] = [];
 
   @Input({ alias: 'nb-trans', required: true }) override key: string = '';
 

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -11,10 +11,9 @@ import { NbTransModule, NbTransService } from 'nb-trans';
   imports: [CommonModule, RouterOutlet, NbTransModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent {
-
+export class AppComponent implements OnInit {
   title$: Observable<string> | undefined;
 
   params = {
@@ -31,7 +30,7 @@ export class AppComponent {
     {
       title: 'Document',
       link: 'https://github.com/bigBear713/nb-trans/blob/main/projects/nb-trans/README.md',
-    }
+    },
   ];
 
   get title() {
@@ -44,14 +43,14 @@ export class AppComponent {
 
   constructor(
     private gtagService: GTagService,
-    private transService: NbTransService,
-  ) { }
+    private transService: NbTransService
+  ) {}
 
   ngOnInit(): void {
     this.title$ = this.transService.translationAsync('title');
   }
 
-  go2Link(target: { title: string, link: string }): void {
+  go2Link(target: { title: string; link: string }): void {
     this.gtagService.trackLink({
       link_name: target.title,
       link: target.link,
@@ -65,7 +64,8 @@ export class AppComponent {
         alert('切换语言失败，没有导入该语言包,当前语言是:' + result.curLang);
       }
       this.gtagService.trackButton({
-        button_name: 'zh-CN' === lang ? '切换为中文' : ('en' === lang ? '切换为英文' : '切换为其它不存在的语言'),
+        button_name:
+          'zh-CN' === lang ? '切换为中文' : 'en' === lang ? '切换为英文' : '切换为其它不存在的语言',
         language: result.curLang,
       });
     });

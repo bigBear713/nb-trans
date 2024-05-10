@@ -12,17 +12,14 @@ describe('Pipe: NbTransContente', () => {
     beforeEach(async () => {
       await TestBed.configureTestingModule({
         imports: [NbTransTestingModule],
-        providers: [
-          { provide: NB_TRANS_PARAM_KEY_INVALID_WARNING, useValue: false }
-        ],
-        declarations: []
-      })
-        .compileComponents();
+        providers: [{ provide: NB_TRANS_PARAM_KEY_INVALID_WARNING, useValue: false }],
+        declarations: [],
+      }).compileComponents();
     });
 
     beforeEach(() => {
       const transToolsService = TestBed.inject(NbTransToolsService);
-      pipe = new NbTransContentPipe(transToolsService)
+      pipe = new NbTransContentPipe(transToolsService);
     });
 
     it('create an instance', () => {
@@ -43,7 +40,7 @@ describe('Pipe: NbTransContente', () => {
     [
       {
         title: 'imported by standalone component',
-        createComp: () => TestBed.createComponent(StandaloneComponent)
+        createComp: () => TestBed.createComponent(StandaloneComponent),
       },
     ].forEach(item => {
       it(item.title, () => {
@@ -53,9 +50,8 @@ describe('Pipe: NbTransContente', () => {
 
         expect(component.textContent).toEqual(handleSentenceWithParamsTestData[0].expect.result);
       });
-    })
+    });
   });
-
 });
 
 const StandaloneCompConfig = {
@@ -73,5 +69,5 @@ class StandaloneComponent {
     return this.elementRef.nativeElement.textContent?.trim();
   }
 
-  constructor(private elementRef: ElementRef<HTMLDivElement>) { }
+  constructor(private elementRef: ElementRef<HTMLDivElement>) {}
 }
