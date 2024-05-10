@@ -2,7 +2,7 @@ import { NbTransToolsService } from '../nb-trans-tools.service';
 import { TestBed } from '@angular/core/testing';
 import { INbTransParams } from '../../models';
 import { handleSentenceWithParamsTestData } from '../../testing';
-import { NbCommonTestingModule, nbTick } from '@bigbear713/nb-common';
+import { NbCommonTestingModule } from '@bigbear713/nb-common';
 import { NB_TRANS_PARAM_KEY_INVALID_WARNING } from '../../constants';
 
 describe('Service: NbTransTools', () => {

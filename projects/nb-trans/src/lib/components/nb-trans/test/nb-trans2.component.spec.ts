@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Component, SimpleChange, TemplateRef, ElementRef } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { take } from 'rxjs/operators';
@@ -239,4 +240,5 @@ class StandaloneComponent {
   ...StandaloneCompConfig,
   imports: [NbTransTestingModule],
 })
+// eslint-disable-next-line @angular-eslint/component-class-suffix
 class StandaloneComponentWithNgModule extends StandaloneComponent {}

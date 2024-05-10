@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Component, ElementRef } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { NbValueTypeService } from '@bigbear713/nb-common';

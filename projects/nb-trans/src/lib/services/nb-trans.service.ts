@@ -8,7 +8,7 @@ import {
   NB_TRANS_MAX_RETRY,
   NbTransLang,
 } from '../constants';
-import { INbTransChangeLang, INbTransLoader, INbTransOptions } from '../models';
+import { INbTransChangeLang, INbTransLoader, INbTransOptions, INbTranslation } from '../models';
 import { NbTransToolsService } from './nb-trans-tools.service';
 
 @Injectable({ providedIn: 'root' })
@@ -21,7 +21,7 @@ export class NbTransService {
 
   private retry: number = 5;
 
-  private translations: { [key: string]: Object } = {};
+  private translations: { [key: string]: INbTranslation } = {};
 
   /**
    * Current language value
@@ -95,7 +95,7 @@ export class NbTransService {
 
     // there is no any lang loader
     if (!this.transLoader[lang]) {
-      timer(1).subscribe(_ => this.loadLangTrans$.next(false));
+      timer(1).subscribe(() => this.loadLangTrans$.next(false));
       return of(failureResult);
     }
 
@@ -150,12 +150,12 @@ export class NbTransService {
    */
   translationAsync(key: string, options?: INbTransOptions): Observable<string> {
     return this.lang$.pipe(
-      switchMap(_ => {
+      switchMap(() => {
         return this.translations[this.lang]
           ? of({ trans: this.translations[this.lang], result: true })
           : this.loadLangTrans$;
       }),
-      map(_ => this.translationSync(key, options))
+      map(() => this.translationSync(key, options))
     );
   }
 
@@ -171,7 +171,7 @@ export class NbTransService {
 
     // if the trans is boolean/number or other types, it is invalid.
     // Although boolean and number can be implicitly converted to string types,
-    // it would be more expected and better when let the developer provide the value of the string type directly
+    // it would be more expected and better when let the developer provide the value of the string type directly.
     // if the trans only include some whitespace, like ' ', it is valid
     if (!this.transToolsService.isTranslatedStringValid(trans)) {
       trans = get(this.translations[this.transDefaultLang], finalKey);
@@ -182,7 +182,7 @@ export class NbTransService {
     }
 
     const params = options?.params;
-    return this.transToolsService.handleSentenceWithParams(trans, params);
+    return this.transToolsService.handleSentenceWithParams(trans as string, params);
   }
 
   /**
@@ -223,21 +223,21 @@ export class NbTransService {
     );
   }
 
-  private loadTrans(lang: string): Observable<Object | null> {
+  private loadTrans(lang: string): Observable<INbTranslation | null> {
     const loader = this.transLoader[lang];
     if (!loader) {
       return of(null);
     }
 
-    const loaderFn: Observable<Object> = isFunction(loader)
+    const loaderFn: Observable<INbTranslation> = isFunction(loader)
       ? // switch map as load lang observable,
         // so it will retry when failure to load the lang content
-        of(null).pipe(switchMap(() => from(loader()) as Observable<Object>))
+        of(null).pipe(switchMap(() => from(loader()) as Observable<INbTranslation>))
       : of(loader);
     return loaderFn.pipe(
       tap(trans => (this.translations[lang] = trans)),
       retry(this.retry),
-      catchError(_ => of(null))
+      catchError(() => of(null))
     );
   }
 }

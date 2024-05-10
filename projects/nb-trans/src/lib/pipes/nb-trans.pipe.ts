@@ -42,7 +42,7 @@ export class NbTransPipe implements PipeTransform, OnDestroy {
   private subscribeLangChange(): void {
     const langChange$ = this.transService
       .subscribeLangChange()
-      .pipe(switchMap(_ => this.transService.translationAsync(this.key, this.options)));
+      .pipe(switchMap(() => this.transService.translationAsync(this.key, this.options)));
     this.unsubscribeService
       .addUnsubscribeOperator(langChange$)
       .subscribe(latestValue => this.updateLatestValue(latestValue));

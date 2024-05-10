@@ -16,7 +16,6 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "app",
             "style": "camelCase"
           }
         ],
@@ -24,11 +23,33 @@
           "error",
           {
             "type": "element",
-            "prefix": "app",
             "style": "kebab-case"
           }
         ],
         "@angular-eslint/no-empty-lifecycle-method": ["off"]
+      }
+    },
+    {
+      "files": ["projects/**/*.ts"],
+      "excludedFiles": ["*.spec.ts"],
+      "rules": {
+        "@angular-eslint/directive-selector": [
+          "error",
+          {
+            "type": "attribute",
+            "prefix": "nb",
+            "style": "camelCase"
+          }
+        ],
+        "@angular-eslint/component-selector": [
+          "error",
+          {
+            "type": "element",
+            "prefix": "nb",
+            "style": "kebab-case"
+          }
+        ],
+        "@angular-eslint/no-input-rename": ["off"]
       }
     },
     {

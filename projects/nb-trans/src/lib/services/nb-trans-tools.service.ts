@@ -89,7 +89,7 @@ export class NbTransToolsService {
    * @param trans
    * @returns
    */
-  isTranslatedStringValid(trans: any): boolean {
+  isTranslatedStringValid(trans: unknown): boolean {
     return !!(trans && this.valueType.isString(trans));
   }
 

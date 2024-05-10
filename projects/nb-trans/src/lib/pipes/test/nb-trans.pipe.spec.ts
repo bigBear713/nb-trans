@@ -45,7 +45,7 @@ describe('Pipe: NbTrans', () => {
 
     describe('#transform()', () => {
       translationSyncTestData
-        .map((item, index) => {
+        .map(item => {
           const expect = {
             resultZHCN: item.expect.result,
             resultEN: item.expect.result,
@@ -170,4 +170,5 @@ class StandaloneComponent {
   ...StandaloneCompConfig,
   imports: [NbTransTestingModule],
 })
+// eslint-disable-next-line @angular-eslint/component-class-suffix
 class StandaloneComponentWithNgModule extends StandaloneComponent {}

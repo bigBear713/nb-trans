@@ -1,5 +1,6 @@
 import { Observable } from 'rxjs';
+import { INbTranslation } from './nb-translation.interface';
 
 export interface INbTransLoader {
-  [langKey: string]: Object | (() => Observable<Object> | Promise<Object>);
+  [langKey: string]: INbTranslation | (() => Observable<INbTranslation> | Promise<INbTranslation>);
 }

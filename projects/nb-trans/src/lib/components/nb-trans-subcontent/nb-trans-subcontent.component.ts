@@ -9,6 +9,7 @@ const importsFromNbCommon = [NbIsStringPipe, NbTplContentPipe];
 @Component({
   standalone: true,
   imports: [...importsFromNgCommon, ...importsFromNbCommon],
+  // eslint-disable-next-line @angular-eslint/component-selector
   selector: '[nb-trans-subcontent]',
   template: `
     <ng-container [ngSwitch]="content | nbIsString">
@@ -22,7 +23,8 @@ const importsFromNbCommon = [NbIsStringPipe, NbTplContentPipe];
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NbTransSubcontentComponent {
-  @Input({ alias: 'nb-trans-subcontent', required: true }) content: string | TemplateRef<any> = '';
+  @Input({ alias: 'nb-trans-subcontent', required: true })
+  content: string | TemplateRef<unknown> = '';
 
   @Input() subcontentList: INbTransSentencePart[] = [];
 }

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { inject, TestBed } from '@angular/core/testing';
 import { filter, switchMap, take } from 'rxjs/operators';
 import {
@@ -220,7 +221,7 @@ describe('Service: NbTrans', () => {
     service
       .subscribeLoadDefaultOver()
       .pipe(take(1))
-      .subscribe(_ => {
+      .subscribe(() => {
         expect(transLoader[NbTransLang.EN_US]).toHaveBeenCalledTimes(4);
         done();
       });

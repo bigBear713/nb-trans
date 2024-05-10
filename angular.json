@@ -118,6 +118,12 @@
             "progress": true,
             "codeCoverage": true
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": ["projects/**/*.ts", "projects/**/*.html"]
+          }
         }
       }
     }
