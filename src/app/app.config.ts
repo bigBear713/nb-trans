@@ -8,7 +8,7 @@ import {
   NB_TRANS_PARAM_KEY_INVALID_WARNING,
   NbTransLang,
 } from 'nb-trans';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { lastValueFrom } from 'rxjs';
 
 export const appConfig: ApplicationConfig = {
