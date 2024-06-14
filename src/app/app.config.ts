@@ -1,4 +1,4 @@
-import { ApplicationConfig, importProvidersFrom } from '@angular/core';
+import { ApplicationConfig } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
@@ -8,12 +8,12 @@ import {
   NB_TRANS_PARAM_KEY_INVALID_WARNING,
   NbTransLang,
 } from 'nb-trans';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { lastValueFrom } from 'rxjs';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    importProvidersFrom(HttpClientModule),
+    provideHttpClient(withInterceptorsFromDi()),
     // {
     //   provide: NB_TRANS_MAX_RETRY,
     //   useValue: 0
