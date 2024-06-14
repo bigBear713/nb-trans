@@ -31,7 +31,7 @@
     "@angular/platform-browser": "^18.0.2",
     "@angular/platform-browser-dynamic": "^18.0.2",
     "@angular/router": "^18.0.2",
-    "@bigbear713/nb-common": "^17.0.0",
+    "@bigbear713/nb-common": "^18.0.0",
     "dayjs": "^1.11.7",
     "lodash-es": "^4.17.21",
     "rxjs": "~7.8.0",
