@@ -43,6 +43,27 @@
               ],
               "outputHashing": "all"
             },
+            "deploy": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [],
+              "outputHashing": "all",
+              "outputPath": {
+                "base": "docs",
+                "browser": ""
+              },
+              "baseHref": "/nb-trans/"
+            },
             "development": {
               "optimization": false,
               "extractLicenses": false,
