@@ -1,13 +1,8 @@
 import { INbTransOptions, NbTransService } from 'nb-trans';
 import { Observable } from 'rxjs';
 
-import {
-  ChangeDetectionStrategy,
-  Component,
-  OnInit
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { GTagService } from '../g-tag.service';
-
 
 @Component({
   selector: 'app-feature1',
@@ -16,7 +11,6 @@ import { GTagService } from '../g-tag.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Feature1Component implements OnInit {
-
   title$: Observable<string> | undefined;
   titleWithParams$: Observable<string> | undefined;
 
@@ -76,20 +70,21 @@ export class Feature1Component implements OnInit {
     </ng-template>
   `;
 
-
   browserLang: string | undefined = '';
   browserLangs: readonly string[] | undefined = [];
 
   constructor(
     private gtagService: GTagService,
-    private transService: NbTransService,
+    private transService: NbTransService
   ) {
     this.trackPage();
   }
 
   ngOnInit(): void {
     this.title$ = this.transService.translationAsync('title');
-    this.titleWithParams$ = this.transService.translationAsync('content.contentWithParams', { params: this.params });
+    this.titleWithParams$ = this.transService.translationAsync('content.contentWithParams', {
+      params: this.params,
+    });
     this.browserLang = NbTransService.getBrowserLang();
     this.browserLangs = NbTransService.getBrowserLangs();
   }
@@ -108,5 +103,4 @@ export class Feature1Component implements OnInit {
       page_name: 'Module Component',
     });
   }
-
 }

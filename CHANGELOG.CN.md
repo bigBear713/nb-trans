@@ -1,6 +1,14 @@
+# v18.0.0
+## 破坏性更新
+- feat: `angular`升级到`v18`;
+- feat: `@bigbear713/nb-common`升级到`^18.0.0`;
+
+---
+
 # v17.0.0
 ## 破坏性更新
 - feat: `angular`升级到`v17`;
+- feat: `@bigbear713/nb-common`升级到`^17.0.0`;
 
 ---
 

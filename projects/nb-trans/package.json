@@ -1,6 +1,6 @@
 {
   "name": "@bigbear713/nb-trans",
-  "version": "17.0.0",
+  "version": "18.0.0",
   "homepage": "https://github.com/bigBear713/nb-trans/blob/main/projects/nb-trans/README.md",
   "description": "Angular translation lib by bigBear713.",
   "keywords": [
@@ -12,6 +12,7 @@
     "angular15",
     "angular16",
     "angular17",
+    "angular18",
     "i18n",
     "translation",
     "translate",
@@ -28,11 +29,11 @@
     "url": "https://github.com/bigBear713/nb-trans/issues"
   },
   "peerDependencies": {
-    "@angular/common": "^17.0.0",
-    "@angular/core": "^17.0.0"
+    "@angular/common": "^18.0.0",
+    "@angular/core": "^18.0.0"
   },
   "dependencies": {
-    "@bigbear713/nb-common": "^17.0.0",
+    "@bigbear713/nb-common": "^18.0.0",
     "lodash-es": "^4.17.21",
     "tslib": "^2.3.0"
   },

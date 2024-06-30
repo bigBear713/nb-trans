@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Component, SimpleChange, TemplateRef, ViewChild, ElementRef } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { take } from 'rxjs/operators';
@@ -10,12 +11,9 @@ import { NbTransComponent } from '../nb-trans.component';
 
 @Component({
   selector: 'comp1',
-  template: `
-    <ng-content></ng-content>
-  `,
+  template: ` <ng-content></ng-content> `,
 })
-export class MockComp1Component {
-}
+export class MockComp1Component {}
 
 @Component({
   selector: 'mock-tpl-ref',
@@ -23,7 +21,9 @@ export class MockComp1Component {
     <ng-template #tpl1 let-content="content" let-list="list">
       <div class="has-subcontent" [nb-trans-subcontent]="content" [subcontentList]="list"></div>
     </ng-template>
-    <ng-template #tpl2 let-content="content"><comp1>{{content}}</comp1></ng-template>
+    <ng-template #tpl2 let-content="content"
+      ><comp1>{{ content }}</comp1></ng-template
+    >
   `,
 })
 export class MockTplRefComponent {
@@ -41,11 +41,8 @@ describe('Component: NbTrans', () => {
       await TestBed.configureTestingModule({
         imports: [NbTransTestingModule],
         declarations: [MockTplRefComponent, MockComp1Component],
-        providers: [
-          { provide: NB_TRANS_LOADER, useValue: transLoader.staticLoader },
-        ]
-      })
-        .compileComponents();
+        providers: [{ provide: NB_TRANS_LOADER, useValue: transLoader.staticLoader }],
+      }).compileComponents();
     });
 
     beforeEach(() => {
@@ -82,7 +79,7 @@ describe('Component: NbTrans', () => {
         component.options = undefined as any;
         const changes = {
           key: new SimpleChange(undefined, component.key, true),
-          options: new SimpleChange(undefined, component.options, true)
+          options: new SimpleChange(undefined, component.options, true),
         };
         component.ngOnChanges(changes);
 
@@ -103,7 +100,7 @@ describe('Component: NbTrans', () => {
       });
     });
 
-    it('verify has subscribed lang change event', (done) => {
+    it('verify has subscribed lang change event', done => {
       const transService = TestBed.inject(NbTransService);
       spyOn(transService, 'subscribeLangChange').and.callThrough();
       spyOn(transToolsService, 'handleTrans').and.callThrough();
@@ -111,11 +108,13 @@ describe('Component: NbTrans', () => {
       component.key = 'title';
       component.options = {};
 
-      transService.changeLang(NbTransLang.EN).pipe(take(1)).subscribe(() => {
-        expect(transToolsService.handleTrans).toHaveBeenCalledTimes(1);
-        done();
-      });
-
+      transService
+        .changeLang(NbTransLang.EN)
+        .pipe(take(1))
+        .subscribe(() => {
+          expect(transToolsService.handleTrans).toHaveBeenCalledTimes(1);
+          done();
+        });
     });
 
     describe('verify the UI', () => {
@@ -201,9 +200,10 @@ describe('Component: NbTrans', () => {
         uiComp.ngOnChanges(changes);
         uiFixture.detectChanges();
 
-        expect(hostEle.textContent?.trim()).toEqual('这是一个带有参数的句子。参数:  {{params2}} - 1111 - 2222 - 1111');
+        expect(hostEle.textContent?.trim()).toEqual(
+          '这是一个带有参数的句子。参数:  {{params2}} - 1111 - 2222 - 1111'
+        );
       });
-
     });
   });
 
@@ -211,11 +211,10 @@ describe('Component: NbTrans', () => {
     beforeEach(async () => {
       await TestBed.configureTestingModule({
         providers: [
-          { provide: NB_TRANS_DEFAULT_LANG, useValue: NbTransLang.ZH_CN, },
+          { provide: NB_TRANS_DEFAULT_LANG, useValue: NbTransLang.ZH_CN },
           { provide: NB_TRANS_LOADER, useValue: transLoader.staticLoader },
-        ]
-      })
-        .compileComponents();
+        ],
+      }).compileComponents();
       const transService = TestBed.inject(NbTransService);
       await transService.subscribeLoadDefaultOver().toPromise();
     });
@@ -223,12 +222,12 @@ describe('Component: NbTrans', () => {
     [
       {
         title: 'imported by standalone component',
-        createComp: () => TestBed.createComponent(StandaloneComponent)
+        createComp: () => TestBed.createComponent(StandaloneComponent),
       },
       {
         title: 'imported by ngModule',
-        createComp: () => TestBed.createComponent(StandaloneComponentWithNgModule)
-      }
+        createComp: () => TestBed.createComponent(StandaloneComponentWithNgModule),
+      },
     ].forEach(item => {
       it(item.title, () => {
         const fixture = item.createComp();
@@ -237,9 +236,8 @@ describe('Component: NbTrans', () => {
 
         expect(component.textContent).toEqual('你好，世界');
       });
-    })
+    });
   });
-
 });
 
 const StandaloneCompConfig = {
@@ -257,11 +255,12 @@ class StandaloneComponent {
     return this.elementRef.nativeElement.textContent?.trim();
   }
 
-  constructor(private elementRef: ElementRef<HTMLDivElement>) { }
+  constructor(private elementRef: ElementRef<HTMLDivElement>) {}
 }
 
 @Component({
   ...StandaloneCompConfig,
   imports: [NbTransTestingModule],
 })
-class StandaloneComponentWithNgModule extends StandaloneComponent { }
+// eslint-disable-next-line @angular-eslint/component-class-suffix
+class StandaloneComponentWithNgModule extends StandaloneComponent {}

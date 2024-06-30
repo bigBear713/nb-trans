@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ChangeDetectorRef, Component, TemplateRef, ViewChild, ElementRef } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NbTransTestingModule } from '../../../testing';
@@ -6,10 +7,10 @@ import { NbTransSubcontentComponent } from '../nb-trans-subcontent.component';
 @Component({
   selector: 'mock-tpl-ref',
   template: `
-    <ng-template #tplRef>{{content}}</ng-template>
+    <ng-template #tplRef>{{ content }}</ng-template>
 
     <ng-template #tplRefWithList let-list="list">
-      <p *ngFor="let item of list">{{item}}</p>
+      <p *ngFor="let item of list">{{ item }}</p>
     </ng-template>
   `,
 })
@@ -29,9 +30,8 @@ describe('Component: NbTransSubcontent', () => {
     beforeEach(async () => {
       await TestBed.configureTestingModule({
         imports: [NbTransTestingModule],
-        declarations: [MockTplRefComponent]
-      })
-        .compileComponents();
+        declarations: [MockTplRefComponent],
+      }).compileComponents();
     });
 
     beforeEach(() => {
@@ -80,7 +80,9 @@ describe('Component: NbTransSubcontent', () => {
 
       detectChanges();
 
-      const listFromDom = Array.from(hostEle.querySelectorAll('p')).map(item => item.textContent?.trim());
+      const listFromDom = Array.from(hostEle.querySelectorAll('p')).map(item =>
+        item.textContent?.trim()
+      );
       expect(listFromDom).toEqual(mockList);
     });
 
@@ -95,12 +97,12 @@ describe('Component: NbTransSubcontent', () => {
     [
       {
         title: 'imported by standalone component',
-        createComp: () => TestBed.createComponent(StandaloneComponent)
+        createComp: () => TestBed.createComponent(StandaloneComponent),
       },
       {
         title: 'imported by ngModule',
-        createComp: () => TestBed.createComponent(StandaloneComponentWithNgModule)
-      }
+        createComp: () => TestBed.createComponent(StandaloneComponentWithNgModule),
+      },
     ].forEach(item => {
       it(item.title, () => {
         const fixture = item.createComp();
@@ -111,9 +113,8 @@ describe('Component: NbTransSubcontent', () => {
 
         expect(component.textContent).toEqual(content);
       });
-    })
+    });
   });
-
 });
 
 const StandaloneCompConfig = {
@@ -130,11 +131,12 @@ class StandaloneComponent {
     return this.elementRef.nativeElement.textContent?.trim();
   }
 
-  constructor(private elementRef: ElementRef<HTMLDivElement>) { }
+  constructor(private elementRef: ElementRef<HTMLDivElement>) {}
 }
 
 @Component({
   ...StandaloneCompConfig,
   imports: [NbTransTestingModule],
 })
-class StandaloneComponentWithNgModule extends StandaloneComponent { }
+// eslint-disable-next-line @angular-eslint/component-class-suffix
+class StandaloneComponentWithNgModule extends StandaloneComponent {}

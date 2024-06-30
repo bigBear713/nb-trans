@@ -7,11 +7,7 @@ import { WidgetComponent } from './widget/widget.component';
 import { NbTransModule } from 'nb-trans';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    NbTransModule,
-    Feature1RoutingModule
-  ],
-  declarations: [Feature1Component, WidgetComponent]
+  imports: [CommonModule, NbTransModule, Feature1RoutingModule],
+  declarations: [Feature1Component, WidgetComponent],
 })
-export class Feature1Module { }
+export class Feature1Module {}

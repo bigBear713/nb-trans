@@ -1,0 +1,40 @@
+import{$ as D,B as S,C as y,D as _,E as u,F as c,G as h,H as A,J as V,K as G,L as J,S as w,X as g,Y as q,Z as z,_ as H,a as M,aa as K,b as N,ba as Q,e as f,g as E,h as x,i as W,j,l as o,m as T,n as O,o as l,p as r,q as e,r as s,s as $,t as R,v as B,w as i,x as d,y as C,z as F}from"./chunk-KEZROUR4.js";var U=(()=>{let t=class t{constructor(){this.comContent="",this.list=[]}ngOnInit(){}};t.\u0275fac=function(p){return new(p||t)},t.\u0275cmp=E({type:t,selectors:[["app-widget"]],inputs:{comContent:"comContent",list:"list"},decls:1,vars:2,consts:[[3,"nb-trans-subcontent","subcontentList"]],template:function(p,a){p&1&&s(0,"a",0),p&2&&l("nb-trans-subcontent",a.comContent)("subcontentList",a.list)},dependencies:[D],styles:["a[_ngcontent-%COMP%]{color:#0ff;cursor:pointer}"],changeDetection:0});let n=t;return n})();var k=()=>({prefix:"content"}),it=n=>({prefix:"content",params:n}),X=(n,t,b)=>[n,t,b],Y=n=>({params:n,prefix:"content"});function ot(n,t){if(n&1&&s(0,"b",8),n&2){let b=t.content,m=t.list;l("nb-trans-subcontent",b)("subcontentList",m)}}function rt(n,t){if(n&1&&s(0,"app-widget",9),n&2){let b=t.content,m=t.list;l("comContent",b)("list",m)}}function at(n,t){if(n&1&&(r(0,"b"),i(1),e()),n&2){let b=t.content;o(),d(b)}}var Z=(()=>{let t=class t{get lang(){return this.transService.lang}get title(){return this.transService.translationSync("title")}constructor(m,p){this.gtagService=m,this.transService=p,this.params={params1:"{{params2}}",params2:"1111",params3:"2222","#p^":"test"},this.options={prefix:"content",params:this.params},this.compStr1=`
+    <div>
+      <nb-trans key="complexContent" [components]="[com0,com1,com2]" [options]="{params,prefix:'content'}" /> 
+    </div>
+
+    <ng-template #com0 let-comContent="content" let-list="list">
+      <b [nb-trans-subcontent]="comContent" [subcontentList]="list"></b>
+    </ng-template>
+
+    <ng-template #com1 let-comContent="content" let-list="list">
+      <app-widget [comContent]="comContent" [list]="list" />
+    </ng-template>
+
+    <ng-template #com2 let-comContent="content">
+      <b>{{comContent}}</b>
+    </ng-template>
+  `,this.compStr2=`
+    <div>
+      <div nb-trans nb-trans-key="complexContent" [nb-trans-components]="[com0,com1,com2]" [nb-trans-options]="{params,prefix:'content'}"> </div>
+    </div>
+
+    <ng-template #com0 let-comContent="content" let-list="list">
+      <b [nb-trans-subcontent]="comContent" [subcontentList]="list"></b>
+    </ng-template>
+
+    <ng-template #com1 let-comContent="content" let-list="list">
+      <app-widget [comContent]="comContent" [list]="list" />
+    </ng-template>
+
+    <ng-template #com2 let-comContent="content">
+      <b>{{comContent}}</b>
+    </ng-template>
+  `,this.browserLang="",this.browserLangs=[],this.trackPage()}ngOnInit(){this.title$=this.transService.translationAsync("title"),this.titleWithParams$=this.transService.translationAsync("content.contentWithParams",{params:this.params}),this.browserLang=g.getBrowserLang(),this.browserLangs=g.getBrowserLangs()}changeOptions(){let m=this.options.prefix?void 0:"content";this.options=N(M({},this.options),{prefix:m}),this.gtagService.trackButton({button_name:"change options"})}trackPage(){this.gtagService.trackPage({page_name:"Module Component"})}};t.\u0275fac=function(p){return new(p||t)(T(Q),T(g))},t.\u0275cmp=E({type:t,selectors:[["app-feature1"]],decls:92,vars:84,consts:[["com0",""],["com1",""],["com2",""],[3,"click"],["key","contentWithParams",3,"options"],["key","complexContent",3,"components","options"],["nb-trans","contentWithParams",3,"nb-trans-options"],["nb-trans","complexContent",3,"nb-trans-components","nb-trans-options"],[3,"nb-trans-subcontent","subcontentList"],[3,"comContent","list"]],template:function(p,a){if(p&1){let v=$();r(0,"div")(1,"h5"),i(2,"\u4F7F\u7528 nbTrans \u7BA1\u9053\uFF0C\u8BED\u8A00\u5207\u6362\u65F6\u81EA\u52A8\u83B7\u53D6\u6700\u65B0\u7684\u7FFB\u8BD1"),e(),i(3),u(4,"nbTrans"),e(),s(5,"hr"),r(6,"div")(7,"h5"),i(8,"\u4F7F\u7528 nbTrans \u7BA1\u9053\uFF0Ckey\u503C\u4E3A\u591A\u5C42"),e(),i(9),u(10,"nbTrans"),e(),s(11,"hr"),r(12,"div")(13,"h5"),i(14),u(15,"json"),e(),r(16,"p"),i(17),u(18,"nbTrans"),e(),i(19),u(20,"nbTrans"),e(),r(21,"h5"),i(22),u(23,"json"),e(),r(24,"button",3),R("click",function(){return W(v),j(a.changeOptions())}),i(25,"change options"),e(),r(26,"p"),i(27),u(28,"nbTrans"),e(),s(29,"hr"),r(30,"div")(31,"h5"),i(32,"\u901A\u8FC7getter\uFF0C\u8C03\u7528translationSync()\u65F6\u65F6\u83B7\u53D6\u6700\u65B0\u7684\u7FFB\u8BD1"),e(),i(33),e(),s(34,"hr"),r(35,"div")(36,"h5"),i(37," \u8C03\u7528translationAsync()\u5F97\u5230\u4E00\u4E2AObservable,\u7ED3\u5408 async \u7BA1\u9053\u4F7F\u7528\uFF0C\u8BED\u8A00\u5207\u6362\u65F6\u81EA\u52A8\u83B7\u53D6\u6700\u65B0\u7684\u7FFB\u8BD1 "),e(),r(38,"div"),i(39),e(),i(40),u(41,"async"),e(),s(42,"hr"),r(43,"h3"),i(44),e(),r(45,"div"),s(46,"nb-trans",4),e(),s(47,"hr"),r(48,"h5"),i(49),u(50,"json"),e(),r(51,"p"),i(52),u(53,"nbTrans"),e(),r(54,"div")(55,"pre")(56,"code"),i(57),e()()(),r(58,"div"),s(59,"nb-trans",5),e(),s(60,"hr"),r(61,"h3"),i(62),e(),s(63,"div",6)(64,"hr"),r(65,"h5"),i(66),u(67,"json"),e(),r(68,"p"),i(69),u(70,"nbTrans"),e(),r(71,"div")(72,"pre")(73,"code"),i(74),e()()(),r(75,"div"),s(76,"div",7),e(),s(77,"hr"),r(78,"h5"),i(79),u(80,"nbTrans"),e(),r(81,"p"),i(82),e(),r(83,"p"),i(84),u(85,"json"),e(),O(86,ot,1,2,"ng-template",null,0,A)(88,rt,1,2,"ng-template",null,1,A)(90,at,2,1,"ng-template",null,2,A)}if(p&2){let v=B(87),I=B(89),L=B(91);o(3),F(" ","{{'title'| nbTrans}}\uFF1A"," ",c(4,34,"title"),`
+`),o(6),F(" ","{{'content.helloWorld'| nbTrans}}:"," ",c(10,36,"content.helloWorld"),`
+`),o(5),C(" \u4F7F\u7528 nbTrans \u7BA1\u9053\uFF0C\u5E26\u6709options\u53C2\u6570\u3002\u8BBE\u7F6Ekey\u503C\u524D\u7F00\u548C\u7FFB\u8BD1\u6587\u672C\u4E2D\u7684\u53C2\u6570,params\u53C2\u6570\u4E3A\uFF1A ",c(15,38,a.params)," "),o(3),C("\u7FFB\u8BD1\u6587\u672C\u539F\u6587\uFF1A",h(18,40,"contentWithParams",S(67,k)),""),o(2),F(" ","{{'contentWithParams'| nbTrans:({prefix:'content',params: params})}}:"," ",h(20,43,"contentWithParams",y(68,it,a.params)),`
+`),o(3),C("\u52A8\u6001\u8C03\u6574options,options is ",c(23,46,a.options),""),o(5),d(h(28,48,"contentWithParams",a.options)),o(6),F(" ","get title(){return this.transService.translationSync('title');}:"," ",a.title,`
+`),o(6),d("this.title$ = this.transService.translationAsync('title');// ts"),o(),F(" ","{{title$ | async}}:"," ",c(41,51,a.title$),`
+`),o(4),C("use ","<nb-trans></nb-trans>",""),o(2),l("options",a.options),o(3),F(" \u4F7F\u7528","<nb-trans />","\u7EC4\u4EF6\uFF0C\u5E26\u6709components\u53C2\u6570\u548Coptions\u53C2\u6570\u3002 \u8BBE\u7F6Ekey\u503C\u524D\u7F00\u548C\u7FFB\u8BD1\u6587\u672C\u4E2D\u7684\u53C2\u6570,params\u53C2\u6570\u4E3A\uFF1A",c(50,53,a.params),`
+`),o(3),C("\u7FFB\u8BD1\u6587\u672C\u539F\u6587\uFF1A",h(53,55,"complexContent",S(70,k)),""),o(5),d(a.compStr1),o(2),l("components",_(71,X,v,I,L))("options",y(75,Y,a.params)),o(3),C("use ","<div nb-trans></div>",""),o(),l("nb-trans-options",a.options),o(3),F(" \u4F7F\u7528","<div nb-trans></div>","\u7EC4\u4EF6\uFF0C\u5E26\u6709components\u53C2\u6570\u548Coptions\u53C2\u6570\u3002 \u8BBE\u7F6Ekey\u503C\u524D\u7F00\u548C\u7FFB\u8BD1\u6587\u672C\u4E2D\u7684\u53C2\u6570,params\u53C2\u6570\u4E3A\uFF1A",c(67,58,a.params),`
+`),o(3),C("\u7FFB\u8BD1\u6587\u672C\u539F\u6587\uFF1A",h(70,60,"complexContent",S(77,k)),""),o(5),d(a.compStr2),o(2),l("nb-trans-components",_(78,X,v,I,L))("nb-trans-options",y(82,Y,a.params)),o(3),d(c(80,63,"currBrowserLang")),o(3),d(a.browserLang),o(2),d(c(85,65,a.browserLangs))}},dependencies:[z,H,D,U,V,G,q],styles:["a[_ngcontent-%COMP%]{color:#00f;cursor:pointer}a[_ngcontent-%COMP%]:hover{text-decoration:underline}"],changeDetection:0});let n=t;return n})();var st=[{path:"",component:Z}],tt=(()=>{let t=class t{};t.\u0275fac=function(p){return new(p||t)},t.\u0275mod=x({type:t}),t.\u0275inj=f({imports:[w.forChild(st),w]});let n=t;return n})();var Bt=(()=>{let t=class t{};t.\u0275fac=function(p){return new(p||t)},t.\u0275mod=x({type:t}),t.\u0275inj=f({imports:[J,K,tt]});let n=t;return n})();export{Bt as Feature1Module};

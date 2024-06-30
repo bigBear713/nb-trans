@@ -2,7 +2,7 @@ import { NbTransToolsService } from '../nb-trans-tools.service';
 import { TestBed } from '@angular/core/testing';
 import { INbTransParams } from '../../models';
 import { handleSentenceWithParamsTestData } from '../../testing';
-import { NbCommonTestingModule, nbTick } from '@bigbear713/nb-common';
+import { NbCommonTestingModule } from '@bigbear713/nb-common';
 import { NB_TRANS_PARAM_KEY_INVALID_WARNING } from '../../constants';
 
 describe('Service: NbTransTools', () => {
@@ -13,8 +13,8 @@ describe('Service: NbTransTools', () => {
       imports: [NbCommonTestingModule],
       providers: [
         NbTransToolsService,
-        { provide: NB_TRANS_PARAM_KEY_INVALID_WARNING, useValue: false }
-      ]
+        { provide: NB_TRANS_PARAM_KEY_INVALID_WARNING, useValue: false },
+      ],
     });
   });
 
@@ -51,41 +51,51 @@ describe('Service: NbTransTools', () => {
 
   describe('#handleTrans()', () => {
     [
-      { params: { trans: 'str1', }, expect: ['str1'] },
+      { params: { trans: 'str1' }, expect: ['str1'] },
       {
-        params: { trans: 'str1 <0>str2</0>', },
-        expect: [
-          'str1 ',
-          { index: 0, content: 'str2', list: [], }
-        ]
+        params: { trans: 'str1 <0>str2</0>' },
+        expect: ['str1 ', { index: 0, content: 'str2', list: [] }],
       },
       {
-        params: { trans: '  str1 <0>str2</0> str3  ', },
-        expect: [
-          '  str1 ',
-          { index: 0, content: 'str2', list: [], },
-          ' str3  ',
-        ]
+        params: { trans: '  str1 <0>str2</0> str3  ' },
+        expect: ['  str1 ', { index: 0, content: 'str2', list: [] }, ' str3  '],
       },
       {
-        params: { trans: '<0>str1</0> str2 <0>str3</0> str4  <0> str5 </0>', },
+        params: { trans: '<0>str1</0> str2 <0>str3</0> str4  <0> str5 </0>' },
         expect: [
-          { index: 0, content: 'str1', list: [], },
+          { index: 0, content: 'str1', list: [] },
           ' str2 ',
-          { index: 0, content: 'str3', list: [], },
+          { index: 0, content: 'str3', list: [] },
           ' str4  ',
-          { index: 0, content: ' str5 ', list: [], },
-        ]
+          { index: 0, content: ' str5 ', list: [] },
+        ],
       },
       {
-        params: { trans: '<0><1>str1</1></0> str2 <0> str3 <2>str3</2> str3 </0> str4  <0>str5 <5> str5 </5> str5 <5> str5 </5> str5</0>', },
+        params: {
+          trans:
+            '<0><1>str1</1></0> str2 <0> str3 <2>str3</2> str3 </0> str4  <0>str5 <5> str5 </5> str5 <5> str5 </5> str5</0>',
+        },
         expect: [
-          { index: 0, content: '<1>str1</1>', list: [{ index: 1, content: 'str1', list: [], },], },
+          { index: 0, content: '<1>str1</1>', list: [{ index: 1, content: 'str1', list: [] }] },
           ' str2 ',
-          { index: 0, content: ' str3 <2>str3</2> str3 ', list: [' str3 ', { index: 2, content: 'str3', list: [], }, ' str3 ',], },
+          {
+            index: 0,
+            content: ' str3 <2>str3</2> str3 ',
+            list: [' str3 ', { index: 2, content: 'str3', list: [] }, ' str3 '],
+          },
           ' str4  ',
-          { index: 0, content: 'str5 <5> str5 </5> str5 <5> str5 </5> str5', list: ['str5 ', { index: 5, content: ' str5 ', list: [], }, ' str5 ', { index: 5, content: ' str5 ', list: [], }, ' str5'], },
-        ]
+          {
+            index: 0,
+            content: 'str5 <5> str5 </5> str5 <5> str5 </5> str5',
+            list: [
+              'str5 ',
+              { index: 5, content: ' str5 ', list: [] },
+              ' str5 ',
+              { index: 5, content: ' str5 ', list: [] },
+              ' str5',
+            ],
+          },
+        ],
       },
     ].forEach(item => {
       it(`the params is ${JSON.stringify(item.params)}`, () => {
@@ -132,8 +142,8 @@ describe('Service: NbTransTools', () => {
         imports: [NbCommonTestingModule],
         providers: [
           NbTransToolsService,
-          { provide: NB_TRANS_PARAM_KEY_INVALID_WARNING, useValue: true }
-        ]
+          { provide: NB_TRANS_PARAM_KEY_INVALID_WARNING, useValue: true },
+        ],
       });
       service2 = TestBed.inject(NbTransToolsService);
     });
@@ -142,11 +152,9 @@ describe('Service: NbTransTools', () => {
       const spyFn = spyOn(console, 'warn').and.callThrough();
 
       const trans = 'This is {{p!}}';
-      const params = { 'p!': '123', };
+      const params = { 'p!': '123' };
       service2.handleSentenceWithParams(trans, params);
       expect(spyFn).toHaveBeenCalledTimes(1);
     });
-
   });
-
 });

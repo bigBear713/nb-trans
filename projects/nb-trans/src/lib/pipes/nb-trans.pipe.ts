@@ -7,7 +7,6 @@ import { NbUnsubscribeService } from '@bigbear713/nb-common';
 
 @Pipe({ standalone: true, name: 'nbTrans', pure: false })
 export class NbTransPipe implements PipeTransform, OnDestroy {
-
   private latestValue: string = '';
 
   private key: string = '';
@@ -18,7 +17,7 @@ export class NbTransPipe implements PipeTransform, OnDestroy {
 
   constructor(
     private changeDR: ChangeDetectorRef,
-    private transService: NbTransService,
+    private transService: NbTransService
   ) {
     this.unsubscribeService = new NbUnsubscribeService();
     this.subscribeLangChange();
@@ -41,10 +40,11 @@ export class NbTransPipe implements PipeTransform, OnDestroy {
   }
 
   private subscribeLangChange(): void {
-    const langChange$ = this.transService.subscribeLangChange().pipe(
-      switchMap(_ => this.transService.translationAsync(this.key, this.options)),
-    );
-    this.unsubscribeService.addUnsubscribeOperator(langChange$)
+    const langChange$ = this.transService
+      .subscribeLangChange()
+      .pipe(switchMap(() => this.transService.translationAsync(this.key, this.options)));
+    this.unsubscribeService
+      .addUnsubscribeOperator(langChange$)
       .subscribe(latestValue => this.updateLatestValue(latestValue));
   }
 

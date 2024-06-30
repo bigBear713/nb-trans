@@ -5,22 +5,24 @@ import utc from 'dayjs/plugin/utc';
 import { NbTransService } from 'nb-trans';
 dayjs.extend(utc);
 
-const defaultGtag = () => { };
+const defaultGtag = () => {};
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const gtag = (window as any).gtag || defaultGtag;
 
 const website_id = '@bigbear713/nb-trans';
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const website_ga_id = (window as any).website_ga_id;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const libs_ga_id = (window as any).libs_ga_id;
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class GTagService {
-
   constructor(
     private router: Router,
-    private transService: NbTransService,
-  ) { }
+    private transService: NbTransService
+  ) {}
 
   trackPage(props: object): void {
     this.trackEvent('View_Page', props);
@@ -50,5 +52,4 @@ export class GTagService {
     gtag('event', eventName, trackCurrProps);
     gtag('event', eventName, trackLibsProps);
   }
-
 }
