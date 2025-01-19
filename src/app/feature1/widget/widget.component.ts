@@ -6,6 +6,7 @@ import { INbTransSentencePart } from 'nb-trans';
   templateUrl: './widget.component.html',
   styleUrls: ['./widget.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class WidgetComponent implements OnInit {
   @Input()

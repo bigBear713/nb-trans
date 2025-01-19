@@ -13,6 +13,7 @@ import { NbTransSubcontentComponent } from '../nb-trans-subcontent.component';
       <p *ngFor="let item of list">{{ item }}</p>
     </ng-template>
   `,
+  standalone: false,
 })
 export class MockTplRefComponent {
   @ViewChild('tplRef') tplRef!: TemplateRef<any>;
