@@ -9,6 +9,7 @@ import { GTagService } from '../g-tag.service';
   templateUrl: './feature1.component.html',
   styleUrls: ['./feature1.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  // eslint-disable-next-line @angular-eslint/prefer-standalone
   standalone: false,
 })
 export class Feature1Component implements OnInit {
