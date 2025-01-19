@@ -13,6 +13,7 @@ import { NbTransSubcontentComponent } from '../nb-trans-subcontent.component';
       <p *ngFor="let item of list">{{ item }}</p>
     </ng-template>
   `,
+  // eslint-disable-next-line @angular-eslint/prefer-standalone
   standalone: false,
 })
 export class MockTplRefComponent {
