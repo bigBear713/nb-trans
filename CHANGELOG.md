@@ -1,14 +1,21 @@
+# v19.0.0
+## Breaking Changes
+- feat: Upgrade `angular` to `v19`;
+- feat: Upgrade `@bigbear713/nb-common` to `^19.0.0`;
+
+---
+
 # v18.0.0
 ## Breaking Changes
 - feat: Upgrade `angular` to `v18`;
-- feat: Upgrade `angular` to `^18.0.0`;
+- feat: Upgrade `@bigbear713/nb-common` to `^18.0.0`;
 
 ---
 
 # v17.0.0
 ## Breaking Changes
 - feat: Upgrade `angular` to `v17`;
-- feat: Upgrade `angular` to `^17.0.0`;
+- feat: Upgrade `@bigbear713/nb-common` to `^17.0.0`;
 
 ---
 
