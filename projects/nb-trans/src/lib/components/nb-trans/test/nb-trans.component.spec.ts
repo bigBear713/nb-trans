@@ -12,6 +12,8 @@ import { NbTransComponent } from '../nb-trans.component';
 @Component({
   selector: 'comp1',
   template: ` <ng-content></ng-content> `,
+  // eslint-disable-next-line @angular-eslint/prefer-standalone
+  standalone: false,
 })
 export class MockComp1Component {}
 
@@ -25,6 +27,8 @@ export class MockComp1Component {}
       ><comp1>{{ content }}</comp1></ng-template
     >
   `,
+  // eslint-disable-next-line @angular-eslint/prefer-standalone
+  standalone: false,
 })
 export class MockTplRefComponent {
   @ViewChild('tpl1') tpl1!: TemplateRef<any>;
