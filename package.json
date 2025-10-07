@@ -1,6 +1,6 @@
 {
   "name": "nb-trans-demo",
-  "version": "19.0.0",
+  "version": "20.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -31,7 +31,7 @@
     "@angular/platform-browser": "^20.3.3",
     "@angular/platform-browser-dynamic": "^20.3.3",
     "@angular/router": "^20.3.3",
-    "@bigbear713/nb-common": "^19.0.0",
+    "@bigbear713/nb-common": "^20.0.0",
     "dayjs": "^1.11.7",
     "lodash-es": "^4.17.21",
     "rxjs": "~7.8.0",
