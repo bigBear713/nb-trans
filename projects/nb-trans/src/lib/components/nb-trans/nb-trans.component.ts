@@ -3,6 +3,7 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  inject,
   Input,
   OnChanges,
   SimpleChanges,
@@ -11,11 +12,11 @@ import {
 import { INbTransOptions, INbTransParams, INbTransSentencePart } from '../../models';
 import { NbTransService, NbTransToolsService } from '../../services';
 import { NbTransSentenceItem } from '../../constants';
-import { NgFor, NgSwitch, NgSwitchCase, NgTemplateOutlet } from '@angular/common';
+import { NgTemplateOutlet } from '@angular/common';
 import { NbSentenceItemTypePipe, NbTransContentPipe } from '../../pipes';
 import { NbTplContentPipe, NbUnsubscribeService } from '@bigbear713/nb-common';
 
-const importsFromNgCommon = [NgTemplateOutlet, NgFor, NgSwitch, NgSwitchCase];
+const importsFromNgCommon = [NgTemplateOutlet];
 const importsFromNbCommon = [NbTplContentPipe];
 const importsFromSelf = [NbSentenceItemTypePipe, NbTransContentPipe];
 
@@ -28,6 +29,11 @@ const importsFromSelf = [NbSentenceItemTypePipe, NbTransContentPipe];
   providers: [NbUnsubscribeService],
 })
 export class NbTransComponent implements OnChanges {
+  private changeDR: ChangeDetectorRef = inject(ChangeDetectorRef);
+  private transToolsService: NbTransToolsService = inject(NbTransToolsService);
+  private transService: NbTransService = inject(NbTransService);
+  private unsubscribeService: NbUnsubscribeService = inject(NbUnsubscribeService);
+
   @Input() components: TemplateRef<{
     content: string | TemplateRef<unknown>;
     list?: INbTransSentencePart[];
@@ -47,12 +53,7 @@ export class NbTransComponent implements OnChanges {
 
   private originTrans: string = '';
 
-  constructor(
-    private changeDR: ChangeDetectorRef,
-    private transToolsService: NbTransToolsService,
-    private transService: NbTransService,
-    private unsubscribeService: NbUnsubscribeService
-  ) {
+  constructor() {
     this.subscribeLangChange();
   }
 

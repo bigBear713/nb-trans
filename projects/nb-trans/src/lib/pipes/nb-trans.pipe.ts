@@ -1,5 +1,5 @@
 import { switchMap } from 'rxjs/operators';
-import { ChangeDetectorRef, OnDestroy, Pipe, PipeTransform } from '@angular/core';
+import { ChangeDetectorRef, inject, OnDestroy, Pipe, PipeTransform } from '@angular/core';
 import { INbTransOptions } from '../models';
 import { NbTransService } from '../services';
 import { isEqual } from 'lodash-es';
@@ -7,6 +7,9 @@ import { NbUnsubscribeService } from '@bigbear713/nb-common';
 
 @Pipe({ standalone: true, name: 'nbTrans', pure: false })
 export class NbTransPipe implements PipeTransform, OnDestroy {
+  private changeDR: ChangeDetectorRef = inject(ChangeDetectorRef);
+  private transService: NbTransService = inject(NbTransService);
+
   private latestValue: string = '';
 
   private key: string = '';
@@ -15,10 +18,7 @@ export class NbTransPipe implements PipeTransform, OnDestroy {
 
   private unsubscribeService: NbUnsubscribeService;
 
-  constructor(
-    private changeDR: ChangeDetectorRef,
-    private transService: NbTransService
-  ) {
+  constructor() {
     this.unsubscribeService = new NbUnsubscribeService();
     this.subscribeLangChange();
   }

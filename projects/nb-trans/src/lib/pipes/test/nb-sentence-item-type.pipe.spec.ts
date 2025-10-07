@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Component, ElementRef } from '@angular/core';
+import { Component, ElementRef, inject } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { NbValueTypeService } from '@bigbear713/nb-common';
 import { isString } from 'lodash-es';
@@ -11,9 +11,14 @@ describe('Pipe: NbSentenceItemType', () => {
   describe('used in normal case', () => {
     let pipe: NbSentenceItemTypePipe;
 
+    beforeEach(async () => {
+      await TestBed.configureTestingModule({
+        providers: [NbValueTypeService],
+      }).compileComponents();
+    });
+
     beforeEach(() => {
-      const valueType = TestBed.inject(NbValueTypeService);
-      pipe = new NbSentenceItemTypePipe(valueType);
+      pipe = TestBed.runInInjectionContext(() => new NbSentenceItemTypePipe());
     });
 
     it('create an instance', () => {
@@ -84,11 +89,10 @@ const StandaloneCompConfig = {
 
 @Component(StandaloneCompConfig)
 class StandaloneComponent {
+  private elementRef: ElementRef<HTMLDivElement> = inject(ElementRef<HTMLDivElement>);
   value = 'strContent';
 
   get textContent() {
     return this.elementRef.nativeElement.textContent?.trim();
   }
-
-  constructor(private elementRef: ElementRef<HTMLDivElement>) {}
 }
