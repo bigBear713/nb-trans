@@ -1,7 +1,9 @@
 <h2>
-  <a *ngFor="let item of links" [href]="item.link" target="_blank" (click)="go2Link(item)">
-    {{ item.title }}
-  </a>
+  @for (item of links; track item) {
+    <a [href]="item.link" target="_blank" (click)="go2Link(item)">
+      {{ item.title }}
+    </a>
+  }
 </h2>
 <hr />
 <div class="actions">

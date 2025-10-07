@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Component, SimpleChange, TemplateRef, ViewChild, ElementRef } from '@angular/core';
+import { Component, SimpleChange, TemplateRef, ViewChild, ElementRef, inject } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { take } from 'rxjs/operators';
 import { NB_TRANS_DEFAULT_LANG, NB_TRANS_LOADER } from '../../../constants';
@@ -252,14 +252,13 @@ const StandaloneCompConfig = {
 
 @Component(StandaloneCompConfig)
 class StandaloneComponent {
+  private elementRef: ElementRef<HTMLDivElement> = inject(ElementRef<HTMLDivElement>);
   key = 'helloWorld';
   options: INbTransOptions = { prefix: 'content' };
 
   get textContent() {
     return this.elementRef.nativeElement.textContent?.trim();
   }
-
-  constructor(private elementRef: ElementRef<HTMLDivElement>) {}
 }
 
 @Component({
