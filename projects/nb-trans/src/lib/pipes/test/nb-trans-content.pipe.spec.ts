@@ -1,4 +1,4 @@
-import { Component, ElementRef } from '@angular/core';
+import { Component, ElementRef, inject } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { NbTransToolsService } from '../../services';
 import { handleSentenceWithParamsTestData, NbTransTestingModule } from '../../testing';
@@ -12,14 +12,16 @@ describe('Pipe: NbTransContente', () => {
     beforeEach(async () => {
       await TestBed.configureTestingModule({
         imports: [NbTransTestingModule],
-        providers: [{ provide: NB_TRANS_PARAM_KEY_INVALID_WARNING, useValue: false }],
+        providers: [
+          { provide: NB_TRANS_PARAM_KEY_INVALID_WARNING, useValue: false },
+          NbTransToolsService,
+        ],
         declarations: [],
       }).compileComponents();
     });
 
     beforeEach(() => {
-      const transToolsService = TestBed.inject(NbTransToolsService);
-      pipe = new NbTransContentPipe(transToolsService);
+      pipe = TestBed.runInInjectionContext(() => new NbTransContentPipe());
     });
 
     it('create an instance', () => {
@@ -62,12 +64,11 @@ const StandaloneCompConfig = {
 
 @Component(StandaloneCompConfig)
 class StandaloneComponent {
+  private elementRef: ElementRef<HTMLDivElement> = inject(ElementRef<HTMLDivElement>);
   trans = handleSentenceWithParamsTestData[0].test.trans;
   params = handleSentenceWithParamsTestData[0].test.params;
 
   get textContent() {
     return this.elementRef.nativeElement.textContent?.trim();
   }
-
-  constructor(private elementRef: ElementRef<HTMLDivElement>) {}
 }

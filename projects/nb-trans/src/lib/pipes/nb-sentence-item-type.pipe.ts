@@ -1,11 +1,11 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { inject, Pipe, PipeTransform } from '@angular/core';
 import { NbValueTypeService } from '@bigbear713/nb-common';
 import { NbTransSentenceItem } from '../constants';
 import { INbTransSentencePart } from '../models';
 
 @Pipe({ standalone: true, name: 'nbSentenceItemType' })
 export class NbSentenceItemTypePipe implements PipeTransform {
-  constructor(private valueType: NbValueTypeService) {}
+  private valueType: NbValueTypeService = inject(NbValueTypeService);
 
   transform(value: INbTransSentencePart): number | undefined {
     let type: number | undefined;

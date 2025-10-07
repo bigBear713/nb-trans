@@ -1,4 +1,4 @@
-import { Inject, Injectable, Optional, isDevMode } from '@angular/core';
+import { Injectable, inject, isDevMode } from '@angular/core';
 import { INbTransSentencePart, INbTransParams } from '../models';
 import { NbValueTypeService } from '@bigbear713/nb-common';
 import {
@@ -12,6 +12,11 @@ const isInDevMode = isDevMode();
 
 @Injectable({ providedIn: 'root' })
 export class NbTransToolsService {
+  private warnParamKeyInvalid: boolean | null = inject(NB_TRANS_PARAM_KEY_INVALID_WARNING, {
+    optional: true,
+  });
+  private valueType: NbValueTypeService = inject(NbValueTypeService);
+
   static checkNavigator(): boolean {
     return NbTransToolsService.checkWindow() && typeof window.navigator !== 'undefined';
   }
@@ -20,10 +25,7 @@ export class NbTransToolsService {
     return typeof window !== 'undefined';
   }
 
-  constructor(
-    @Optional() @Inject(NB_TRANS_PARAM_KEY_INVALID_WARNING) private warnParamKeyInvalid: boolean,
-    private valueType: NbValueTypeService
-  ) {
+  constructor() {
     this.setWarnParamKeyInvalidDefault();
   }
 
@@ -143,8 +145,8 @@ export class NbTransToolsService {
     if (!isInDevMode || !this.warnParamKeyInvalid) return;
 
     console.warn(
-      `The param key: "${paramKey}" is invalid! 
-       It should consist of "letter", "number", "_" or "$", 
+      `The param key: "${paramKey}" is invalid!
+       It should consist of "letter", "number", "_" or "$",
        and the "number" can't be the first character.
        See this changelog: https://github.com/bigBear713/nb-trans/blob/main/CHANGELOG.md#v1600`
     );

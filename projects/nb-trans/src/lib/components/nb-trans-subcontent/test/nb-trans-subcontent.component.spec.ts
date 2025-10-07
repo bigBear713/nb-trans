@@ -1,5 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { ChangeDetectorRef, Component, TemplateRef, ViewChild, ElementRef } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  TemplateRef,
+  ViewChild,
+  ElementRef,
+  inject,
+} from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NbTransTestingModule } from '../../../testing';
 import { NbTransSubcontentComponent } from '../nb-trans-subcontent.component';
@@ -10,7 +17,9 @@ import { NbTransSubcontentComponent } from '../nb-trans-subcontent.component';
     <ng-template #tplRef>{{ content }}</ng-template>
 
     <ng-template #tplRefWithList let-list="list">
-      <p *ngFor="let item of list">{{ item }}</p>
+      @for (item of list; track item) {
+        <p>{{ item }}</p>
+      }
     </ng-template>
   `,
   // eslint-disable-next-line @angular-eslint/prefer-standalone
@@ -127,13 +136,13 @@ const StandaloneCompConfig = {
 
 @Component(StandaloneCompConfig)
 class StandaloneComponent {
+  private elementRef: ElementRef<HTMLDivElement> = inject(ElementRef<HTMLDivElement>);
+
   content: string = '';
 
   get textContent() {
     return this.elementRef.nativeElement.textContent?.trim();
   }
-
-  constructor(private elementRef: ElementRef<HTMLDivElement>) {}
 }
 
 @Component({

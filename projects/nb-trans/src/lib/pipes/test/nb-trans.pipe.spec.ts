@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectorRef, Component, ElementRef } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, inject } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { switchMap, take } from 'rxjs/operators';
 import { NB_TRANS_LOADER, NB_TRANS_DEFAULT_LANG, NbTransLang } from '../../constants';
@@ -25,14 +25,14 @@ describe('Pipe: NbTrans', () => {
           },
           { provide: NB_TRANS_DEFAULT_LANG, useValue: NbTransLang.ZH_CN },
           { provide: NB_TRANS_LOADER, useValue: transLoader.dynamicLoader },
+          NbTransService,
         ],
       }).compileComponents();
     });
 
     beforeEach(() => {
+      pipe = TestBed.runInInjectionContext(() => new NbTransPipe());
       transService = TestBed.inject(NbTransService);
-      const changeDR = TestBed.inject(ChangeDetectorRef);
-      pipe = new NbTransPipe(changeDR, transService);
     });
 
     beforeEach(async () => {
@@ -156,14 +156,13 @@ const StandaloneCompConfig = {
 
 @Component(StandaloneCompConfig)
 class StandaloneComponent {
+  private elementRef: ElementRef<HTMLDivElement> = inject(ElementRef<HTMLDivElement>);
   key = 'helloWorld';
   options: INbTransOptions = { prefix: 'content' };
 
   get textContent() {
     return this.elementRef.nativeElement.textContent?.trim();
   }
-
-  constructor(private elementRef: ElementRef<HTMLDivElement>) {}
 }
 
 @Component({

@@ -1,3 +1,10 @@
+# v20.0.0
+## 破坏性更新
+- feat: `angular`升级到`v20`;
+- feat: `@bigbear713/nb-common`升级到`^20.0.0`;
+
+---
+
 # v19.0.0
 ## 破坏性更新
 - feat: `angular`升级到`v19`;

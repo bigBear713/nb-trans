@@ -1,7 +1,7 @@
 import { get, isFunction } from 'lodash-es';
 import { BehaviorSubject, from, Observable, of, Subject, timer } from 'rxjs';
 import { catchError, map, retry, skipWhile, switchMap, tap } from 'rxjs/operators';
-import { Inject, Injectable, Optional } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import {
   NB_TRANS_DEFAULT_LANG,
   NB_TRANS_LOADER,
@@ -13,6 +13,12 @@ import { NbTransToolsService } from './nb-trans-tools.service';
 
 @Injectable({ providedIn: 'root' })
 export class NbTransService {
+  private transDefaultLang: string =
+    inject(NB_TRANS_DEFAULT_LANG, { optional: true }) || NbTransLang.ZH_CN;
+  private transLoader: INbTransLoader | null = inject(NB_TRANS_LOADER, { optional: true });
+  private maxRetry: number | null = inject(NB_TRANS_MAX_RETRY, { optional: true });
+  private transToolsService: NbTransToolsService = inject(NbTransToolsService);
+
   private lang$ = new BehaviorSubject<string>(NbTransLang.ZH_CN);
 
   private loadDefaultOver$ = new BehaviorSubject<boolean>(false);
@@ -57,19 +63,14 @@ export class NbTransService {
     return window?.navigator?.languages;
   }
 
-  constructor(
-    @Inject(NB_TRANS_DEFAULT_LANG) @Optional() private transDefaultLang: string,
-    @Inject(NB_TRANS_LOADER) @Optional() private transLoader: INbTransLoader,
-    @Inject(NB_TRANS_MAX_RETRY) @Optional() private maxRetry: number,
-    private transToolsService: NbTransToolsService
-  ) {
+  constructor() {
     // if the maxRetry is undefined/null, use default settings,
     // so can set the retry valus as 0 to cancel retry action.
     this.retry = this.maxRetry == null ? this.retry : this.maxRetry;
 
     this.transLoader = this.transLoader || {};
 
-    this.lang$.next(transDefaultLang || NbTransLang.ZH_CN);
+    this.lang$.next(this.transDefaultLang);
     this.loadDefaultTrans();
   }
 
@@ -94,7 +95,7 @@ export class NbTransService {
     }
 
     // there is no any lang loader
-    if (!this.transLoader[lang]) {
+    if (!this.transLoader || !this.transLoader[lang]) {
       timer(1).subscribe(() => this.loadLangTrans$.next(false));
       return of(failureResult);
     }
@@ -224,7 +225,7 @@ export class NbTransService {
   }
 
   private loadTrans(lang: string): Observable<INbTranslation | null> {
-    const loader = this.transLoader[lang];
+    const loader = this.transLoader?.[lang];
     if (!loader) {
       return of(null);
     }
